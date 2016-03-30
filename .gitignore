@@ -1,0 +1,14 @@
+*.aux
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.lot
+*.out
+*.synctex.gz
+*.toc
+*.fdb_latexmk
+ESF2.pdf
+
+# Vim swap files
+*.swp
