@@ -992,10 +992,16 @@ Person primarily responsible for this section:
             \end{table}
 
     \subsection{Accumulator Pack}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%SECTION 5%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         \textit{Provide a narrative design of the accumulator system and complete the following table.}
 
-        All cell information listed was recorded from actual measurements. Manufacturer data is under NDA and restricted until we receive permission to release this information to the Formula Hybrid team.
+        All cell information listed was recorded from actual measurements. Most manufacturer data is under NDA and restricted until we receive permission to release this information to the Formula Hybrid team. We are allowed to share module capacity (at 2C), nominal voltage, size, weight and energy density. The rest of the numbers given in the following sections will either come from measurements or limits that the team imposes on the batteries, and we have the knowledge that they are safe for our cells.
+        %Allowed to share:
+            % -Capacity
+            % -Nominal Voltage
+            % -Size
+            % -Weight
+            % -Energy Density
 
             \begin{table}[H]
                 \centering
@@ -1006,24 +1012,26 @@ Person primarily responsible for this section:
                 Total number of cells & 48 \\ \hline
                 Cell arrangement & \begin{tabular}[c]{@{}l@{}}2s2p in one module,\\ 12 modules in series\end{tabular} \\ \hline
                 Are packs commercial or team constructed & Team \\ \hline
-                Total Capacity (per FH Rules Appendix A) & Less than 5.4 kWh, NDA \\ \hline
-                Maximum Segment Capacity & Less than 6 MJ, NDA \\ \hline
+                Total Capacity (per FH Rules Appendix A) & 5.2 kWh \\ \hline
+                Maximum Segment Capacity & 5.265 MJ \\ \hline
                 Number of Accumulator Segments & 4 \\ \hline
                 \end{tabular}
                 \caption{Main accumulator parameters}
                 \label{mainaccumtable}
             \end{table}
 
+            The maximum voltage that the accumulator will be charged to is 99.6V.
+
         \textit{Describe how pack capacity is calculated. Provide calculation at 2C (0.5 hour) rate? How is capacity derived from manufacturer’s data? If so, include discharge data or graph here. Include Peukert calculation if used (See FH Rules Appendix A). Show your segment energy calculations.}
 
-        The segment energy is calculated as: Vnom x Cell AH (2C rate) x Number of Cells x 3.6 kJ (The 80\% factor is not applied for this calculation). Each segment is 1/4 of the total accumulator (3 modules). Module/Cell current at 2C discharge is under NDA, but is included in the cell manufacturer's datasheet.
+        The segment energy is calculated as: Nominal voltage (per module) x Cell AH (per module) x Number of modules x 3.6 kJ (The 80\% factor is not applied for this calculation). Each segment is 1/4 of the total accumulator (3 modules, with 12 modules being the total). % Module/Cell current at 2C discharge is under NDA, but is included in the cell manufacturer's datasheet.
 
-            % \begin{align}
-            %     \text{Seg Energy} &= V_{nom} * \text{Cell Ah (2C rate)} * \text{Number of Cells} *  %     3.6 \text{kJ}\\
-            %     \text{Seg Energy} &= 7.5 * 65 * 3* 3.6 \\
-            %     \text{Seg Energy} &= 5265 \text{kJ}\\
-            %     \text{Seg Energy} &= 5.265 \text{MJ}
-            % \end{align}
+            \begin{align}
+                \text{Seg Energy} &= V_{nom} * \text{Cell Ah (2C rate)} * \text{Number of Cells} *  3.6 \text{kJ}\\
+            `   \text{Seg Energy} &= 7.5 * 65 * 3* 3.6 \\
+                \text{Seg Energy} &= 5265 \text{kJ}\\
+                \text{Seg Energy} &= 5.265 \text{MJ}
+             \end{align}
 
     \subsection{Cell Description}
 
@@ -1040,13 +1048,13 @@ Person primarily responsible for this section:
                 Cell Manufacturer and Model & \begin{tabular}[c]{@{}l@{}}Automotive Energy Supply Corporation\\ Model E5\end{tabular} \\ \hline
                 Cell type & Pouch type, Yes \\ \hline
                 Are these pouch cells & Yes \\ \hline
-                Cell nominal capacity at 2C (0.5 hour) rate & NDA \\ \hline
+                Cell nominal capacity at 2C (0.5 hour) rate & 65.0 Ah \\ \hline
                 Datasheet nominal capacity & NDA\\ \hline
-                Maximum Voltage (during charging) & NDA \\ \hline
-                Nominal Voltage (data sheet value) & 3.75 V (not datasheet value) \\ \hline
-                Minimum Voltage (AMS setting) & NDA \\ \hline
-                Maximum Cell Temperature (charging - AMS setting) & NDA  \\ \hline
-                Maximum Cell Temperature (discharging - AMS setting) & NDA \\ \hline
+                Maximum Voltage (during charging) & 4.15V \\ \hline
+                Nominal Voltage (data sheet value) & 3.75 V \\ \hline
+                Minimum Voltage (AMS setting) & 2.5V \\ \hline
+                Maximum Cell Temperature (charging - AMS setting) & 50 \degree C  \\ \hline
+                Maximum Cell Temperature (discharging - AMS setting) & 60 \degree C \\ \hline
                 Cell Chemistry & \begin{tabular}[c]{@{}l@{}}Lithium Ion - Laminate type\\ Cathode/Anode Material: LiMn2O4 with LiNiO2/Graphite\end{tabular} \\ \hline
                 \end{tabular}
                 \end{adjustbox}
@@ -1055,8 +1063,6 @@ Person primarily responsible for this section:
             \end{table}
 
         \textit{Show your calculations for 2C nominal AH capacity if the data sheet uses a different discharge rate. Refer to FH rules Appendix A}
-
-        Calculations at 2C nominal Ah capacity were used to confirm compliance with FH rules, but cannot be shared at this time.
 
     \subsection{Cell Configuration}
 
