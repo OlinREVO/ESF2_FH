@@ -950,12 +950,18 @@ Person primarily responsible for this section:
 
     The 2 throttle encoder outputs (2 electrically-separated potentiometers contained within MHR5621) will be sensed through a CAN node input pin. The CAN node will then log the information (no amplification in any way) and send it to the motor controller CAN node. That CAN node will output the same analog signal through an optoisolator to separate it from the GLV system and ground it to the TS system.
 
-    \textnormal{There will be two electrically-separated potentiometers being sensed by a CAN node. There will be pull-down resistors on both inputs in order to detect wire-failure for the potentiometer's input. Software will detect whether the potentiometer inputs are within 10\% of each other, as well as checking that the potentiometer readings are within the limits of the system.}\\
+    \textnormal{There will be two electrically-separated potentiometers being sensed by an ATmega 16M1 microprocessor running CAN communication protocols. There will be pull-down resistors on both inputs in order to detect wire-failure for the potentiometer's input. Software will detect whether the potentiometer inputs are within 10\% of each other, as well as checking that the potentiometer readings are within the limits of the system.}\\
 
-    \textnormal{Once the throttle has been read and sanitized by the CAN node, it will be sent along the CAN line to the motor controller CAN node. This node can send isolated analog signals to both motor-controllers for torque control. This node will also take into account the steering-wheel sensor and may decrease the torque signal to one of the motors in order to allow for a virtual differential. It will never increase the torque signal.}\\
+    \textnormal{Once the throttle has been read and sanitized by the ATmega, it will be sent along the CAN line to the motor controller ATmega. This node can send isolated analog signals to both motor-controllers for torque control. This node will also take into account the steering-wheel sensor and may decrease the torque signal to one of the motors in order to allow for a virtual differential. It will never increase the torque signal.}\\
 
     \textnormal{This design meets all rules requirements because the system is galvanically isolated from the motor controller inputs and our system is able to detect all the plausible failure modes of the potentiometer.}
 
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width = 0.4 \textwidth]{Bulkheadschem}
+        \caption{Schematic of the bulkhead, which has potentiometer inputs for throttle}
+        \label{bulkheadschem}
+    \end{figure}
 
     \subsection{Accelerator / Throttle Position Encoder Error Check}
 
@@ -963,16 +969,14 @@ Person primarily responsible for this section:
 
 
     \textnormal{
-    There are two main errors that need to be considered. Potentiometer input failure, as in a wire being disconnected or an invalid signal, and CAN system failure, as in invalid message objects are sent.
+    There are two main errors that need to be considered. Potentiometer input failure, as in a wire being disconnected or an invalid signal, and CAN communication system failure, as in invalid message objects are sent.
     }\\
 
     \textnormal{
     In the case of a short or open-circuit for potentiometer input failure, there will be a pull-down resistor which will pull the value read at the input pin to 0V (and in case of a short it will be pulled to 5V). Any reading not in the range of 1V-4V will be considered an error and will be dealt with in software. No throttle command will be sent in this case.
     }\\
 
-    \textnormal{
-    In the case of CAN message failure, the CAN node which is connected to the motor-controllers will not send any throttle command if no valid throttle message is read every 0.1 seconds.
-    }
+    \textnormal{In the case of CAN message failure, the CAN node which is connected to the motor-controllers will not send any throttle command if no valid throttle message is read every 0.1 seconds.}
 
 \section{Accumulator System}
 
