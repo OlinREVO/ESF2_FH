@@ -355,10 +355,11 @@ Person primarily responsible for this section:
         Bel Fuse & CIQ 3 & 3A & 63V & 63V DC@50A & \begin{tabular}[c]{@{}l@{}}Each input to AMS\\ voltage reading\end{tabular} \\ \hline
         Ferraz Shawmut & A15QS7-2 & 7A & 150V & 100,000 & \begin{tabular}[c]{@{}l@{}}Keyswitch pin \\ activating precharge\end{tabular} \\ \hline
         Bussman & LPJ-175SP & 175A & 300V & 20,000 & \begin{tabular}[c]{@{}l@{}}TS+ before \\ motor controllers\end{tabular} \\ \hline
-        Littelfuse & F3169CT-ND & 1A & 125V & 300A@125VDC & \begin{tabular}[c]{@{}l@{}}TS+ low current \\ components and lights' \\ DC-DC converter\end{tabular} \\ \hline
-        Littelfuse & F3169CT-ND & 1A & 125V & 300A@125VDC & \begin{tabular}[c]{@{}l@{}}TS- low current\\ components and lights'\\ DC-DC converter\end{tabular} \\ \hline
+        Littelfuse & F3169CT-ND & 1A & 125V & 300A@125VDC & \begin{tabular}[c]{@{}l@{}}TS+ low current \\ components, lights' DC-DC \\ converter, \\ GLV DC-DC converter\end{tabular} \\\hline
+        Littelfuse & F3169CT-ND & 1A & 125V & 300A@125VDC & \begin{tabular}[c]{@{}l@{}}TS- low current \\ components, lights' DC-DC \\ converter, \\ GLV DC-DC converter\end{tabular} \\\hline
         Littelfuse & MINI2BP & 2A & 32 V & 1000A @ 32 VD & \begin{tabular}[c]{@{}l@{}}12V power, Shutdown circuit. \end{tabular} \\ \hline
         Littelfuse & MINI5BP & 5A & 32 V & 1000A @ 32 VD & \begin{tabular}[c]{@{}l@{}} GLV system \end{tabular} \\ \hline
+        Bel Fuse & 0ZCK0050FF2E & 1A & 6V & PTC Resettable & 5V CAN circuit \\ \hline
         \end{tabular}
         \end{adjustbox}
         \caption{Fuse Table}
@@ -382,6 +383,7 @@ Motor Controllers & LPJ175sp & 190 A (for 2AWG) & 175A & \begin{tabular}[c]{@{}l
 AMS inputs (x28) & CIQ 3 & 4A (for traces) & 3A & \begin{tabular}[c]{@{}l@{}}Each input fused\\ separately\end{tabular} \\ \hline
 GLV System & MIN5BP & 7A (for 20AWG) & 5A &  \\ \hline
 GLV 12V and Shutdown circuit & MIN2BP & 7A (for 20AWG, traces) & 2A &  \\ \hline
+5V CAN circuit & 0ZCK0050FF2E & 1A & 1A &  \\ \hline
 \begin{tabular}[c]{@{}l@{}}Lights DC-DC converter, \\ TSMPs and IMD\end{tabular} & F3169CT-ND & 1.25A (for dc-dc converter) & 1A & \begin{tabular}[c]{@{}l@{}}Protects all TS \\ low current\\ components\end{tabular} \\ \hline
 \begin{tabular}[c]{@{}l@{}}Keyswitch input to Motor \\ Controller\end{tabular} & A15QS7-2 & \begin{tabular}[c]{@{}l@{}}7A (for motor\\ controller LV input)\end{tabular} & 7A &  \\ \hline
 \end{tabular}
@@ -403,9 +405,9 @@ Cable capacity is the value from FH Rules Appendix E (Wire Current Capacity). A 
 \hline
 Mfg & \begin{tabular}[c]{@{}l@{}}Part\\ No\end{tabular} & \begin{tabular}[c]{@{}l@{}}Size \\ AWG\end{tabular} & \begin{tabular}[c]{@{}l@{}}Insulation\\ Type\end{tabular} & \begin{tabular}[c]{@{}l@{}}Voltage\\ Rating\end{tabular} & \begin{tabular}[c]{@{}l@{}}Temp. \\ Rating\end{tabular} & \begin{tabular}[c]{@{}l@{}}Cable\\ Capacity \\ (per FH)\end{tabular} & \begin{tabular}[c]{@{}l@{}}Fuse\\ Part \#\end{tabular} & \begin{tabular}[c]{@{}l@{}}Fuse \\ Cont. A\end{tabular} & \begin{tabular}[c]{@{}l@{}}Fuse Interrupting\\ Rating A\end{tabular} & \begin{tabular}[c]{@{}l@{}}Available\\ Fault Current\end{tabular} & \begin{tabular}[c]{@{}l@{}}Where used \& \\ how fault current\\ is calculated\end{tabular} \\ \hline
 Prestolite & \begin{tabular}[c]{@{}l@{}}Not listed\\ UL style 3870\end{tabular} & 2 AWG (33.3 mm\textasciicircum 2) & \begin{tabular}[c]{@{}l@{}}EPDM \\ single layer\end{tabular} & 8 kVAC & 125 C & 190 A & LPJ-175SP & 175 & 20,000 & 41152 A & \begin{tabular}[c]{@{}l@{}}Motor Controllers\\ to Motors x 3, see description\end{tabular} \\ \hline
-Delphi & Not listed & 35 mm\textasciicircum 2 & Dual insulated & 600 V & 150 C & >190 A & \begin{tabular}[c]{@{}l@{}}Series\\ with above fuse\end{tabular} & \begin{tabular}[c]{@{}l@{}}See \\ above\end{tabular} & See above & 41152 A & \begin{tabular}[c]{@{}l@{}}Accumulator to\\ HVD, Accumulator\\ to Motor controllers x2\end{tabular} \\ \hline
+Delphi & Not listed & 35 mm\textasciicircum 2 & Dual insulated & 600 V & 150 C & $\>190$ A & \begin{tabular}[c]{@{}l@{}}Series\\ with above fuse\end{tabular} & \begin{tabular}[c]{@{}l@{}}See \\ above\end{tabular} & See above & 41152 A & \begin{tabular}[c]{@{}l@{}}Accumulator to\\ HVD, Accumulator\\ to Motor controllers x2\end{tabular} \\ \hline
 Wiechang & Unknown & See below & XLPE & 600V & 150 C & Motor leads & Series with above fuse & See above & See above  & 41152 A & See description \\ \hline
-CnC Tech & 3132-22-1-0500-001-1-TS & 22 AWG & Silicone Rubber & 300V & 150 C & 7 A & SPF-004 & 4A & 20,000 & 25A & See description \\ \hline
+CnC Tech & 3132-20-1-0500-001-1-TS & 20 AWG & Silicone Rubber & 300V & 150 C & 7 A & MIN2BP & 5A & 25 $A^{2}s$ & 25A & See description \\ \hline
 \end{tabular}
 \end{adjustbox}
 \caption{System wire table}
@@ -436,7 +438,7 @@ The fault current for the GLV system is restricted by the DC-DC converter supply
 
 \textit{Describe how you keep the resistances between accessible components below the required levels as defined in FH Rules EV4.3. If wire is used for ground bonding, state the AWG or mm2 of the wire}
 
-The chassis is used as GLV ground. This ground is established at the panel mount holding many of the shutdown components and the TSMP's. All mechanical systems in the vehicle, such as the accumulator, drivers seat, and pedal box, achieve low resistance to ground because they are either welded directly to the chassis, or fastened using uncoated, conductive metal fasteners. Electrical systems that are satellite to the main panel mount that need to establish a connection to ground for sense purposes are grounded to the chassis using ring terminals. Ring terminals can be included in the bolt stack up of mechanical systems to ensure a secure connection to ground that is positively retained with a lock nut. All wires used for ground bonding will be 22 AWG, which is the same wire gauge as the GLV system.
+The chassis is used as GLV ground. This ground is established at the side panel mount holding many of the shutdown components and the TSMP's. All mechanical systems in the vehicle, such as the accumulator, drivers seat, and pedal box, achieve low resistance to ground because they are either welded directly to the chassis, or fastened using uncoated, conductive metal fasteners. Electrical systems that are satellite to the main panel mount that need to establish a connection to ground for sense purposes are grounded to the chassis using ring terminals. Ring terminals can be included in the bolt stack up of mechanical systems to ensure a secure connection to ground that is positively retained with a lock nut. All wires used for ground bonding will be 20 AWG, which is the same wire gauge as the GLV system. During charging, there will be a green 16 AWG wire connecting the GLV system to earth ground.
 
 \subsection{Conductive Panel Grounding}
 
@@ -455,7 +457,7 @@ Person primarily responsible for this section:
         \end{tabular}
     \end{table}
 
-    \subsection{Separation of Tractive System and Grounded Low Voltage System}
+\subsection{Separation of Tractive System and Grounded Low Voltage System}
 
 \textit{Describe how the TS and GLV systems are physically separated (EV4.1). Add CAD drawings or photographs of how TS and GLV are segregated in key areas of the electrical system.}
 
@@ -473,8 +475,8 @@ Person primarily responsible for this section:
 Device/PCB & TS Voltage Present & \begin{tabular}[c]{@{}l@{}}Minimum \\ Spacing mm\end{tabular} & \begin{tabular}[c]{@{}l@{}}Thru Air or\\ Over surface\end{tabular} & Notes \\ \hline
 \begin{tabular}[c]{@{}l@{}}AIR Control Board \\ (Precharge, Discharge,\\ Lights, AMS relays, etc)\end{tabular} & 100 V & 6.4 & Over Surface &  \\ \hline
 \begin{tabular}[c]{@{}l@{}}Accumulator Management\\  System (x4)\end{tabular} & 100V & 6.4 & Over surface & \begin{tabular}[c]{@{}l@{}}1 AMS per segment, \\ each segment nominally\\ 22.5V\end{tabular} \\ \hline
-\begin{tabular}[c]{@{}l@{}}Side Panel CAN node \\ (Ready to drive sound, TSMP)\end{tabular} & 22.5V & 6.4 & Over Surface &  \\ \hline
-Motor Controller Isolation & 100 V & 6.4 & Over surface & Separation PCB not designed yet \\ \hline
+\begin{tabular}[c]{@{}l@{}}Side Panel CAN node \\ (Ready to drive sound, TSMP)\end{tabular} & 22.5V & 6.4mm  & Over Surface &  \\ \hline
+Motor Controller Isolation & 100 V & 6.4 & Over surface &  \\ \hline
 \end{tabular}
 \end{adjustbox}
 \caption{PCB Spacings}
@@ -499,8 +501,19 @@ Motor Controller Isolation & 100 V & 6.4 & Over surface & Separation PCB not des
     \label{AIRcontrolspacing}
 \end{figure}
 
-Side panel and motor controller input isolation PCB's are in-progress at this time. The ESF will be updated when designs are complete.
-\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.7 \textwidth]{sidepanelPCB}
+    \caption{Side Panel board, with the bright blue line denoting the separation between the TS and GLV voltage. The smallest separation is 1/4 in (over surface)}
+    \label{sidepanelspacing}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.6 \textwidth]{MCCspacing}
+    \caption{Motor Controller Isolation board, which has a bright blue line denoting the separation between the TS and GLV voltage. The spacing is 6.731 mm. consistently (over surface)}
+    \label{MCCspacing}
+\end{figure}
 
 \textit{List all purchased components with both TS and GLV connections (at min motor controller and AMS).}
 
@@ -512,12 +525,13 @@ Side panel and motor controller input isolation PCB's are in-progress at this ti
 Component & Isolation method & \begin{tabular}[c]{@{}l@{}}Link to Document\\ Describing Isolation\end{tabular} & Notes \\ \hline
 Precharge relay & Galvanic (relay) & \href{http://www.mouser.com/ds/2/307/G5LE\_0813-267607.pdf}{Click here} &  \\ \hline
 Discharge relay & Galvanic (relay) & \href{http://cotorelay.com/wp-content/uploads/2014/09/5500\_series\_reed\_relay\_datasheet.pdf}{Click Here} &  \\ \hline
-GLV DC-DC converter & tested to  & \href{http://www.evdrives.com/product\_p/vr-sevcon-7213.htm}{Click Here} &  \\ \hline
+GLV DC-DC converter & Not listed & \href{http://www.evdrives.com/product\_p/vr-sevcon-7213.htm}{Click Here} &  \\ \hline
 Lights DC-DC converter & \begin{tabular}[c]{@{}l@{}}Not listed: Isolation\\ test at 5000V\end{tabular} & \href{http://www.mouser.com/ds/2/281/mdc\_ruw15-217876.pdf}{Click Here} &  \\ \hline
 Ready to drive relay & Galvanic (relay) & \href{http://pdf1.alldatasheet.com/datasheet-pdf/view/451822/MACOM/SDT-S-124DMR000.html}{Click Here} &  \\ \hline
 AMS relay x4 & Galvanic (relay) & \href{http://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv\&DocNm=OJ\_OJE\_series\_relay\_data\_sheet\_E\&DocType=DS\&DocLang=English}{Click Here} &  \\ \hline
 Photorelay mosfet & Galvanic (Photorelay) & \href{http://toshiba.semicon-storage.com/info/docget.jsp?did=17083\&amp;prodName=TLP592A}{Click Here} &  \\ \hline
-Isolated CAN Tranciever & Galvanic & \href{http://www.ti.com/lit/ds/symlink/iso1050.pdf}{Click Here} &  \\ \hline
+Isolated CAN Tranceiver & Galvanic & \href{http://www.ti.com/lit/ds/symlink/iso1050.pdf}{Click Here} &  \\ \hline
+BSPD Relay & None listed & \href{http://www.mouser.com/ProductDetail/TE-Connectivity/OJ-SH-105HM000/?qs=%2fha2pyFaduihBgI7ARjI70jHf%2f4%2fFPQxhir8DUrpU%252bkAVAYrW5DJOg%3d%3d}{Click Here} &  \\ \hline
 \end{tabular}
 \end{adjustbox}
 \caption{Purchased Components - Isolation Data}
@@ -607,7 +621,7 @@ The Delphi shielded cable is being provided by General Motors, and we are still 
 \textit{Describe the concept, layer structure and the materials used for the firewalls. Describe how all firewall requirements in FH Rules T4.5.1 are satisfied. Show how the low resistance connection to chassis ground is achieved.}
 
 \textbf{Description/Materials}
-            The firewall is constructed of two layers. The layer facing the tractive system is 5 mm aluminum sheet metal, with a chamfered edge. The second layer facing the cockpit is 1/8 in. Flame-Retardant Multipurpose Garolite (G-10/FR4). The assembly is fastened together using sheet metal rivets. The chassis has welded sheet metal tabs that fasten to the firewall with bolts and positively retained nuts. Because the firewall is fastened to the chassis using conductive fasteners, it is connected to GLVS ground.\\
+            The firewall is constructed of two layers. The layer facing the tractive system is 1.5 mm aluminum sheet metal, with a chamfered edge. The second layer facing the cockpit is 1/8 in. Flame-Retardant Multipurpose Garolite (G-10/FR4). The assembly is fastened together using sheet metal rivets. The chassis has welded sheet metal tabs that fasten to the firewall with bolts and positively retained nuts. Because the firewall is fastened to the chassis using conductive fasteners, it is connected to GLVS ground.\\
 
             All high voltage and high temperature systems are contained in the rear of the vehicle, so only one firewall will be used. There are GLV systems in the dashboard and pedal box. A small grommeted hole will be made in the firewall for GLV wiring only.
 
