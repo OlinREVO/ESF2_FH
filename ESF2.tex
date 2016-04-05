@@ -1325,24 +1325,45 @@ Person primarily responsible for this section:
 
         \begin{figure}[H]
             \centering
+            \includegraphics[width = 0.8 \textwidth]{aischem}
+            \caption{Schematic of the accumulator indicator}
+            \label{aischem}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
             \includegraphics[width = 0.3 \textwidth]{accuindicator}
             \caption{Zoom in on the section of the PCB containing the accumulator indicator (the AIR control board)}
             \label{aindicatorPCB}
         \end{figure}
 
-    The accumulator will be removable and removed each time for the charging process. The accumulator indicator is a small light within the accumulator that can be seen from the outside, and \textcolor{red}{it is powered by a DC-DC converter that is powered by the tractive system}.
+    The accumulator will be removable and removed each time for the charging process. The accumulator indicator is a small light within the accumulator that can be seen from the outside. The light will turn on at 30VDC because the top zener diode has a breakdown of 28V. From 30-100V, the light will be shining. The light, which is located on the AIR control board, will be placed near the window of the accumulator for visibility.
 
 \subsection{Charging}
 
 \textit{Describe how the accumulator will be charged. How will the charger be connected? How is the accumulator to be supervised during charging?}
 
-The accumulator will be charged using a Delta Q Technologies QioQ 1000 Series charger (UL listed). This charger has a custom charging process for the accumulator. The charging process is a constant current at 17.0A until the battery voltage reaches 4.15Vpc, and then constant voltage at 4.15Vpc until the current tapers to 2.0A. When charging, the accumulator will be located on a hand cart, with a charging interlock, AMS, emergency stop button, and IMD. These components will make up a small version of the shutdown system in order to protect the accumulator. The charger will connect to the charging connector on the accumulator, and will go through the TS side of the AIRs, connecting to the TS. Therefore, the AMS's, IMD and E-stop will all be able to open the AIRs in the case of an emergency. Also, a person with knowledge of the charging process will stay with the accumulator at all times.
+The accumulator will be charged using a Delta Q Technologies QioQ 1000 Series charger (UL listed). This charger has a custom charging process for the accumulator. The charging process is a constant current at 17.0A until the battery voltage reaches 4.15Vpc, and then constant voltage at 4.15Vpc until the current tapers to 2.0A. When charging, the accumulator will be located on a hand cart, with a charging interlock, emergency stop button, IMD, and connections to the AMS, located in the accumulator. These components will make up a small version of the shutdown system in order to protect the accumulator. The charger will connect to the charging connector on the accumulator, and will go through the TS side of the AIRs, connecting to the TS. Therefore, the AMS's, IMD and E-stop will all be able to open the AIRs in the case of an emergency. Also, a person with knowledge of the charging process will stay with the accumulator at all times and the TSEL will be lit (in amber) and blinking.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width = 0.7 \textwidth]{chargepic}
-    \caption{Visual of the inteded charger from the Delta Q Technologies QioQ 1000 Series}
+    \caption{Visual of the charger from the Delta Q Technologies QioQ 1000 Series}
     \label{chargepic}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.7 \textwidth]{chargingschem}
+    \caption{Schematic of the charging shutdown system, not including the AMS and its relays (located on the AIR control board). The connections to the Air control board are made through the 14-pin connector}
+    \label{chargerschem}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.7 \textwidth]{chargerPCB}
+    \caption{CAD of the charging shutdown PCB. All connections on the PCB will be low voltage.}
+    \label{chargerPCB}
 \end{figure}
 
 \begin{table}[H]
@@ -1373,20 +1394,24 @@ If the housing is made of conductive material, include information on how the po
 Include additional photographs if required to comply with rule EV3.2.
 Show how the cells are mounted, use CAD-Renderings, and include calculations showing compliance with FH Rules EV3.4.}
 
-The accumulator is comprised of flanged 403 stainless steel sheetmetal panels, meeting the material and fastener requirements set by Formula SAE Electric rule EV 3.4.6. This rule specifies that the minimum sheet thickness for the floor is 0.049" steel and 0.035" steel for vertical and internal walls. The panels are fastened together using a minimum of three 1/4" SAE Grade 5 at any joint, except at the intersection of internal walls. These intersections, highlighted in gold in Figure \ref{acc_frame}, will be spot welded in at least three places. We will also be conducting a pull-test of test parts to ensure our spot welding settings are correct for full penetration. The Nissan modules are isolated by an additional layer of G10/FR4 Garolite, a fiberglass-cloth with a flame-retardant resin. G10/FR4 meets MIL-I-24768/27 and UL94-V0 for flame retardance (Mcmaster-Carr P/N 8667K55). These barriers do not create electrical insulation, which is performed internal to each module. We have insulation ratings between the Nissan module case and the cell terminals, but this information is under NDA. G10/FR4 panels are highlighted in Figure \ref{acc_iso} in yellow. Please note that not all G10/FR4 panels are not present in our CAD model.
+The accumulator is comprised of flanged 403 stainless steel sheet metal panels, meeting the material and fastener requirements set by Formula SAE Electric rule EV 3.4.6. This rule specifies that the minimum sheet thickness for the floor is 0.049” steel and 0.035” steel for vertical and internal walls. The panels are fastened together using a minimum of three 1/4” SAE Grade 5 at any joint, except at the intersection of internal walls. These intersections will be spot welded with weld area equivalent to a linear weld along the same length of joint. We will also be conducting a pull-test of test parts to ensure our spot welding settings are correct for full penetration. We have received a rules clarification \# 4795 stating that spot welding is regulation-compliant. The Nissan modules are additionally isolated by an additional layer of G10/FR4 Garolite, a fiberglass-cloth with a flame-retardant resin. G10/FR4 meets MIL-I-24768/27 and UL94-V0 for flame retardance (Mcmaster-Carr P/N 8667K55). These barriers do not create electrical insulation, which is performed internal to each module. We have insulation ratings between the Nissan module case and the cell terminals, but this information is under NDA.
+
+In this design the Nissan/AESC battery modules are laid flat relative to the car, and broken up into segments containing less than 6MJ of total stored energy. The accumulator has two covers, both lined with FR4 insulating material. The cover revealing the battery modules also serves as a structural vertical wall, and great care was taken in the design to ensure compliance with EV 3.4.6.
+
+The accumulator is mounted to the chassis using 10 SAE Grade 5 5/16” bolts through welded, gusseted tabs.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.7 \textwidth]{accumulator_frame}
+    \includegraphics[width = 0.7 \textwidth]{accumulator_insulation_frame_isoview}
     \caption{Accumulator Frame Exploded View}
     \label{acc_frame}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.7 \textwidth]{accumulator_isoview}
-    \caption{Accumulator, Isometric}
-    \label{acc_iso}
+    \includegraphics[width = 0.7 \textwidth]{sheetmetal_isoview}
+    \caption{Sheet metal construction of the accumulator, isometric}
+    \label{acc_sheet_iso}
 \end{figure}
 
 \section{Safety Controls and Indicators}
