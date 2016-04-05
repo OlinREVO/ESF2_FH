@@ -1474,7 +1474,7 @@ The physical location of the AMS is pictured and discussed in Figure \ref{ACCUMU
     \label{imdschem}
 \end{figure}
 
-The IMD will have a high output as long as a there is no ground fault detected. The high output will not power the relay until the reset button is pressed. Pressing the IMD will "latch" it into its state (by using the first switch) until the output goes low from a ground fault. The relay's coil pulls all 4 of the double pole switches to their active states. Therefore, with a latched coil, the switch in the shutdown circuit is closed, the IMD light in the cockpit is not receiving power, and the CAN node input is high.
+The IMD will have a high output as long as a there is no ground fault detected. The high output will not power the relay until the reset button is pressed in the very beginning start up procedure. Pressing the IMD reset button will "latch" it into its state (by using the first switch). The relay's coil pulls all 4 of the double pole switches to their active states, therefore closing the shutdown circuit and pulling the ATMega16M1 input as low. The input to the microprocessor has a pull-up resistor in case of a disconnection in the wiring. The ATMega16M1 in the side panel housing (where the IMD is) will notify the ATMega16M1 in the dashboard (where the IMD light is) to turn the pin that the IMD light is on high. The fourth pole is left open.
 
 \begin{table}[H]
 \centering
@@ -1493,16 +1493,16 @@ Referred from section \ref{latching} (Reset/Latching for IMD and AMS)
 
 \textit{Describe the functioning and circuitry of the latching/reset system for a tripped IMD or AMS. Describe wiring, provide schematics.}
 
-If the AMS detects a fault. It opens the shutdown circuit, and latches into that state. When the AMS reset switch, located in the side panel housing, is pressed, the nearby CAN node passes a ”Reset” CAN message to the AMS boards. If the accumulator is within safe electrical and temperature operating limits the AMS closes the shutdown circuit. Figure \ref{amsreset} demonstrates the relevant circuitry of the AMS reset switch and side panel CAN node, which also will be wired to shutdown components.
+If the AMS detects a fault. It opens the shutdown circuit, and latches into that state. When the AMS reset switch, located in the side panel housing, is pressed, the nearby CAN node passes a message through CAN to the AMS boards. If the accumulator is within safe electrical and temperature operating limits the AMS closes the shutdown circuit.%  Figure \ref{amsreset} demonstrates the relevant circuitry of the AMS reset switch and side panel CAN node, which also will be wired to shutdown components.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width = 0.7 \textwidth]{amsreset}
-    \caption{Schematic for the AMS reset button and latching}
-    \label{amsreset}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width = 0.7 \textwidth]{amsreset}
+%     \caption{Schematic for the AMS reset button and latching}
+%     \label{amsreset}
+% \end{figure}
 
-To reset the IMD an operator other than the driver must push the IMD reset button located on the outside of the car on a panel next to the TSMPs, master switches and E-stops. \textcolor{red}{If the output of the IMD is high because there is no ground fault, the reset button will activate the coil and close the shutdown circuit.}
+To reset the IMD an operator other than the driver must push the IMD reset button located on the outside of the car on the side panel, next to the TSMPs, master switches and E-stops. If the output of the IMD is high because there is no ground fault, the reset button will activate the coil and close the shutdown circuit.
 
 Please see figure \ref{imdschem} for the latching of the IMD circuit. The push button labelled "RESET" is the form of latching for the IMD- pressing the reset button will energize the relay's coil and allow it to self-energize for the remainder of the time that its output is high (true). The IMD reset button must be pressed in order for the shutdown circuit to be closed (assuming the IMD does not find a ground fault).
 
@@ -1510,7 +1510,7 @@ Please see figure \ref{imdschem} for the latching of the IMD circuit. The push b
 
 \textit{(If used) describe the functioning and circuitry of the Shutdown System Interlocks. Describe wiring, provide schematics.}
 
-The shutdown system does employ interlocks on the main battery connectors, and the HVD. The charger's interlock will replace the two main connectors' (to the motor controllers) interlock when the accumulator is charging. All of the interlocks will be fit in their respective high voltage connectors, and be in series with the shutdown circuit, besides the charger interlock being in parallel with the two main connections (referenced as CONN in figure \ref{interlocks}).
+The shutdown system does employ interlocks on the main battery connectors and the HVD. The charger's interlock will replace the two main connectors' (to the motor controllers) interlock when the accumulator is charging. All of the interlocks will be fit in their respective high voltage connectors, and be in series with the shutdown circuit, besides the charger interlock being in parallel with the two main connections (referenced as CONN in figure \ref{interlocks}).
 
 \begin{figure}[H]
     \centering
@@ -1530,7 +1530,7 @@ The shutdown system does employ interlocks on the main battery connectors, and t
     \label{tselschem}
 \end{figure}
 
-The TSEL will be located directly under the main roll hoop. It is powered with GLV voltage taken from right before the AIR coils. When 12V is present there, it will close a photomosfet and allow power to pass on the TSAL side.
+The TSEL will be located directly under the main roll hoop. It is powered with GLV voltage taken from right before the AIR coils. When 12V is present there, it will close a photomosfet and allow power to pass on the TSEL side.
 
 \subsection{Tractive System Voltage Present light (TSVP)}
 
