@@ -1525,7 +1525,7 @@ The shutdown system does employ interlocks on the main battery connectors and th
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.7 \textwidth]{tsel_fh}
+    \includegraphics[width = 0.7 \textwidth]{tselschem}
     \caption{Schematic of the TSEL}
     \label{tselschem}
 \end{figure}
@@ -1540,7 +1540,7 @@ The TSVPs will be red lights mounted on opposite sides of the roll bar. They are
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.5 \textwidth]{tsvp_fh}
+    \includegraphics[width = 0.5 \textwidth]{tsvps}
     \caption{Schematic of the TSVPs}
     \label{tsvpschem}
 \end{figure}
@@ -1549,7 +1549,7 @@ The TSVPs will be red lights mounted on opposite sides of the roll bar. They are
 
 \textit{Describe your design for the RTDS system. See EV4.11}
 
-The Ready to Drive sound includes a buzzer \href{http://www.mouser.com/ProductDetail/Mallory-Sonalert/SC648ANR/?qs=sGAEpiMZZMsK322k1rNFfUHVVB8ZIcIhitNEhItROC4\%3d}{Mallory Sonalert SC648ANR} (link), a CAN node, and a relay. The buzzer automatically makes a noise when given power, with the loudness proportional to the voltage. The last step in the start-up up sequence will notify the CAN system it is time for the ready to drive sound. Then the corresponding node on the buzzer will close a relay between TS+, after a 2.6 k\ohm resistor (5 Watts), and the buzzer for two seconds, at 95 dB at 2ft. The resistor limits the voltage over the buzzer to 48V and the current to 20 mA.
+The Ready to Drive sound includes a buzzer \href{http://www.mouser.com/ProductDetail/Mallory-Sonalert/SC648ANR/?qs=sGAEpiMZZMsK322k1rNFfUHVVB8ZIcIhitNEhItROC4%3d}{Mallory Sonalert SC648ANR} (link), a CAN node, and a relay. The buzzer automatically makes a noise when given power, with the loudness proportional to the voltage. The last step in the start-up up sequence will notify the CAN system it is time for the ready to drive sound. Then the corresponding node on the buzzer will close a relay between TS+, after a 2.6 k\ohm resistor (5 Watts), and the buzzer for two seconds, at 95 dB at 2ft. The resistor limits the voltage over the buzzer to 48V (it's maximum) and the current to 20 mA.
 
 \begin{figure}[H]
     \centering
@@ -1580,8 +1580,8 @@ Person primarily responsible for this section:
 \centering
 \begin{tabular}{|l|l|}
 \hline
-GLV System Voltage & 12V \\ \hline
-GLV Main Fuse Rating & 4A \\ \hline
+GLV System Voltage & 13.5V \\ \hline
+GLV Main Fuse Rating & 5A \\ \hline
 Is a Li-Ion GLV battery used? & No \\ \hline
 If Yes, is a firewall provided per T4.5.1? & N/A \\ \hline
 Is a DC-DC converter used from TSV? & Yes \\ \hline
@@ -1591,6 +1591,13 @@ Does the design comply with EV1.2.7? & Yes \\ \hline
 \caption{GLV System Data}
 \label{glvtable}
 \end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{glvfusing}
+    \caption{Order of fuses for GLV system}
+    \label{glvfusing}
+\end{figure}
 
 \section{Appendices}
 
