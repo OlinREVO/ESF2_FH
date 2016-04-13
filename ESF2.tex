@@ -355,9 +355,11 @@ Person primarily responsible for this section:
         Bel Fuse & CIQ 3 & 3A & 63V & 63V DC@50A & \begin{tabular}[c]{@{}l@{}}Each input to AMS\\ voltage reading\end{tabular} \\ \hline
         Ferraz Shawmut & A15QS7-2 & 7A & 150V & 100,000 & \begin{tabular}[c]{@{}l@{}}Keyswitch pin \\ activating precharge\end{tabular} \\ \hline
         Bussman & LPJ-175SP & 175A & 300V & 20,000 & \begin{tabular}[c]{@{}l@{}}TS+ before \\ motor controllers\end{tabular} \\ \hline
-        Littelfuse & F3169CT-ND & 1A & 125V & 300A@125VDC & \begin{tabular}[c]{@{}l@{}}TS+ low current \\ components and lights' \\ DC-DC converter\end{tabular} \\ \hline
-        Littelfuse & F3169CT-ND & 1A & 125V & 300A@125VDC & \begin{tabular}[c]{@{}l@{}}TS- low current\\ components and lights'\\ DC-DC converter\end{tabular} \\ \hline
-        Midget Fuse & SPF-004 & 4A & 1000 V & 20000A & \begin{tabular}[c]{@{}l@{}}GLV system \end{tabular} \\ \hline
+        Littelfuse & F3169CT-ND & 1A & 125V & 300A@125VDC & \begin{tabular}[c]{@{}l@{}}TS+ low current \\ components, lights' DC-DC \\ converter, \\ GLV DC-DC converter\end{tabular} \\\hline
+        Littelfuse & F3169CT-ND & 1A & 125V & 300A@125VDC & \begin{tabular}[c]{@{}l@{}}TS- low current \\ components, lights' DC-DC \\ converter, \\ GLV DC-DC converter\end{tabular} \\\hline
+        Littelfuse & MINI2BP & 2A & 32 V & 1000A @ 32 VD & \begin{tabular}[c]{@{}l@{}}12V power, Shutdown circuit. \end{tabular} \\ \hline
+        Littelfuse & MINI5BP & 5A & 32 V & 1000A @ 32 VD & \begin{tabular}[c]{@{}l@{}} GLV system \end{tabular} \\ \hline
+        Bel Fuse & 0ZCK0050FF2E & 1A & 6V & PTC Resettable & 5V CAN circuit \\ \hline
         \end{tabular}
         \end{adjustbox}
         \caption{Fuse Table}
@@ -379,7 +381,9 @@ Person primarily responsible for this section:
 Component & Fuse Part Number & Max Fuse Rating & \begin{tabular}[c]{@{}l@{}}Installed \\ Fuse Rating\end{tabular} & Notes \\ \hline
 Motor Controllers & LPJ175sp & 190 A (for 2AWG) & 175A & \begin{tabular}[c]{@{}l@{}}Fused before motor\\ controllers in parallel\end{tabular} \\ \hline
 AMS inputs (x28) & CIQ 3 & 4A (for traces) & 3A & \begin{tabular}[c]{@{}l@{}}Each input fused\\ separately\end{tabular} \\ \hline
-GLV 12V DC-DC Converter & SPF-004 & 7A (for 22AWG) & 4A &  \\ \hline
+GLV System & MIN5BP & 7A (for 20AWG) & 5A &  \\ \hline
+GLV 12V and Shutdown circuit & MIN2BP & 7A (for 20AWG, traces) & 2A &  \\ \hline
+5V CAN circuit & 0ZCK0050FF2E & 1A & 1A &  \\ \hline
 \begin{tabular}[c]{@{}l@{}}Lights DC-DC converter, \\ TSMPs and IMD\end{tabular} & F3169CT-ND & 1.25A (for dc-dc converter) & 1A & \begin{tabular}[c]{@{}l@{}}Protects all TS \\ low current\\ components\end{tabular} \\ \hline
 \begin{tabular}[c]{@{}l@{}}Keyswitch input to Motor \\ Controller\end{tabular} & A15QS7-2 & \begin{tabular}[c]{@{}l@{}}7A (for motor\\ controller LV input)\end{tabular} & 7A &  \\ \hline
 \end{tabular}
@@ -401,9 +405,9 @@ Cable capacity is the value from FH Rules Appendix E (Wire Current Capacity). A 
 \hline
 Mfg & \begin{tabular}[c]{@{}l@{}}Part\\ No\end{tabular} & \begin{tabular}[c]{@{}l@{}}Size \\ AWG\end{tabular} & \begin{tabular}[c]{@{}l@{}}Insulation\\ Type\end{tabular} & \begin{tabular}[c]{@{}l@{}}Voltage\\ Rating\end{tabular} & \begin{tabular}[c]{@{}l@{}}Temp. \\ Rating\end{tabular} & \begin{tabular}[c]{@{}l@{}}Cable\\ Capacity \\ (per FH)\end{tabular} & \begin{tabular}[c]{@{}l@{}}Fuse\\ Part \#\end{tabular} & \begin{tabular}[c]{@{}l@{}}Fuse \\ Cont. A\end{tabular} & \begin{tabular}[c]{@{}l@{}}Fuse Interrupting\\ Rating A\end{tabular} & \begin{tabular}[c]{@{}l@{}}Available\\ Fault Current\end{tabular} & \begin{tabular}[c]{@{}l@{}}Where used \& \\ how fault current\\ is calculated\end{tabular} \\ \hline
 Prestolite & \begin{tabular}[c]{@{}l@{}}Not listed\\ UL style 3870\end{tabular} & 2 AWG (33.3 mm\textasciicircum 2) & \begin{tabular}[c]{@{}l@{}}EPDM \\ single layer\end{tabular} & 8 kVAC & 125 C & 190 A & LPJ-175SP & 175 & 20,000 & 41152 A & \begin{tabular}[c]{@{}l@{}}Motor Controllers\\ to Motors x 3, see description\end{tabular} \\ \hline
-Delphi & Not listed & 35 mm\textasciicircum 2 & Dual insulated & 600 V & 150 C & >190 A & \begin{tabular}[c]{@{}l@{}}Series\\ with above fuse\end{tabular} & \begin{tabular}[c]{@{}l@{}}See \\ above\end{tabular} & See above & 41152 A & \begin{tabular}[c]{@{}l@{}}Accumulator to\\ HVD, Accumulator\\ to Motor controllers x2\end{tabular} \\ \hline
+Delphi & Not listed & 35 mm\textasciicircum 2 & Dual insulated & 600 V & 150 C & $\>190$ A & \begin{tabular}[c]{@{}l@{}}Series\\ with above fuse\end{tabular} & \begin{tabular}[c]{@{}l@{}}See \\ above\end{tabular} & See above & 41152 A & \begin{tabular}[c]{@{}l@{}}Accumulator to\\ HVD, Accumulator\\ to Motor controllers x2\end{tabular} \\ \hline
 Wiechang & Unknown & See below & XLPE & 600V & 150 C & Motor leads & Series with above fuse & See above & See above  & 41152 A & See description \\ \hline
-CnC Tech & 3132-22-1-0500-001-1-TS & 22 AWG & Silicone Rubber & 300V & 150 C & 7 A & SPF-004 & 4A & 20,000 & 25A & See description \\ \hline
+CnC Tech & 3132-20-1-0500-001-1-TS & 20 AWG & Silicone Rubber & 300V & 150 C & 7 A & MIN2BP & 5A & 25 $A^{2}s$ & 25A & See description \\ \hline
 \end{tabular}
 \end{adjustbox}
 \caption{System wire table}
@@ -434,7 +438,7 @@ The fault current for the GLV system is restricted by the DC-DC converter supply
 
 \textit{Describe how you keep the resistances between accessible components below the required levels as defined in FH Rules EV4.3. If wire is used for ground bonding, state the AWG or mm2 of the wire}
 
-The chassis is used as GLV ground. This ground is established at the panel mount holding many of the shutdown components and the TSMP's. All mechanical systems in the vehicle, such as the accumulator, drivers seat, and pedal box, achieve low resistance to ground because they are either welded directly to the chassis, or fastened using uncoated, conductive metal fasteners. Electrical systems that are satellite to the main panel mount that need to establish a connection to ground for sense purposes are grounded to the chassis using ring terminals. Ring terminals can be included in the bolt stack up of mechanical systems to ensure a secure connection to ground that is positively retained with a lock nut. All wires used for ground bonding will be 22 AWG, which is the same wire gauge as the GLV system.
+The chassis is used as GLV ground. This ground is established at the side panel mount holding many of the shutdown components and the TSMP's. All mechanical systems in the vehicle, such as the accumulator, drivers seat, and pedal box, achieve low resistance to ground because they are either welded directly to the chassis, or fastened using uncoated, conductive metal fasteners. Electrical systems that are satellite to the main panel mount that need to establish a connection to ground for sense purposes are grounded to the chassis using ring terminals. Ring terminals can be included in the bolt stack up of mechanical systems to ensure a secure connection to ground that is positively retained with a lock nut. All wires used for ground bonding will be 20 AWG, which is the same wire gauge as the GLV system. During charging, there will be a green 16 AWG wire connecting the GLV system to earth ground.
 
 \subsection{Conductive Panel Grounding}
 
@@ -442,6 +446,7 @@ The chassis is used as GLV ground. This ground is established at the panel mount
 
 We are not using CFRP or conductive materials in our vehicle.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%SECTION 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Isolation and Insulation}
 Person primarily responsible for this section:
     \begin{table}[H]
@@ -463,6 +468,12 @@ Person primarily responsible for this section:
 
 %table of PCB spacings
 
+% The second table should include any component, in your AMS or otherwise, that is connected
+% to both the Tractive and the GLV system. You should add in the "Notes" column the general
+% location of these parts. The spacing table allows us to reference the boards that have TS
+% and GLV in close proximity, and the parts table allows us to reference the data sheets of
+% the parts that span the gap the spacing creates.
+
 \begin{table}[H]
 \centering
 \begin{adjustbox}{max width=\textwidth}
@@ -471,8 +482,8 @@ Person primarily responsible for this section:
 Device/PCB & TS Voltage Present & \begin{tabular}[c]{@{}l@{}}Minimum \\ Spacing mm\end{tabular} & \begin{tabular}[c]{@{}l@{}}Thru Air or\\ Over surface\end{tabular} & Notes \\ \hline
 \begin{tabular}[c]{@{}l@{}}AIR Control Board \\ (Precharge, Discharge,\\ Lights, AMS relays, etc)\end{tabular} & 100 V & 6.4 & Over Surface &  \\ \hline
 \begin{tabular}[c]{@{}l@{}}Accumulator Management\\  System (x4)\end{tabular} & 100V & 6.4 & Over surface & \begin{tabular}[c]{@{}l@{}}1 AMS per segment, \\ each segment nominally\\ 22.5V\end{tabular} \\ \hline
-\begin{tabular}[c]{@{}l@{}}Side Panel CAN node \\ (Ready to drive sound, TSMP)\end{tabular} & 22.5V & 6.4 & Over Surface &  \\ \hline
-Motor Controller Isolation & 100 V & 6.4 & Over surface & Separation PCB not designed yet \\ \hline
+\begin{tabular}[c]{@{}l@{}}Side Panel CAN node \\ (Ready to drive sound, TSMP)\end{tabular} & 22.5V & 6.4mm  & Over Surface &  \\ \hline
+Motor Controller Isolation & 100 V & 6.4 & Over surface &  \\ \hline
 \end{tabular}
 \end{adjustbox}
 \caption{PCB Spacings}
@@ -497,8 +508,19 @@ Motor Controller Isolation & 100 V & 6.4 & Over surface & Separation PCB not des
     \label{AIRcontrolspacing}
 \end{figure}
 
-Side panel and motor controller input isolation PCB's are in-progress at this time. The ESF will be updated when designs are complete.
-\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.7 \textwidth]{sidepanelPCB}
+    \caption{Side Panel board, with the bright blue line denoting the separation between the TS and GLV voltage. The smallest separation is 1/4 in (over surface)}
+    \label{sidepanelspacing}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.6 \textwidth]{MCCspacing}
+    \caption{Motor Controller Isolation board, which has a bright blue line denoting the separation between the TS and GLV voltage. The spacing is 6.731 mm. consistently (over surface)}
+    \label{MCCspacing}
+\end{figure}
 
 \textit{List all purchased components with both TS and GLV connections (at min motor controller and AMS).}
 
@@ -510,12 +532,13 @@ Side panel and motor controller input isolation PCB's are in-progress at this ti
 Component & Isolation method & \begin{tabular}[c]{@{}l@{}}Link to Document\\ Describing Isolation\end{tabular} & Notes \\ \hline
 Precharge relay & Galvanic (relay) & \href{http://www.mouser.com/ds/2/307/G5LE\_0813-267607.pdf}{Click here} &  \\ \hline
 Discharge relay & Galvanic (relay) & \href{http://cotorelay.com/wp-content/uploads/2014/09/5500\_series\_reed\_relay\_datasheet.pdf}{Click Here} &  \\ \hline
-GLV DC-DC converter & tested to  & \href{http://www.evdrives.com/product\_p/vr-sevcon-7213.htm}{Click Here} &  \\ \hline
+GLV DC-DC converter & Not listed & \href{http://www.evdrives.com/product\_p/vr-sevcon-7213.htm}{Click Here} &  \\ \hline
 Lights DC-DC converter & \begin{tabular}[c]{@{}l@{}}Not listed: Isolation\\ test at 5000V\end{tabular} & \href{http://www.mouser.com/ds/2/281/mdc\_ruw15-217876.pdf}{Click Here} &  \\ \hline
 Ready to drive relay & Galvanic (relay) & \href{http://pdf1.alldatasheet.com/datasheet-pdf/view/451822/MACOM/SDT-S-124DMR000.html}{Click Here} &  \\ \hline
 AMS relay x4 & Galvanic (relay) & \href{http://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv\&DocNm=OJ\_OJE\_series\_relay\_data\_sheet\_E\&DocType=DS\&DocLang=English}{Click Here} &  \\ \hline
 Photorelay mosfet & Galvanic (Photorelay) & \href{http://toshiba.semicon-storage.com/info/docget.jsp?did=17083\&amp;prodName=TLP592A}{Click Here} &  \\ \hline
-Isolated CAN Tranciever & Galvanic & \href{http://www.ti.com/lit/ds/symlink/iso1050.pdf}{Click Here} &  \\ \hline
+Isolated CAN Tranceiver & Galvanic & \href{http://www.ti.com/lit/ds/symlink/iso1050.pdf}{Click Here} &  \\ \hline
+BSPD Relay & None listed & \href{http://www.mouser.com/ProductDetail/TE-Connectivity/OJ-SH-105HM000/?qs=%2fha2pyFaduihBgI7ARjI70jHf%2f4%2fFPQxhir8DUrpU%252bkAVAYrW5DJOg%3d%3d}{Click Here} &  \\ \hline
 \end{tabular}
 \end{adjustbox}
 \caption{Purchased Components - Isolation Data}
@@ -605,7 +628,7 @@ The Delphi shielded cable is being provided by General Motors, and we are still 
 \textit{Describe the concept, layer structure and the materials used for the firewalls. Describe how all firewall requirements in FH Rules T4.5.1 are satisfied. Show how the low resistance connection to chassis ground is achieved.}
 
 \textbf{Description/Materials}
-            The firewall is constructed of two layers. The layer facing the tractive system is 5 mm aluminum sheet metal, with a chamfered edge. The second layer facing the cockpit is 1/8 in. Flame-Retardant Multipurpose Garolite (G-10/FR4). The assembly is fastened together using sheet metal rivets. The chassis has welded sheet metal tabs that fasten to the firewall with bolts and positively retained nuts. Because the firewall is fastened to the chassis using conductive fasteners, it is connected to GLVS ground.\\
+            The firewall is constructed of two layers. The layer facing the tractive system is 1.5 mm aluminum sheet metal, with a chamfered edge. The second layer facing the cockpit is 1/8 in. Flame-Retardant Multipurpose Garolite (G-10/FR4). The assembly is fastened together using sheet metal rivets. The chassis has welded sheet metal tabs that fasten to the firewall with bolts and positively retained nuts. Because the firewall is fastened to the chassis using conductive fasteners, it is connected to GLVS ground.\\
 
             All high voltage and high temperature systems are contained in the rear of the vehicle, so only one firewall will be used. There are GLV systems in the dashboard and pedal box. A small grommeted hole will be made in the firewall for GLV wiring only.
 
@@ -631,7 +654,7 @@ The Delphi shielded cable is being provided by General Motors, and we are still 
                 \label{firewallposition}
             \end{figure}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%SECTION 4%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Electric Tractive System}
 Person primarily responsible for this section:
     \begin{table}[H]
@@ -647,16 +670,16 @@ Person primarily responsible for this section:
 
     \textit{Describe the motor(s) used and reason for this particular choice. Add additional tables if multiple motor types are used}
 
-    The motors used are Zero Motorcycles Z-Force 75-5 BLDC motors, which are manufactured and used by Zero Motorcycles in their production units. We have an established sponsorship with Zero Motorcycles, which is the primary reason for our motor selection. The motors are paired to two Sevcon Gen 4 Size 4 motor controllers, which are also used in Zero's production units.
+    The motors used are Zero Motorcycles Z-Force 75-5 brushless DC motors, which are manufactured and used by Zero Motorcycles in their production units. We have an established sponsorship with Zero Motorcycles, which is the primary reason for our motor selection. The motors are paired to two Sevcon Gen 4 Size 4 motor controllers, which are also used in Zero's production units.
 
     \begin{table}[H]
         \centering
         \begin{tabular}{|l|l|}
             \hline
-            Manufacturer and Model & \begin{tabular}[c]{@{}l@{}}Zero Motorcycles,\\  Model \# 30-0534\end{tabular} \\ \hline
+            Manufacturer and Model & \begin{tabular}[c]{@{}l@{}}Zero Motorcycles 75-5 Series,\\  Model \# 30-0534\end{tabular} \\ \hline
             Motor type & DC Brushless \\ \hline
             Number of motors of this type used & 2 \\ \hline
-            Nominal motor voltage (Vdc) & 104  Vdc \\ \hline
+            Nominal motor voltage (Vdc) & 102  Vdc \\ \hline
             Nominal/Peak motor current (A) & Nom: 250 / Peak: 420 \\ \hline
             Nominal/Peak motor power & Nom: 24.9  / Peak: 41.8\\ \hline
             Motor wiring - conductor size and type &  $\geq$ 2 $AWG$\\ \hline
@@ -669,7 +692,7 @@ Person primarily responsible for this section:
 
     \textit{Provide calculations for currents and voltages. State how this relates to the choice of cables and connectors used.}
 
-    The choice of cables and connectors were made in reverse from the motor's maximum current draw. With the maximum current draw for 10 seconds being 660A (at 100V) for both motors combined, we specified the smallest fuse rated for that amount of current draw: 175A continuous. For a 175A fuse, the smallest wire gauge specified from Appendix E of the rules is 2 AWG (rated up to 190A). All wire gauges and connectors specified for the motors and/or accumulator are equal to or greater than 2 AWG.
+    The choice of cables and connectors were made in reverse from the motor's maximum current draw. With the maximum current draw for 10 seconds being 660A (at 100V) for both motors combined, we specified the smallest fuse rated for that amount of current draw: 175A continuous. For a 175A fuse, the smallest wire gauge specified from Appendix E of the rules is 2 AWG (rated up to 190A). All wire gauges and connectors specified for the high current path of the motors and/or accumulator are equal to or greater than 2 AWG.
 
     \subsection{Motor Controller}
 
@@ -684,7 +707,7 @@ Person primarily responsible for this section:
     \setlength\tabcolsep{2pt}
     \begin{tabular}{|l|l|}
         \hline
-        Manufacturer and Model & Sevcon Size 4 Gen 4 \\ \hline [-3pt]
+        Manufacturer and Model & Sevcon Size 4 Gen 4 \\ \hline
         Number of controllers of this type used & 2 \\ \hline
         Maximum Input voltage (Vdc) & 116 VDC \\ \hline
         Nominal Input current (A) & 350 A \\ \hline
@@ -692,16 +715,13 @@ Person primarily responsible for this section:
         Output Voltage (Vdc) & Same as input voltage \\ \hline
         \begin{tabular}[c]{@{}l@{}}Isolation rating between GLV \\ (power supply or control inputs) and\\  TS connections\end{tabular} & None \\ \hline
         %\begin{tabular}[c]{@{}l@{}}Is the accelerator galvanically \\ isolated from the Tractive system per EV2.3\end{tabular} & No \\ \hline
-        \begin{tabular}[c]{@{}l@{}}Is the accelerator galvanically \\ isolated from the Tractive system per EV2.3\end{tabular} & Yes \\ \hline
+        \begin{tabular}[c]{@{}l@{}}Is the accelerator galvanically \\ isolated from the Tractive system per EV2.3\end{tabular} & No \\ \hline
     \end{tabular}
     \caption{Motor Controller Data}
     \label{mctable}
     \end{table}
 
     \textit{If the answer to the last question is NO, how to you intend to comply with rule EV2.3 (an external isolator is acceptable)}
-
-
-    %%%%% Our throttle is galvanically isolated from the TS. No need for clarification.
 
     %\textcolor{red}{We will have isolation on our accelerator (throttle pedal potentiometers) by isolated CAN transceivers. Although we currently do not control the motor controller through CAN messages, we have a node next to the motor controller that listens to the throttle's data and outputs the same (isolated) analog signal. The only use of the CAN system with the throttle information is logging the data for the team's use. The throttle information is not altered in any way. }
 
@@ -713,7 +733,7 @@ Person primarily responsible for this section:
 
     \textit{The TSMP must comply with FH Rule EV4.4. Describe the TSMP housing and location. Describe TSMP electrical connection point.}
 
-    The TSMP housing is a kevlar-reinforced nylon 3-D printed enclosure that is located in the rear right side of the car, behind the main hoop. This housing also contains most of the shutdown components. Electrically, it is connected to the TS+ and TS- power lines (past the AIR's, in a separate connector and wiring bundle), in parallel to the motors. The housing includes all low-current TS voltage components. Please see Figure \ref{tractiveschem} for the schematic in the larger context, as Figure \ref{tsmpschem} is a schematic focused on the TSMPs, with and without the multimeter.
+    The TSMPs are located on the side panel housing, which is a kevlar-reinforced nylon, waterproof 3-D printed enclosure that is located in the rear right side of the car, behind the main hoop. This housing also contains most of the shutdown components. Electrically, it is connected to the TS+ and TS- power lines (past the AIR's, in a separate connector and wiring bundle), in parallel to the motors. The housing includes all low-current TS voltage components. Please see Figure \ref{tractiveschem} for the schematic in the larger context, as Figure \ref{tsmpschem} is a schematic focused on the TSMPs, with and without the multimeter.
 
     \begin{figure}
         \centering
@@ -740,33 +760,35 @@ Person primarily responsible for this section:
 
             Another worst case scenario that could occur at the measuring points is a short between the TS and GLV systems over the banana jacks, again by operator error. In this scenario, the IMD will open the shutdown circuit.
     \\
-    The following figures show the housing for the TSMP's and shutdown components:
+    The following figure shows the housing panel that the TSMPs exist on.
 
     \begin{figure}[H]
         \centering
         \includegraphics[width = 0.6 \textwidth]{CONTROLPANEL_1}
-        \caption{TSMP Housing Vehicle Location}
-        \label{tsmplocation}
+        \caption{Side Panel Housing Interface}
+        \label{sidepanelfront}
     \end{figure}
 
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width = 0.6 \textwidth]{CONTROLPANEL_2}
-        \caption{Waterproof Enclosure for most of the shutdown circuit and the TSMPs}
-        \label{tsmpbox}
-    \end{figure}
+    The TSMP banana jacks are 72930-2 and 72930-0 Pomona Electronics 4 mm banana jacks (red and black, respectively). The TSMP resistors are Vishay Dale, CMF655K0000FKEB (manufacturer's part number), rated for 500V and part of the CMF Industrial series.
 
     \begin{table}[H]
     \centering
     \begin{tabular}{|l|l|}
     \hline
     TSMP Output Protection Resistor Value & 5 k\ohm \\ \hline
-    Resistor Voltage Rating & 122V \\ \hline
-    Resistor Power Rating & 3W \\ \hline
+    Resistor Voltage Rating & 500V \\ \hline
+    Resistor Power Rating & 1.5 W, 1W at 70 \degree C \\ \hline
     \end{tabular}
-    \caption{TSMP Reistor Data}
+    \caption{TSMP Resistor Data}
     \label{tsmptable}
     \end{table}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width = 0.6 \textwidth]{tsmpcloseup}
+        \caption{Close up of TSMP pcb footprints (highlighted in green) on the side panel PCB. Note the line of isolation between the GLV and TS. }
+        \label{tsmpPCB}
+    \end{figure}
 
     \subsection{Pre-Charge System}
 
@@ -787,10 +809,11 @@ Person primarily responsible for this section:
         \label{prechargeschem}
     \end{figure}
 
+
     %Describe connectors and cables used
     Ticket \#1209 stated compliance of the internal precharge system of the Sevcon motor controller instead of a separate precharge system consisting of a relay and resistor.
 
-    Once the shutdown circuit is closed, it will immediately power the coils of the normally closed discharge relay, the normally open precharge relay, and the normally open TS- AIR. This opens the discharge relay, and closes the precharge relay and TS- AIR. Instead of connecting Batt+ to TS+ through a current limiting resistor, the precharge relay connects B+ to the key switch terminal on each of the Sevcon motor controllers. When powered by their key switch terminals, the motor controllers charge their internal capacitors up to around 50V for 0.5 seconds, then up to 90V (or another specified voltage) for 0.1 seconds before signaling though the CAN system that the precharge is complete. This CAN message causes a node in the battery to allow the shutdown circuit to close the TS+ AIR.
+    Once the shutdown circuit is closed, it will immediately power the coils of the normally closed discharge relay, the normally open precharge relay (found on the top in figure \ref{prechargeschem}, connecting BATT+ to the precharge tag), and the normally open TS- AIR. This opens the discharge relay, and closes the precharge relay and TS- AIR. Instead of connecting Batt+ to TS+ through a current limiting resistor, the precharge relay connects B+ to the key switch terminal on each of the Sevcon motor controllers. When powered by their key switch terminals, the motor controllers charge their internal capacitors up to around 50V for 0.5 seconds, then up to 90V (or another specified voltage) for 0.1 seconds before signaling though the CAN system that the precharge is complete. This CAN message causes a node in the battery to allow the shutdown circuit to close the TS+ AIR.
 
     In figure \ref{prechargemeasurements}, the voltage of a test setup of the pre-charge system internal to the motor controller was measured. Because there is no resistor other than the motor controller, the current and power could not be calculated and/or graphed. As discussed above, the function describing the pre-charge is stepwise.
 
@@ -812,7 +835,7 @@ Person primarily responsible for this section:
     Resistor type & N/A \\ \hline
     Resistance & N/A \ohm \\ \hline
     Continuous power rating & N/A W \\ \hline
-    Overload power rating & N/A W for\_ sec \\ \hline
+    Overload power rating & N/A W  \\ \hline
     Voltage rating & N/A V \\ \hline
     \end{tabular}
     \caption{Data for the pre-charge resistor}
@@ -825,10 +848,10 @@ Person primarily responsible for this section:
     \centering
     \begin{tabular}{|l|l|}
     \hline
-    Relay MFR \& Type: & Omron Electronics \\ \hline
+    Relay MFR \& Type: & TE Connectivity LEV100 Series \\ \hline
     Contact Arrangement & SPST-NO \\ \hline
-    Continuous DC contact current & 10A \\ \hline
-    Contact voltage rating & 125VDC \\ \hline
+    Continuous DC contact current & 100A \\ \hline
+    Contact voltage rating & 900VDC \\ \hline
     \end{tabular}
     \caption{Data of the pre-charge relay}
     \label{prechargerelaytable}
@@ -942,7 +965,7 @@ Person primarily responsible for this section:
     Encoder principle & \begin{tabular}[c]{@{}l@{}} Dual-Rotary \\ Potentiometer\end{tabular} \\ \hline
     Output & Analog \\ \hline
     \begin{tabular}[c]{@{}l@{}}Is motor controller \\ accelerator signal isolated \\ from TSV?\end{tabular} & No \\ \hline
-    \begin{tabular}[c]{@{}l@{}}If no, how will you satisfy rule \\ EV2.3?\end{tabular} & Isolated tranceiver on CAN \\ \hline
+    \begin{tabular}[c]{@{}l@{}}If no, how will you satisfy rule \\ EV2.3?\end{tabular} & Optocoupler\\ \hline
     \end{tabular}
     \caption{Throttle Position Encoder Data}
     \label{throttletable}
@@ -950,12 +973,18 @@ Person primarily responsible for this section:
 
     The 2 throttle encoder outputs (2 electrically-separated potentiometers contained within MHR5621) will be sensed through a CAN node input pin. The CAN node will then log the information (no amplification in any way) and send it to the motor controller CAN node. That CAN node will output the same analog signal through an optoisolator to separate it from the GLV system and ground it to the TS system.
 
-    \textnormal{There will be two electrically-separated potentiometers being sensed by a CAN node. There will be pull-down resistors on both inputs in order to detect wire-failure for the potentiometer's input. Software will detect whether the potentiometer inputs are within 10\% of each other, as well as checking that the potentiometer readings are within the limits of the system.}\\
+   \textnormal{There will be two electrically-separated potentiometers being sensed by an ATmega 16M1 microprocessor running CAN communication protocols. There will be pull-down resistors on both inputs in order to detect wire-failure for the potentiometer's input. Software will detect whether the potentiometer inputs are within 10\% of each other, as well as checking that the potentiometer readings are within the limits of the system.}\\
 
-    \textnormal{Once the throttle has been read and sanitized by the CAN node, it will be sent along the CAN line to the motor controller CAN node. This node can send isolated analog signals to both motor-controllers for torque control. This node will also take into account the steering-wheel sensor and may decrease the torque signal to one of the motors in order to allow for a virtual differential. It will never increase the torque signal.}\\
+    \textnormal{Once the throttle has been read and sanitized by the ATmega, it will be sent along the CAN line to the motor controller ATmega. This node can send isolated analog signals to both motor-controllers for torque control. This node will also take into account the steering-wheel sensor and may decrease the torque signal to one of the motors in order to allow for a virtual differential. It will never increase the torque signal.}\\
 
     \textnormal{This design meets all rules requirements because the system is galvanically isolated from the motor controller inputs and our system is able to detect all the plausible failure modes of the potentiometer.}
 
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width = 0.4 \textwidth]{Bulkheadschem}
+        \caption{Schematic of the bulkhead, which has potentiometer inputs for throttle}
+        \label{bulkheadschem}
+    \end{figure}
 
     \subsection{Accelerator / Throttle Position Encoder Error Check}
 
@@ -963,17 +992,16 @@ Person primarily responsible for this section:
 
 
     \textnormal{
-    There are two main errors that need to be considered. Potentiometer input failure, as in a wire being disconnected or an invalid signal, and CAN system failure, as in invalid message objects are sent.
+    There are two main errors that need to be considered. Potentiometer input failure, as in a wire being disconnected or an invalid signal, and CAN communication system failure, as in invalid message objects are sent.
     }\\
 
     \textnormal{
     In the case of a short or open-circuit for potentiometer input failure, there will be a pull-down resistor which will pull the value read at the input pin to 0V (and in case of a short it will be pulled to 5V). Any reading not in the range of 1V-4V will be considered an error and will be dealt with in software. No throttle command will be sent in this case.
     }\\
 
-    \textnormal{
-    In the case of CAN message failure, the CAN node which is connected to the motor-controllers will not send any throttle command if no valid throttle message is read every 0.1 seconds.
-    }
+    \textnormal{In the case of CAN message failure, the CAN node which is connected to the motor-controllers will not send any throttle command if no valid throttle message is read every 0.1 seconds.}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%SECTION 5%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Accumulator System}
 
         Person primarily responsible for this section:
@@ -991,7 +1019,13 @@ Person primarily responsible for this section:
 
         \textit{Provide a narrative design of the accumulator system and complete the following table.}
 
-        All cell information listed was recorded from actual measurements. Manufacturer data is under NDA and restricted until we receive permission to release this information to the Formula Hybrid team.
+        All cell information listed was recorded from actual measurements. Most manufacturer data is under NDA and restricted until we receive permission to release this information to the Formula Hybrid team. We are allowed to share module capacity (at 2C), nominal voltage, size, weight and energy density. The rest of the numbers given in the following sections will either come from measurements or limits that the team imposes on the batteries, and we have the knowledge that they are safe for our cells.
+        %Allowed to share:
+            % -Capacity
+            % -Nominal Voltage
+            % -Size
+            % -Weight
+            % -Energy Density
 
             \begin{table}[H]
                 \centering
@@ -1002,24 +1036,26 @@ Person primarily responsible for this section:
                 Total number of cells & 48 \\ \hline
                 Cell arrangement & \begin{tabular}[c]{@{}l@{}}2s2p in one module,\\ 12 modules in series\end{tabular} \\ \hline
                 Are packs commercial or team constructed & Team \\ \hline
-                Total Capacity (per FH Rules Appendix A) & Less than 5.4 kWh, NDA \\ \hline
-                Maximum Segment Capacity & Less than 6 MJ, NDA \\ \hline
+                Total Capacity (per FH Rules Appendix A) & 5.2 kWh \\ \hline
+                Maximum Segment Capacity & 5.265 MJ \\ \hline
                 Number of Accumulator Segments & 4 \\ \hline
                 \end{tabular}
                 \caption{Main accumulator parameters}
                 \label{mainaccumtable}
             \end{table}
 
+            The maximum voltage that the accumulator will be charged to is 99.6V.
+
         \textit{Describe how pack capacity is calculated. Provide calculation at 2C (0.5 hour) rate? How is capacity derived from manufacturer’s data? If so, include discharge data or graph here. Include Peukert calculation if used (See FH Rules Appendix A). Show your segment energy calculations.}
 
-        The segment energy is calculated as: Vnom x Cell AH (2C rate) x Number of Cells x 3.6 kJ (The 80\% factor is not applied for this calculation). Each segment is 1/4 of the total accumulator (3 modules). Module/Cell current at 2C discharge is under NDA, but is included in the cell manufacturer's datasheet.
+        The segment energy is calculated as: Nominal voltage (per module) x Cell AH (per module) x Number of modules x 3.6 kJ (The 80\% factor is not applied for this calculation). Each segment is 1/4 of the total accumulator (3 modules, with 12 modules being the total). % Module/Cell current at 2C discharge is under NDA, but is included in the cell manufacturer's datasheet.
 
-            % \begin{align}
-            %     \text{Seg Energy} &= V_{nom} * \text{Cell Ah (2C rate)} * \text{Number of Cells} *  %     3.6 \text{kJ}\\
-            %     \text{Seg Energy} &= 7.5 * 65 * 3* 3.6 \\
-            %     \text{Seg Energy} &= 5265 \text{kJ}\\
-            %     \text{Seg Energy} &= 5.265 \text{MJ}
-            % \end{align}
+            \begin{align}
+                \text{Seg Energy} &= V_{nom} * \text{Cell Ah (2C rate)} * \text{Number of Cells} *  3.6 \text{kJ}\\
+            `   \text{Seg Energy} &= 7.5 * 65 * 3* 3.6 \\
+                \text{Seg Energy} &= 5265 \text{kJ}\\
+                \text{Seg Energy} &= 5.265 \text{MJ}
+             \end{align}
 
     \subsection{Cell Description}
 
@@ -1036,13 +1072,13 @@ Person primarily responsible for this section:
                 Cell Manufacturer and Model & \begin{tabular}[c]{@{}l@{}}Automotive Energy Supply Corporation\\ Model E5\end{tabular} \\ \hline
                 Cell type & Pouch type, Yes \\ \hline
                 Are these pouch cells & Yes \\ \hline
-                Cell nominal capacity at 2C (0.5 hour) rate & NDA \\ \hline
+                Cell nominal capacity at 2C (0.5 hour) rate & 65.0 Ah \\ \hline
                 Datasheet nominal capacity & NDA\\ \hline
-                Maximum Voltage (during charging) & NDA \\ \hline
-                Nominal Voltage (data sheet value) & 3.75 V (not datasheet value) \\ \hline
-                Minimum Voltage (AMS setting) & NDA \\ \hline
-                Maximum Cell Temperature (charging - AMS setting) & NDA  \\ \hline
-                Maximum Cell Temperature (discharging - AMS setting) & NDA \\ \hline
+                Maximum Voltage (during charging) & 4.15V \\ \hline
+                Nominal Voltage (data sheet value) & 3.75 V \\ \hline
+                Minimum Voltage (AMS setting) & 2.5V \\ \hline
+                Maximum Cell Temperature (charging - AMS setting) & 50 \degree C  \\ \hline
+                Maximum Cell Temperature (discharging - AMS setting) & 60 \degree C \\ \hline
                 Cell Chemistry & \begin{tabular}[c]{@{}l@{}}Lithium Ion - Laminate type\\ Cathode/Anode Material: LiMn2O4 with LiNiO2/Graphite\end{tabular} \\ \hline
                 \end{tabular}
                 \end{adjustbox}
@@ -1051,8 +1087,6 @@ Person primarily responsible for this section:
             \end{table}
 
         \textit{Show your calculations for 2C nominal AH capacity if the data sheet uses a different discharge rate. Refer to FH rules Appendix A}
-
-        Calculations at 2C nominal Ah capacity were used to confirm compliance with FH rules, but cannot be shared at this time.
 
     \subsection{Cell Configuration}
 
@@ -1381,9 +1415,11 @@ The AMS also has relays that carry the power in the shutdown circuit. They are p
 
 The IMD constantly checks for ground faults, and has a high output when there is no ground fault. With a high ground fault, if the IMD reset button is pressed, the IMD relay can latch and close the shutdown circuit. \\
 
-Also involved in the shutdown system is a brake system plausibility device. This circuitry is built to the FSAE Electric competition rules, and aims to check if there is current flowing from the motor controller while the brake is being pressed (hard) for over 0.5 second. The circuitry cannot include software, so a 555 timer and hall effect sensors are used.\\
+Also involved in the shutdown system is a brake over travel switch. This circuitry is built to the FSAE Electric competition rules, and aims to check if there is current flowing from the motor controller while the brake is being pressed (hard). The circuitry cannot include software, so a 555 timer and hall effect sensors are used.\\
 
 The economizer circuitry for the AIRs (in parallel), carry the shutdown circuit and control the AIRs current draw. The economizer is required circuitry by the AIRs used, and lower the continuous current draw through switching.
+
+A switch for GLV power is given to the driver for the ability to see the error messages from CAN. The master switch for the GLV will still need to be closed in order for the driver to be able to gain GLV power.
 
 \begin{table}[H]
 \centering
