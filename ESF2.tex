@@ -36,6 +36,8 @@
 \usepackage{amssymb}
 \usepackage{adjustbox}
 \usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage{showframe}
 
 \graphicspath{{images/}}
 
@@ -107,16 +109,16 @@
             \centering
             \begin{tabular}{|l|l|}
             \hline
-            REVISION DATE &  \\ \hline
-            REVISION (A, B, C, etc...) &  \\ \hline
+            REVISION DATE & April 10, 2014 \\ \hline
+            REVISION (A, B, C, etc...) & A \\ \hline
             \multicolumn{1}{|c|}{Section} & \multicolumn{1}{c|}{Revised (Yes/No)} \\ \hline
-            1- Overview &  \\ \hline
+            1- Overview & Yes \\ \hline
             2- Cables and Fusing &  Yes \\ \hline
-            3- Insulation and Isolation &  \\ \hline
-            4- Electric Tractive System &  \\ \hline
-            5- Accumulator System &  \\ \hline
-            6- GLV System &  \\ \hline
-            7- Safety Controls and Indicators &  \\ \hline
+            3- Insulation and Isolation & Yes \\ \hline
+            4- Electric Tractive System & Yes \\ \hline
+            5- Accumulator System & Yes \\ \hline
+            6- GLV System & Yes \\ \hline
+            7- Safety Controls and Indicators & Yes \\ \hline
             8- Appendices/Datasheets &  \\ \hline
             \end{tabular}
         \end{table}
@@ -318,8 +320,8 @@ Please note that the figure numbers in our document do not correspond to the spe
         Item & Data \\ \hline
         Nominal Tractive System Voltage (TSV) & 90 VDC \\ \hline
         Max. TSV (typically this is during charging) & 99.6 VDC \\ \hline
-        Control System voltage (GLV) & 12 VDC \\ \hline
-        Total Accumulator capacity (Wh) & NDA \\ \hline
+        Control System voltage (GLV) & 13.5 VDC \\ \hline
+        Total Accumulator capacity (Wh) & 4680 Wh \\ \hline
         Accumulator Type & Li-ion \\ \hline
         Number of electric motors, total & 2 \\ \hline
         Are wheel motors used? & No \\ \hline
@@ -336,7 +338,7 @@ Person primarily responsible for this section:
         \centering
         \label{responsible2}
         \begin{tabular}{lr}
-        Name: & Lisa Hachmann \\ \hline
+        Name: & Lisa J. Hachmann \\ \hline
         e-mail: & Lisa.Hachmann@students.olin.edu \\ \hline
         \end{tabular}
     \end{table}
@@ -355,11 +357,11 @@ Person primarily responsible for this section:
         Bel Fuse & CIQ 3 & 3A & 63V & 63V DC@50A & \begin{tabular}[c]{@{}l@{}}Each input to AMS\\ voltage reading\end{tabular} \\ \hline
         Ferraz Shawmut & A15QS7-2 & 7A & 150V & 100,000 & \begin{tabular}[c]{@{}l@{}}Keyswitch pin \\ activating precharge\end{tabular} \\ \hline
         Bussman & LPJ-175SP & 175A & 300V & 20,000 & \begin{tabular}[c]{@{}l@{}}TS+ before \\ motor controllers\end{tabular} \\ \hline
-        Littelfuse & F3169CT-ND & 1A & 125V & 300A@125VDC & \begin{tabular}[c]{@{}l@{}}TS+ low current \\ components, lights' DC-DC \\ converter, \\ GLV DC-DC converter\end{tabular} \\\hline
-        Littelfuse & F3169CT-ND & 1A & 125V & 300A@125VDC & \begin{tabular}[c]{@{}l@{}}TS- low current \\ components, lights' DC-DC \\ converter, \\ GLV DC-DC converter\end{tabular} \\\hline
+        Littelfuse & F3169CT-ND & 1A & 125V & 300A@125VDC & \begin{tabular}[c]{@{}l@{}}TS+ and TS- low current \\ components, lights' DC-DC \\ converter, \\ GLV DC-DC converter\end{tabular} \\\hline
         Littelfuse & MINI2BP & 2A & 32 V & 1000A @ 32 VD & \begin{tabular}[c]{@{}l@{}}12V power, Shutdown circuit. \end{tabular} \\ \hline
         Littelfuse & MINI5BP & 5A & 32 V & 1000A @ 32 VD & \begin{tabular}[c]{@{}l@{}} GLV system \end{tabular} \\ \hline
-        Bel Fuse & 0ZCK0050FF2E & 1A & 6V & PTC Resettable & 5V CAN circuit \\ \hline
+        Bel Fuse & 0ZCK0050FF2E & 0.5A & 6V & PTC Resettable & 5V CAN circuit \\ \hline
+        Bussmann/Eaton & BK/SC-20 & 20A & 170 V & 10kA Vdc & Charging input to battery \\ \hline
         \end{tabular}
         \end{adjustbox}
         \caption{Fuse Table}
@@ -384,8 +386,9 @@ AMS inputs (x28) & CIQ 3 & 4A (for traces) & 3A & \begin{tabular}[c]{@{}l@{}}Eac
 GLV System & MIN5BP & 7A (for 20AWG) & 5A &  \\ \hline
 GLV 12V and Shutdown circuit & MIN2BP & 7A (for 20AWG, traces) & 2A &  \\ \hline
 5V CAN circuit & 0ZCK0050FF2E & 1A & 1A &  \\ \hline
-\begin{tabular}[c]{@{}l@{}}Lights DC-DC converter, \\ TSMPs and IMD\end{tabular} & F3169CT-ND & 1.25A (for dc-dc converter) & 1A & \begin{tabular}[c]{@{}l@{}}Protects all TS \\ low current\\ components\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}l@{}}Lights DC-DC converter, \\ TSMPs and IMD\end{tabular} & F3169CT-ND & 7A (for 20 AWG) & 1A & \begin{tabular}[c]{@{}l@{}}Protects all TS \\ low current\\ components\end{tabular} \\ \hline
 \begin{tabular}[c]{@{}l@{}}Keyswitch input to Motor \\ Controller\end{tabular} & A15QS7-2 & \begin{tabular}[c]{@{}l@{}}7A (for motor\\ controller LV input)\end{tabular} & 7A &  \\ \hline
+Battery Input (charging) & BK/SC-20 & For battery cells, charging & NDA \\ \hline
 \end{tabular}
 \end{adjustbox}
 \caption{Component Fuse Ratings}
@@ -398,21 +401,22 @@ GLV 12V and Shutdown circuit & MIN2BP & 7A (for 20AWG, traces) & 2A &  \\ \hline
 Cable capacity is the value from FH Rules Appendix E (Wire Current Capacity). A revised version of Appendix E that includes metric wire sizes is available at the FH web site. Show available fault current and how calculated. Available fault current can be calculated from FaultCurrent = Vsource / (Rsource + Rwiring)}
 
 %System Wire Table
-\begin{table}[H]
-\centering
+\begin{sidewaystable}
 \begin{adjustbox}{max width=\textwidth}
+\centering
 \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|}
 \hline
 Mfg & \begin{tabular}[c]{@{}l@{}}Part\\ No\end{tabular} & \begin{tabular}[c]{@{}l@{}}Size \\ AWG\end{tabular} & \begin{tabular}[c]{@{}l@{}}Insulation\\ Type\end{tabular} & \begin{tabular}[c]{@{}l@{}}Voltage\\ Rating\end{tabular} & \begin{tabular}[c]{@{}l@{}}Temp. \\ Rating\end{tabular} & \begin{tabular}[c]{@{}l@{}}Cable\\ Capacity \\ (per FH)\end{tabular} & \begin{tabular}[c]{@{}l@{}}Fuse\\ Part \#\end{tabular} & \begin{tabular}[c]{@{}l@{}}Fuse \\ Cont. A\end{tabular} & \begin{tabular}[c]{@{}l@{}}Fuse Interrupting\\ Rating A\end{tabular} & \begin{tabular}[c]{@{}l@{}}Available\\ Fault Current\end{tabular} & \begin{tabular}[c]{@{}l@{}}Where used \& \\ how fault current\\ is calculated\end{tabular} \\ \hline
 Prestolite & \begin{tabular}[c]{@{}l@{}}Not listed\\ UL style 3870\end{tabular} & 2 AWG (33.3 mm\textasciicircum 2) & \begin{tabular}[c]{@{}l@{}}EPDM \\ single layer\end{tabular} & 8 kVAC & 125 C & 190 A & LPJ-175SP & 175 & 20,000 & 41152 A & \begin{tabular}[c]{@{}l@{}}Motor Controllers\\ to Motors x 3, see description\end{tabular} \\ \hline
 Delphi & Not listed & 35 mm\textasciicircum 2 & Dual insulated & 600 V & 150 C & $\>190$ A & \begin{tabular}[c]{@{}l@{}}Series\\ with above fuse\end{tabular} & \begin{tabular}[c]{@{}l@{}}See \\ above\end{tabular} & See above & 41152 A & \begin{tabular}[c]{@{}l@{}}Accumulator to\\ HVD, Accumulator\\ to Motor controllers x2\end{tabular} \\ \hline
 Wiechang & Unknown & See below & XLPE & 600V & 150 C & Motor leads & Series with above fuse & See above & See above  & 41152 A & See description \\ \hline
-CnC Tech & 3132-20-1-0500-001-1-TS & 20 AWG & Silicone Rubber & 300V & 150 C & 7 A & MIN2BP & 5A & 25 $A^{2}s$ & 25A & See description \\ \hline
+CnC Tech & 3132-20-1-0500-001-1-TS & 20 AWG & Silicon Rubber & 300V & 150 C & 7A & MIN2BP & 5A & 25 A2s & 25A & See description \\ \hline
+B\&K Precision & CT2879-4-10 & 20 AWG & Poly-Vinyl Chloride (PVC) & 1000V & 80 C & 7 A & MIN2BP & 5A & 25 A2s & 25A & See description \\ \hline
 \end{tabular}
 \end{adjustbox}
 \caption{System wire table}
 \label{systemwiretable}
-\end{table}
+\end{sidewaystable}
 
 The motor leads are permanently attached by the manufacturer, and are OEM. The width of the motor lead with insulation (other measurements cannot be taken) is 0.45 inch, so we believe it to be of at least 2 AWG.
 
