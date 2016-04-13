@@ -1276,7 +1276,7 @@ Person primarily responsible for this section:
             \label{CADaccumtop}
         \end{figure}
 
-    The AMS monitors 6 groups of cells in series. Each module contains 4 cells, 2 series x 2 parallel, so each AMS monitors 3 modules, or 12 cells (6 series x 2 parallel). There are 4 AMS boards. Each AMS board is coupled to a cell breakout board, which includes 4 thermistors and bolts to the power terminals of three modules, as shown in Figure \ref{CADaccumtop} (blue circuit boards) and described in section \ref{celltopsection}. The purpose of the cell breakout boards is to help manage wiring inside the accumulator. The cell breakout boards will have compression limiting copper pads at the terminal bolts and will be spaced above the bus bars using copper washers. The cell top schematics and PCB CAD are shown in figures \ref{CellTopSchem} and \ref{celltopboard}.
+    The AMS monitors 6 groups of cells in series. Each module contains 4 cells, 2 series x 2 parallel, so each AMS monitors 3 modules, or 12 cells (6 series x 2 parallel). There are 4 AMS boards. Each AMS board is coupled to a cell breakout board, which includes 4 thermistors and bolts to the power terminals of three modules, as shown in Figure \ref{CADaccumtop} (blue circuit boards) and described in section \ref{celltopsection}. The purpose of the cell breakout boards is to help manage wiring inside the accumulator. The cell breakout boards will have compression limiting copper pads at the terminal bolts and will be spaced above the bus bars using copper washers. The cell top schematics and PCB CAD are shown in figures \ref{celltopschem} and \ref{celltopboard}.
 
     The AMS shunts 3 A when the cell gets above 4.15 V and opens a relay in line with the shutdown circuit if any cell drops below 2.5 V or above 4.15V. The AMS opens a relay in line with the shutdown circuit if any cell gets above 58 \degree C. Please see figure \ref{shutdownschem} for a schematic of the shutdown circuit's relays.\\
 
@@ -1296,13 +1296,9 @@ Person primarily responsible for this section:
         \label{fig:voltageCellvsTempZOOM}
         \end{figure}
 
-    CAN communication from the board is isolated via a TI ISO1050DUBR (isolated CAN transceiver), with board cutouts to maintain proper clearance and creepage. Only CAN communication is used to have the information from each AMS relayed to the rest of the system, and the boards are otherwise independent of each other. On each cell-top board, there are 7 surface mount Bel C1Q 3 A fuses. (Lowest voltage reference, and top voltage of each of 6 cells.) The relays which allow the AMS to control the shutdown circuit provide isolation between the AMS and the GLV system, as well as the isolated CAN transceivers. Please see Figure \ref{amsschem} on the following page for the schematic of one of the battery management system boards, and the circuitry it has to measure the relative voltage, shunt, and input the data of voltage and temperature to a ATmega16M1 chip (which communicates to the CAN system). Note that the AMS relays are located on neither the cell top board or the AMS boards, but is included in the AIR control board, which controls the power to the AIRs and the precharge/discharge circuitry. The AIR control board is shown in figure \ref{AIRcntrlspacing}, for the pcb spacings. Its schematic is found in figure \ref{aircntrlschem}.
+    CAN communication from the board is isolated via a TI ISO1050DUBR (isolated CAN transceiver), with board cutouts to maintain proper clearance and creepage. Only CAN communication is used to have the information from each AMS relayed to the rest of the system, and the boards are otherwise independent of each other. On each cell-top board, there are 7 surface mount Bel C1Q 3 A fuses. (Lowest voltage reference, and top voltage of each of 6 cells.) The relays which allow the AMS to control the shutdown circuit provide isolation between the AMS and the GLV system, as well as the isolated CAN transceivers. Please see Figure \ref{amsschem} on the following page for the schematic of one of the battery management system boards, and the circuitry it has to measure the relative voltage, shunt, and input the data of voltage and temperature to a ATmega16M1 chip (which communicates to the CAN system). Note that the AMS relays are located on neither the cell top board or the AMS boards, but is included in the AIR control board, which controls the power to the AIRs and the precharge/discharge circuitry. The AIR control board is shown in figure \ref{AIRcntrlPCB}, for the pcb spacings. Its schematic is found in figure \ref{aircntrlschem}.\\
 
     The AMS shunts 3 A when the cell gets above the maximum cell voltage. The AMS opens a relay in line with the shutdown circuit if any cell drops below the minimum cell voltage. The AMS opens a relay in line with the shutdown circuit if any cell gets above 60 \degree C (not datasheet value). Please see figure \ref{shutdownschem} for a schematic of the shutdown circuit's relays.
-
-    CAN communication from the board is isolated via a TI ISO1050DUBR (isolated CAN transceiver), with board cutouts to maintain proper clearance and creepage. Only CAN communication is used to have the information from each AMS relayed to the rest of the system, and the boards are otherwise independent of each other. On each cell-top board, there are 7 surface mount Bel C1Q 3 A fuses. (Lowest voltage reference, and top voltage of each of 6 cells.) The relays which allow the AMS to control the shutdown circuit provide isolation between the AMS and the GLV system, as well as the isolated CAN transceivers. Please see Figure \ref{amsschem} on the following page for the schematic of one of the battery management system boards, and the circuitry it has to measure the relative voltage, shunt, and input the data of voltage and temperature to a ATmega16M1 chip (which communicates to the CAN system). Note that the AMS relays are located on neither the cell top board or the AMS boards, but is included in the AIR control board, which controls the power to the AIRs and the precharge/discharge circuitry. The AIR control board is shown in figure \ref{AIRcntrlspacing}, for the pcb spacings. %Its schematic is found in figure \ref{aircntrlschem}
-
-    %SHould I include AIR cntrl??
 
         \begin{figure}[H]
             \centering
@@ -1358,8 +1354,40 @@ Person primarily responsible for this section:
             \caption{Top view of accumulator wiring: TS wiring is routed through 3 SMDs in order to segment the accumulator. The pack is fused before the Ts+ AIR then connected to the HVD. The high voltage line is split within the accumulator for the two independent motor controllers. The AMS is located in the center of the pack and monitors cell health during driving and charging. The AIR control Board links the shutdown circuit to the AIRs and is externally connected with AMPSEAL connectors.}
             \label{ACCUMULATOR_WIRING_SIDE}
         \end{figure}
+     
+    \begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|}
+    \hline
+    Wire type & Welding Cable 2 AWG \\ \hline
+    Current rating & 181 A \\ \hline
+    Maximum operating voltage & 600 V \\ \hline
+    Temperature rating & -49...105 \degree C \\ \hline
+    \end{tabular}
+    \caption{Wire data of the company: Electric motor sport, 0.052 in$^{2}$}
+    \label{motorwire}
+    \end{table}
 
-    %10C version - 660 or 650 A is max expected current
+    % 10C version - 660 or 650 A is max expected current. 
+    The maximum expected current when at 10C is 660A. The nominal current is under NDA.
+
+    The high current (motor, motor controller) wires used for the tractive system will be as described in table \ref{motorwire}. 
+    The low current (IMD, Lights DC-DC, GLV DC-DC and ready to drive sound) TS connections will be made with the wire described in table \ref{tslowcurrentwire}.
+    \begin{table}[H]
+    \centering  
+    \begin{tabular}{|l|l|}
+    \hline
+    Wire type & CnC Tech, 22 AWG \\ \hline
+    Current rating & 7A \\ \hline
+    Cross sectional area & 0.326 mm\textasciicircum 2 \\ \hline
+    Maximum voltage & 600V \\ \hline
+    Temperature rating & 120 \degree C \\ \hline
+    \begin{tabular}[c]{@{}l@{}}Wire connects the\\ following components:\end{tabular} & \begin{tabular}[c]{@{}l@{}}TS V to GLV DC-DC converter, \\ TS V to IMD HV input, \\ TS V to ready to drive sound buzzer\end{tabular} \\ \hline
+    \end{tabular}
+    \caption{Wire data of the company: CnC Tech, 0.326 mm$^{2}$}
+    \label{tslowcurrentwire}
+    \end{table}
+    
 
 \subsection{Accumulator Indicator}
 
