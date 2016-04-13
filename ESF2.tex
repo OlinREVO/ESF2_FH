@@ -630,6 +630,7 @@ The Delphi shielded cable is being provided by General Motors, and we are still 
 \textbf{Description/Materials}
 
             The firewall is constructed of two layers. The layer facing the tractive system is 1.5 mm aluminum sheet metal, with a chamfered edge. The second layer facing the cockpit is 1/8 in. Flame-Retardant Multipurpose Garolite (G-10/FR4). The assembly is fastened together using sheet metal rivets. The chassis has welded sheet metal tabs that fasten to the firewall with bolts and positively retained nuts. Because the firewall is fastened to the chassis using conductive fasteners, it is connected to GLVS ground.\\
+>>>>>>> master
 
             All high voltage and high temperature systems are contained in the rear of the vehicle, so only one firewall will be used. There are GLV systems in the dashboard and pedal box. A small grommeted hole will be made in the firewall for GLV wiring only.
 
@@ -695,6 +696,7 @@ Person primarily responsible for this section:
     \textit{Provide calculations for currents and voltages. State how this relates to the choice of cables and connectors used.}
 
     The choice of cables and connectors were made in reverse from the motor's maximum current draw. With the maximum current draw for 10 seconds being 660A (at 100V) for both motors combined, we specified the smallest fuse rated for that amount of current draw: 175A continuous. For a 175A fuse, the smallest wire gauge specified from Appendix E of the rules is 2 AWG (rated up to 190A). All wire gauges and connectors specified for the high current path of the motors and/or accumulator are equal to or greater than 2 AWG.
+>>>>>>> master
 
     \subsection{Motor Controller}
 
@@ -1197,7 +1199,7 @@ Person primarily responsible for this section:
 
     The AIRs used are EV Kilovac 200 SPST relays from Tyco Electronics. The relays require the use of an economizer, which switches their current after 150 ms so they do not draw as much current. The positive pole AIR and negative pole AIR are located in the accumulator, separated from the cells by two sheets of 1/32" FR4/G10, sandwiching a 0.035" thick 403 stainless steel panel.
 
-    The circuitry to support the AIRs- including precharge and discharge circuitry, AMS relays and interlocks can be seen in figure \ref{aircntrlschem}. Its PCB is seen in figure \ref{AIRcntrlPCB}
+    The circuitry to support the AIRs- including precharge and discharge circuitry, AMS relays and interlocks can be seen in \ref{aircntrlschem}. Its PCB is seen in figure \ref{AIRcntrlPCB}
 
         %table of AIR data
         \begin{table}[H]
@@ -1369,7 +1371,7 @@ Person primarily responsible for this section:
     \end{table}
 
     % 10C version - 660 or 650 A is max expected current. 
-    The maximum expected current when at 10C is 660A. The nominal current is under NDA.
+    The maximum expected current when at 10C is 660A. The nominal current is under NDA. We do not expect this max current draw to be an issue due to our current limiting fuses which will blow before the fuses fry and the fact that the TS wires will only be taking half the load.
 
     The high current (motor, motor controller) wires used for the tractive system will be as described in table \ref{motorwire}. 
     The low current (IMD, Lights DC-DC, GLV DC-DC and ready to drive sound) TS connections will be made with the wire described in table \ref{tslowcurrentwire}.
