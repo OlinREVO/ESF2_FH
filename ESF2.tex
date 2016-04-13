@@ -973,7 +973,7 @@ Person primarily responsible for this section:
 
     The 2 throttle encoder outputs (2 electrically-separated potentiometers contained within MHR5621) will be sensed through a CAN node input pin. The CAN node will then log the information (no amplification in any way) and send it to the motor controller CAN node. That CAN node will output the same analog signal through an optoisolator to separate it from the GLV system and ground it to the TS system.
 
-    \textnormal{There will be two electrically-separated potentiometers being sensed by an ATmega 16M1 microprocessor running CAN communication protocols. There will be pull-down resistors on both inputs in order to detect wire-failure for the potentiometer's input. Software will detect whether the potentiometer inputs are within 10\% of each other, as well as checking that the potentiometer readings are within the limits of the system.}\\
+   \textnormal{There will be two electrically-separated potentiometers being sensed by an ATmega 16M1 microprocessor running CAN communication protocols. There will be pull-down resistors on both inputs in order to detect wire-failure for the potentiometer's input. Software will detect whether the potentiometer inputs are within 10\% of each other, as well as checking that the potentiometer readings are within the limits of the system.}\\
 
     \textnormal{Once the throttle has been read and sanitized by the ATmega, it will be sent along the CAN line to the motor controller ATmega. This node can send isolated analog signals to both motor-controllers for torque control. This node will also take into account the steering-wheel sensor and may decrease the torque signal to one of the motors in order to allow for a virtual differential. It will never increase the torque signal.}\\
 
@@ -1302,7 +1302,7 @@ Person primarily responsible for this section:
             \centering
             \includegraphics[width = 0.9 \textwidth]{ACCUMULATOR_WIRING_TOP}
             \caption{Top view of accumulator wiring: TS wiring is routed through 3 SMDs in order to segment the accumulator. The pack is fused before the Ts+ AIR then connected to the HVD. The high voltage line is split within the accumulator for the two independent motor controllers. The AMS is located in the center of the pack and monitors cell health during driving and charging. The AIR control Board links the shutdown circuit to the AIRs and is externally connected with AMPSEAL connectors.}
-            \label{ACCUMULATOR_WIRING_SIDE}
+            \label{ACCUMULATOR_WIRING_TOP}
         \end{figure}
 
     %10C version - 660 or 650 A is max expected current
@@ -1378,7 +1378,7 @@ The accumulator is comprised of flanged 403 stainless steel sheetmetal panels, m
 \end{figure}
 
 \section{Safety Controls and Indicators}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%SECTION 6%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Person primarily responsible for this section:
     \begin{table}[H]
         \centering
@@ -1402,13 +1402,12 @@ Please see figure \ref{shutdownschem} for the shutdown schematic, on the next pa
             \label{shutdownschem}
         \end{sidewaysfigure}
 
-
 \textit{Describe the method of operation of your shutdown circuit, including the master switches, shut down buttons, brake over-travel switch, etc. Also complete the following table}
 
 The shutdown circuit is a circuit, carrying the power of the AIR all in series. The shutdown circuit utilizes a broad range of sensors for vehicle and driver safety.
 The brake over travel switch is a single pole switch that is located behind the brake, and in the event it over-travels, it will open the shutdown circuit.\\
 
-The master switches are single pole switches that must be manually closed in order to close the shutdown system. The keys for the master switches are kept in the active Electrical Safety Officer's possession at all times. When disconnected from the vehicle, the keys are also padlocked to each other, thus disabling closing both switches simultaneously due to the physical separation of the switches and ensuring safety even if the ESO loses possesion of the keys. This ensures that a driver can only operate the vehicle, under the supervision of the ESO.\\
+The master switches are single pole switches that must be manually closed in order to close the shutdown system. The keys for the master switches are kept in the active Electrical Safety Officer's possession at all times. When disconnected from the vehicle, the keys are also connected to each other, thus disabling closing both switches simultaneously due to the physical separation of the switches and ensuring safety even if the ESO loses possession of the keys. This ensures that a driver can only operate the vehicle under the supervision of the ESO.\\
 
 The shutdown buttons are emergency stop buttons that are normally closed and single pole. In the event of the emergency, the three buttons (located in the cockpit, right back and left back of the vehicle) can be pushed and then open the shutdown circuit.\\
 
@@ -1428,12 +1427,11 @@ A switch for GLV power is given to the driver for the ability to see the error m
 \hline
 Part & \begin{tabular}[c]{@{}l@{}}Function \\ (Momentary, Normally Open or Normally Closed)\end{tabular} \\ \hline
 \begin{tabular}[c]{@{}l@{}}Main Switch (for control and \\ tractive-system; CSMS, TSMS)\end{tabular} & Normally Open (x2) \\ \hline
-Brake over-travel switch (BOTS) & Normally Closed \\ \hline
+Brake over-travel switch (BOTS) & Push-Pull \\ \hline
 Shutdown Buttons (BRB) & Normally Closed (x3) \\ \hline
 Insulation Monitoring Device (IMD) & Normally Open \\ \hline
 Battery Management System (AMS) & Normally Open (x4) \\ \hline
 Interlocks (if used) & Normally Open \\ \hline
-GLV switch for the driver & Normally Closed \\ \hline
 \end{tabular}
 \caption{Switches and devices in the shutdown circuit}
 \label{shutdowndevicestable}
@@ -1441,7 +1439,7 @@ GLV switch for the driver & Normally Closed \\ \hline
 
 \textit{Describe wiring and additional circuitry controlling AIRs. Write a functional description of operation}
 
-The power to the AIRs is all in series until the economizers for each AIR and the AIRs are in parallel. All wiring is 22 AWG and the GLV system is fused to 4A. The shutdown system communicates with the CAN system to ensure simple debugging and software control where permitted.
+The power to the AIRs is all in series until the economizers for each AIR and the AIRs are in parallel. All wiring is 20 AWG and the GLV system is has four fuses in general. There is a 5A fuse on the output of the DC/DC converter and a 5A fuse on the output of the GLV battery. After the e-stops, the GLV 12V splits to be in parallel with the shutdown system, and both the GLV 12V and shutdown system are fused to 2A. For each board that accepts 5V as input for the CAN system, there is a 1A PTC resettable fuse on the 5V line (all nodes are in parallel). The shutdown system communicates with the CAN system to ensure simple debugging and software control where permitted.
 
 %table of Shutdown circuit Current Draw
 \begin{table}[H]
@@ -1450,7 +1448,7 @@ The power to the AIRs is all in series until the economizers for each AIR and th
 \hline
 Total Number of AIRS & 2 \\ \hline
 Coil holding current per AIR & \begin{tabular}[c]{@{}l@{}}3.8A until\\ 150 ms passed, \\ then 0.4 A\end{tabular} \\ \hline
-\begin{tabular}[c]{@{}l@{}}Current drawn by other components\\ wired in parallel with the AIRs\end{tabular} & 0.5 A \\ \hline
+\begin{tabular}[c]{@{}l@{}}Current drawn by other components\\ wired in parallel with the AIRs\end{tabular} & 1.5-2A \\ \hline
 \end{tabular}
 \caption{Shutdown circuit current draw}
 \label{shutdowncurrenttable}
@@ -1473,8 +1471,8 @@ Coil holding current per AIR & \begin{tabular}[c]{@{}l@{}}3.8A until\\ 150 ms pa
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.6 \textwidth]{CockpitShutdownButton}
-    \caption{Cockpit Shutdown Butto: Large E-Stop button for driver controlled shutdown}
+    \includegraphics[width = 0.6 \textwidth]{cockpitestoplocation}
+    \caption{Cockpit Shutdown Button: E-Stop button for driver controlled shutdown}
     \label{CockpitShutdownButton}
 \end{figure}
 
@@ -1487,16 +1485,16 @@ Coil holding current per AIR & \begin{tabular}[c]{@{}l@{}}3.8A until\\ 150 ms pa
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.6 \textwidth]{TSMPcontainer1}
-    \caption{TSMP Container Front View: The TSMP Container houses the IMD, TSMS, and GLVMS of the shutdown circuit.}
-    \label{TSMPcontainer1}
+    \includegraphics[width = 0.6 \textwidth]{CONTROLPANEL_1}
+    \caption{Side Panel Front View}
+    \label{sidepanelhousing}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.75 \textwidth]{TSMPcontainer2}
-    \caption{TSMP Container Top View: The TSMP Container contains TS and GLV systems. Therefore spacing of at least 1 cm is maintained between the two systems at all times. This design is not yet finalized.}
-    \label{TSMPcontainer1}
+    \includegraphics[width = 0.75 \textwidth]{CONTROLPANEL_2}
+    \caption{Side Panel Inside View}
+    \label{sidepanelinside}
 \end{figure}
 
 The physical location of the AMS is pictured and discussed in Figure \ref{ACCUMULATOR_WIRING_SIDE}.
@@ -1507,19 +1505,19 @@ The physical location of the AMS is pictured and discussed in Figure \ref{ACCUMU
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.6 \textwidth]{IMDonly}
+    \includegraphics[width = 0.7 \textwidth]{Only_IMD}
     \caption{Schematic of the IMD}
     \label{imdschem}
 \end{figure}
 
-The IMD will have a high output as long as a there is no ground fault detected. The high output will not power the relay until the reset button is pressed. Pressing the IMD will "latch" it into its state (by using the first switch) until the output goes low from a ground fault. The relay's coil pulls all 4 of the double pole switches to their active states. Therefore, with a latched coil, the switch in the shutdown circuit is closed, the IMD light in the cockpit is not receiving power, and the CAN node input is high.
+The IMD will have a high output as long as a there is no ground fault detected. The high output will not power the relay until the reset button is pressed in the very beginning start up procedure. Pressing the IMD reset button will "latch" it into its state (by using the first switch). The relay's coil pulls all 4 of the double pole switches to their active states, therefore closing the shutdown circuit and pulling the ATMega16M1 input as low. The input to the microprocessor has a pull-up resistor in case of a disconnection in the wiring. The ATMega16M1 in the side panel housing (where the IMD is) will notify the ATMega16M1 in the dashboard (where the IMD light is) to turn the pin that the IMD light is on high. The fourth pole is left open.
 
 \begin{table}[H]
 \centering
 \begin{tabular}{|l|l|}
 \hline
 MFR/Model & Bender ISOMETER IR155-3204 \\ \hline
-Set Response Value & 50 k\ohm \\ \hline
+Set Response Value & 100 k\ohm \\ \hline
 \end{tabular}
 \caption{Parameters of the IMD}
 \label{IMDtable}
@@ -1531,16 +1529,16 @@ Referred from section \ref{latching} (Reset/Latching for IMD and AMS)
 
 \textit{Describe the functioning and circuitry of the latching/reset system for a tripped IMD or AMS. Describe wiring, provide schematics.}
 
-If the AMS detects a fault. It opens the shutdown circuit, and latches into that state. When the AMS reset switch, located in the side panel housing, is pressed, the nearby CAN node passes a ”Reset” CAN message to the AMS boards. If the accumulator is within safe electrical and temperature operating limits the AMS closes the shutdown circuit. Figure \ref{amsreset} demonstrates the relevant circuitry of the AMS reset switch and side panel CAN node, which also will be wired to shutdown components.
+If the AMS detects a fault. It opens the shutdown circuit, and latches into that state. When the AMS reset switch, located in the side panel housing, is pressed, the nearby CAN node passes a message through CAN to the AMS boards. If the accumulator is within safe electrical and temperature operating limits the AMS closes the shutdown circuit.%  Figure \ref{amsreset} demonstrates the relevant circuitry of the AMS reset switch and side panel CAN node, which also will be wired to shutdown components.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width = 0.7 \textwidth]{amsreset}
-    \caption{Schematic for the AMS reset button and latching}
-    \label{amsreset}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width = 0.7 \textwidth]{amsreset}
+%     \caption{Schematic for the AMS reset button and latching}
+%     \label{amsreset}
+% \end{figure}
 
-To reset the IMD an operator other than the driver must push the IMD reset button located on the outside of the car on a panel next to the TSMPs, master switches and E-stops. \textcolor{red}{If the output of the IMD is high because there is no ground fault, the reset button will activate the coil and close the shutdown circuit.}
+To reset the IMD an operator other than the driver must push the IMD reset button located on the outside of the car on the side panel, next to the TSMPs, master switches and E-stops. If the output of the IMD is high because there is no ground fault, the reset button will activate the coil and close the shutdown circuit.
 
 Please see figure \ref{imdschem} for the latching of the IMD circuit. The push button labelled "RESET" is the form of latching for the IMD- pressing the reset button will energize the relay's coil and allow it to self-energize for the remainder of the time that its output is high (true). The IMD reset button must be pressed in order for the shutdown circuit to be closed (assuming the IMD does not find a ground fault).
 
@@ -1548,7 +1546,7 @@ Please see figure \ref{imdschem} for the latching of the IMD circuit. The push b
 
 \textit{(If used) describe the functioning and circuitry of the Shutdown System Interlocks. Describe wiring, provide schematics.}
 
-The shutdown system does employ interlocks on the main battery connectors, and the HVD. The charger's interlock will replace the two main connectors' (to the motor controllers) interlock when the accumulator is charging. All of the interlocks will be fit in their respective high voltage connectors, and be in series with the shutdown circuit, besides the charger interlock being in parallel with the two main connections (referenced as CONN in figure \ref{interlocks}).
+The shutdown system does employ interlocks on the main battery connectors and the HVD. The charger's interlock will replace the two main connectors' (to the motor controllers) interlock when the accumulator is charging. All of the interlocks will be fit in their respective high voltage connectors, and be in series with the shutdown circuit, besides the charger interlock being in parallel with the two main connections (referenced as CONN in figure \ref{interlocks}).
 
 \begin{figure}[H]
     \centering
@@ -1563,12 +1561,12 @@ The shutdown system does employ interlocks on the main battery connectors, and t
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.7 \textwidth]{tsel_fh}
+    \includegraphics[width = 0.7 \textwidth]{tselschem}
     \caption{Schematic of the TSEL}
     \label{tselschem}
 \end{figure}
 
-The TSEL will be located directly under the main roll hoop. It is powered with GLV voltage taken from right before the AIR coils. When 12V is present there, it will close a photomosfet and allow power to pass on the TSAL side.
+The TSEL will be located directly under the main roll hoop. It is powered with GLV voltage taken from right before the AIR coils. When 12V is present there, it will close a photomosfet and allow power to pass on the TSEL side.
 
 \subsection{Tractive System Voltage Present light (TSVP)}
 
@@ -1578,7 +1576,7 @@ The TSVPs will be red lights mounted on opposite sides of the roll bar. They are
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.5 \textwidth]{tsvp_fh}
+    \includegraphics[width = 0.5 \textwidth]{tsvps}
     \caption{Schematic of the TSVPs}
     \label{tsvpschem}
 \end{figure}
@@ -1587,7 +1585,7 @@ The TSVPs will be red lights mounted on opposite sides of the roll bar. They are
 
 \textit{Describe your design for the RTDS system. See EV4.11}
 
-The Ready to Drive sound includes a buzzer \href{http://www.mouser.com/ProductDetail/Mallory-Sonalert/SC648ANR/?qs=sGAEpiMZZMsK322k1rNFfUHVVB8ZIcIhitNEhItROC4\%3d}{Mallory Sonalert SC648ANR} (link), a CAN node, and a relay. The buzzer automatically makes a noise when given power, with the loudness proportional to the voltage. The last step in the start-up up sequence will notify the CAN system it is time for the ready to drive sound. Then the corresponding node on the buzzer will close a relay between TS+, after a 2.6 k\ohm resistor (5 Watts), and the buzzer for two seconds, at 95 dB at 2ft. The resistor limits the voltage over the buzzer to 48V and the current to 20 mA.
+The Ready to Drive sound includes a buzzer \href{http://www.mouser.com/ProductDetail/Mallory-Sonalert/SC648ANR/?qs=sGAEpiMZZMsK322k1rNFfUHVVB8ZIcIhitNEhItROC4%3d}{Mallory Sonalert SC648ANR} (link), a CAN node, and a relay. The buzzer automatically makes a noise when given power, with the loudness proportional to the voltage. The last step in the start-up up sequence will notify the CAN system it is time for the ready to drive sound. Then the corresponding node on the buzzer will close a relay between TS+, after a 2.6 k\ohm resistor (5 Watts), and the buzzer for two seconds, at 95 dB at 2ft. The resistor limits the voltage over the buzzer to 48V (it's maximum) and the current to 20 mA.
 
 \begin{figure}[H]
     \centering
@@ -1618,8 +1616,8 @@ Person primarily responsible for this section:
 \centering
 \begin{tabular}{|l|l|}
 \hline
-GLV System Voltage & 12V \\ \hline
-GLV Main Fuse Rating & 4A \\ \hline
+GLV System Voltage & 13.5V \\ \hline
+GLV Main Fuse Rating & 5A \\ \hline
 Is a Li-Ion GLV battery used? & No \\ \hline
 If Yes, is a firewall provided per T4.5.1? & N/A \\ \hline
 Is a DC-DC converter used from TSV? & Yes \\ \hline
@@ -1629,6 +1627,13 @@ Does the design comply with EV1.2.7? & Yes \\ \hline
 \caption{GLV System Data}
 \label{glvtable}
 \end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{glvfusing}
+    \caption{Order of fuses for GLV system}
+    \label{glvfusing}
+\end{figure}
 
 \section{Appendices}
 
