@@ -1324,19 +1324,19 @@ Person primarily responsible for this section:
 
 \textit{Describe how the accumulator will be charged. How will the charger be connected? How is the accumulator to be supervised during charging?}
 
-The accumulator will be charged using a Delta Q Technologies QioQ 1000 Series charger (UL listed). This charger has a custom charging process for the accumulator. The charging process is a constant current at 17.0A until the battery voltage reaches 4.15Vpc, and then constant voltage at 4.15Vpc until the current tapers to 2.0A. When charging, the accumulator will be located on a hand cart, with a charging interlock, AMS, emergency stop button, and IMD. These components will make up a small version of the shutdown system in order to protect the accumulator. The charger will connect to the charging connector on the accumulator, and will go through the TS side of the AIRs, connecting to the TS. Therefore, the AMS's, IMD and E-stop will all be able to open the AIRs in the case of an emergency. Also, a person with knowledge of the charging process will stay with the accumulator at all times.
+The accumulator will be charged using a Delta Q Technologies QioQ 1000 Series charger (UL listed). This charger has a custom charging process for the accumulator. The charging process is a constant current at 17.0A until the battery voltage reaches 4.15Vpc, and then constant voltage at 4.15Vpc until the current tapers to 2.0A. When charging, the accumulator will be located on a hand cart, with a charging interlock, AMS, emergency stop button, and IMD. These components will make up a small version of the shutdown system in order to protect the accumulator, and the connections for this circuitry can be found on the charging PCB and the AIR control board. The charger will connect to the charging connector (Deutsch 6-pin) to the accumulator, and will go through the TS side of the AIRs, connecting to the TS, while the interlock is located in the connector's two smaller pins. Therefore, the AMS's, IMD and E-stop will all be able to open the AIRs in the case of an emergency. The shutdown components and PCB will be mounted to the charging cart. Also, a person with knowledge of the charging process will stay with the accumulator at all times.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.7 \textwidth]{chargepic}
-    \caption{Visual of the inteded charger from the Delta Q Technologies QioQ 1000 Series}
+    \includegraphics[width = 0.5 \textwidth]{chargepic}
+    \caption{Visual of the intended charger from the Delta Q Technologies QioQ 1000 Series}
     \label{chargepic}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width = 0.7 \textwidth]{charging}
-    \caption{Schematic of the PCB controlling charging, while interfacing with the AMS relays and the AIRs, located on the AIR control board}
+    \caption{Schematic of the PCB controlling charging, which interfaces with the AMS relays and the AIRs, located on the AIR control board to create a shutdown circuit}
     \label{chargeschem}
 \end{figure}
 
@@ -1360,6 +1360,13 @@ Input current & 13A@125VAC or 10A@250VAC \\ \hline
 \caption{Charger data}
 \label{chargertable}
 \end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.7 \textwidth]{Cart}
+    \caption{Cart with a deadman's lock for carrying the accumulator}
+    \label{cart}
+\end{figure}
 
 \subsection{Accumulator Container/Housing}
 
@@ -1481,7 +1488,7 @@ Coil holding current per AIR & \begin{tabular}[c]{@{}l@{}}3.8A until\\ 150 ms pa
 \begin{figure}[H]
     \centering
     \includegraphics[width = 0.6 \textwidth]{CockpitShutdownButton}
-    \caption{Cockpit Shutdown Butto: Large E-Stop button for driver controlled shutdown}
+    \caption{Cockpit Shutdown Button: Large E-Stop button for driver controlled shutdown}
     \label{CockpitShutdownButton}
 \end{figure}
 
