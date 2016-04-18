@@ -1612,7 +1612,14 @@ Person primarily responsible for this section:
 
 \textit{Provide a brief description of the GLV system and complete the following table}\\
 
-\textnormal{The GLV system consists of nine separate CAN nodes and all peripheral sensors. There will be a 12V line, 5V line, CAN High and CAN Low going along the car in order to power different components and to allow communications.}
+\textnormal{The GLV system consists of nine separate CAN nodes and all peripheral sensors. There will be a 12V line, 5V line, CAN High and CAN Low going along the car in order to power different components and to allow communications. Figure \ref{glvfusing} shows how fusing of the glv line is handled in reference to the main switch, e-stops, dc-dc converter and battery.}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.7 \textwidth]{glvfusing}
+    \caption{Schematic showing the branching, fusing and control of the GLV line}
+    \label{glvfusing}
+\end{figure}
 
 \begin{table}[H]
 \centering
