@@ -251,7 +251,7 @@
 
         \textit{Provide a brief, concise description of the vehicles main electrical systems including tractive system, accumulator, hybrid type (series or parallel) and method of mechanical coupling to wheels. Describe any innovative or unusual aspects of the design.}\\
 
-        We have designed an all-electric car powered by 2 Zero Motorcycles Z-Force brushless DC motors coupled to Sevcon Gen 4 Size 4 motor controllers. The motors independently drive the rear wheels through two single speed chain reductions. Independent drive allows us to implement a virtual differential drive mode and eventually torque vectoring. The accumulator comprises 12 Nissan Leaf modules in series, which in total provides 96.4V and 65Ah of capacity. The car communicates across a CAN-Bus system, simplifying wiring substantially.\\
+        We have designed an all-electric car powered by 2 Zero Motorcycles Z-Force brushless DC motors coupled to Sevcon Gen 4 Size 4 motor controllers. The motors independently drive the rear wheels through two single speed chain reductions. Independent drive allows us to implement a virtual differential drive mode and eventually torque vectoring, which is a project for the future and will not be implemented on the vehicle this year. The accumulator comprises 12 Nissan Leaf modules in series, which in total provides 96.4V and 65Ah of capacity. The car communicates across a CAN-Bus system, simplifying wiring substantially.\\
 
         \textit{Include the following figures:}
 
@@ -1612,7 +1612,14 @@ Person primarily responsible for this section:
 
 \textit{Provide a brief description of the GLV system and complete the following table}\\
 
-\textnormal{The GLV system consists of nine separate CAN nodes and all peripheral sensors. There will be a 12V line, 5V line, CAN High and CAN Low going along the car in order to power different components and to allow communications.}
+\textnormal{The GLV system consists of nine separate CAN nodes and all peripheral sensors. There will be a 12V line, 5V line, CAN High and CAN Low going along the car in order to power different components and to allow communications. Figure \ref{glvfusing} shows how fusing of the glv line is handled in reference to the main switch, e-stops, dc-dc converter and battery.}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.7 \textwidth]{glvfusing}
+    \caption{Schematic showing the branching, fusing and control of the GLV line}
+    \label{glvfusing}
+\end{figure}
 
 \begin{table}[H]
 \centering
