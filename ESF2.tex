@@ -628,6 +628,7 @@ The Delphi shielded cable is being provided by General Motors, and we are still 
 \textit{Describe the concept, layer structure and the materials used for the firewalls. Describe how all firewall requirements in FH Rules T4.5.1 are satisfied. Show how the low resistance connection to chassis ground is achieved.}
 
 \textbf{Description/Materials}
+
             The firewall is constructed of two layers. The layer facing the tractive system is 1.5 mm aluminum sheet metal, with a chamfered edge. The second layer facing the cockpit is 1/8 in. Flame-Retardant Multipurpose Garolite (G-10/FR4). The assembly is fastened together using sheet metal rivets. The chassis has welded sheet metal tabs that fasten to the firewall with bolts and positively retained nuts. Because the firewall is fastened to the chassis using conductive fasteners, it is connected to GLVS ground.\\
 
             All high voltage and high temperature systems are contained in the rear of the vehicle, so only one firewall will be used. There are GLV systems in the dashboard and pedal box. A small grommeted hole will be made in the firewall for GLV wiring only.
@@ -671,6 +672,7 @@ Person primarily responsible for this section:
     \textit{Describe the motor(s) used and reason for this particular choice. Add additional tables if multiple motor types are used}
 
     The motors used are Zero Motorcycles Z-Force 75-5 brushless DC motors, which are manufactured and used by Zero Motorcycles in their production units. We have an established sponsorship with Zero Motorcycles, which is the primary reason for our motor selection. The motors are paired to two Sevcon Gen 4 Size 4 motor controllers, which are also used in Zero's production units.
+
 
     \begin{table}[H]
         \centering
@@ -722,6 +724,7 @@ Person primarily responsible for this section:
     \end{table}
 
     \textit{If the answer to the last question is NO, how to you intend to comply with rule EV2.3 (an external isolator is acceptable)}
+
 
     %\textcolor{red}{We will have isolation on our accelerator (throttle pedal potentiometers) by isolated CAN transceivers. Although we currently do not control the motor controller through CAN messages, we have a node next to the motor controller that listens to the throttle's data and outputs the same (isolated) analog signal. The only use of the CAN system with the throttle information is logging the data for the team's use. The throttle information is not altered in any way. }
 
@@ -1002,6 +1005,7 @@ Person primarily responsible for this section:
     \textnormal{In the case of CAN message failure, the CAN node which is connected to the motor-controllers will not send any throttle command if no valid throttle message is read every 0.1 seconds.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%SECTION 5%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Accumulator System}
 
         Person primarily responsible for this section:
@@ -1093,7 +1097,7 @@ Person primarily responsible for this section:
             \begin{figure}[H]
                 \centering
                 \includegraphics{moduleschem}
-                \caption{Schematic of one module, which includes 4 cells in a 2s-2p configuration, with shutdown separators in the middle of the parallel strings of cells}
+                \caption{Schematic of one module, which includes 4 cells in a 2s-2p configuration, with shutdown separators in each cell}
                 \label{moduleschem}
             \end{figure}
 
@@ -1104,7 +1108,7 @@ Person primarily responsible for this section:
         \textit{Does the accumulator combine individual cells in parallel without cell fuses? \makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0.1em}$\checkmark$} \hspace{0.2cm} Yes
         \makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0.1em}} \hspace{0.2cm} No}
 
-        The modules (which are all in series), each have a string of cells in parallel, as seen in Figure \ref{moduleschem}. However, in the middle of the string of cells there is a shutdown separator. The shutdown separator between the parallel cells acts as a fuse in over-current conditions. The terminal marked in white in Figure \ref{canopener} references the point between the two parallel cell strings. These modules are commercially sold in Nissan Leaf vehicles without issue, so we are referencing their safety to prove ours.
+        The modules (which are all in series), each have a string of 2 cells in parallel, as seen in Figure \ref{moduleschem}. In the middle of each cell there is a shutdown separator, which acts as a fuse in over-current conditions. The terminal marked in white in Figure \ref{canopener} references the point between the two parallel cell strings. These modules are commercially sold in Nissan Leaf vehicles without issue, so we are referencing their safety to prove ours.
         %Need to include their certification in ESF.
 
     \subsection{Segment Maintenance Disconnect}
@@ -1119,10 +1123,10 @@ Person primarily responsible for this section:
                 Is HVD used as SMD? & No \\ \hline
                 Number of SMD devices & 3 \\ \hline
                 SMD MFR and Model & \begin{tabular}[c]{@{}l@{}}SMD - Lear Corporation\\ Fuse inside: Bussman EV30-350\end{tabular} \\ \hline
-                SMD Rated Voltage (if applicable) & 500V \\ \hline
-                SMD Rated Current (if applicable) & 350A \\ \hline
-                Segment Energy (6 MJ max) & 4.86 MJ \\ \hline
-                \begin{tabular}[c]{@{}l@{}}Segment Energy Discharge Rate\\ (Ref FH Rules Appendix A)\end{tabular} & \textcolor{red}{2C} \\ \hline
+                SMD Rated Voltage (if applicable) & N/A \\ \hline
+                SMD Rated Current (if applicable) & N/A \\ \hline
+                Segment Energy (6 MJ max) & 5.265 MJ \\ \hline
+                \begin{tabular}[c]{@{}l@{}}Segment Energy Discharge Rate\\ (Ref FH Rules Appendix A)\end{tabular} & 2C\\ \hline
                 \end{tabular}
                 \caption{SMD Data}
                 \label{smdtable}
@@ -1130,8 +1134,9 @@ Person primarily responsible for this section:
 
 \subsection{Lithium Ion Pouch Cells}
 
-    \textit{The vehicle accumulator uses individual pouch cells. } \par                      \makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0.1em}} \hspace{0.2cm} Yes
-    \makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0.1em}$\checkmark$} \hspace{0.2cm} No
+    \textit{The vehicle accumulator uses individual pouch cells. } \par
+    \makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0.1em}} \hspace{0.2cm} Yes
+    \makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0.1em}$\checkmark$} \hspace{0.1cm} No
 
     \textit{\textcolor{red}{Note that designing an accumulator system utilizing pouch cells is a substantial engineering undertaking which may be avoided by using prismatic or cylindrical cells.} If your team has designed your accumulator system using individual Lithium-Ion pouch cells, include drawings, photographs and calculations demonstrating compliance with all sections of rule EV3.9. If your system has been issued a variance to EV3.9 by the Formula Hybrid rules committee, include the required documentation from the cell manufacturer.}
 
@@ -1140,10 +1145,9 @@ Person primarily responsible for this section:
         \begin{figure}[H]
             \centering
             \includegraphics[width = 0.7 \textwidth]{OpenModule}
-            \caption{Inside view of a module. }
+            \caption{Inside view of a module }
             \label{canopener}
         \end{figure}
-
 
     %If your team has designed your accumulator system using individual Lithium-Ion pouch cells, include drawings, photographs and calculations demonstrating compliance with all sections of rule EV3.9.  If your system has been issued a variance to EV3.9 by the Formula Hybrid rules committee, include the required documentation from the cell manufacturer.
 
@@ -1160,8 +1164,16 @@ Person primarily responsible for this section:
             \label{celltemp}
         \end{figure}
 
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width = 0.6 \textwidth]{bus-bar_configuration}
+            \caption{Location of the thermistors (ring terminals mounted on the blue PCBs), as seen in this front view of the accumulator.}
+            \label{celltemplocation}
+        \end{figure}
 
-     The temperature of the cells is monitored using 10K thermistors attached to the negative terminals. The middle pole of each module is considered the ground of two cells. Each module's midpoint is measured and one out of three module grounds is measured per accumulator segment. The thermistors are used to form four voltage dividers. When the temperature of the cells increases, the resistance decreases, resulting in less voltage drop across the thermistor. Four analog to digital converters attached to each of the voltage dividers is then used by the Atmega 16M1 used in the CAN system to determine whether the temperature is too high or low. If the temperature is out of range, the shutdown system activates. There is a pull up resistor that pushes the output voltage to 5V if the ADC is a past a certain threshold and 0V otherwise. Because we are monitoring the negative terminals of half of the cells in each module, we are monitoring 50\% of the total cells.
+     The temperature of the cells is monitored using 10K thermistors attached to the negative terminals. The middle pole of each module is considered the ground of two cells. Each module's midpoint is measured and one out of three module grounds is measured per accumulator segment. The thermistors are used to form four voltage dividers. When the temperature of the cells increases, the resistance decreases, resulting in less voltage drop across the thermistor. Four analog to digital converters attached to each of the voltage dividers is then used by the ATmega16M1 used in the CAN system to determine whether the temperature is too high or low. If the temperature is out of range (high or low), the shutdown system activates. There is a pull up resistor that pushes the output voltage to 5V if the ADC is a past a certain threshold and 0V otherwise. Because we are monitoring the negative terminals of half of the cells in each module, we are monitoring 50\% of the total cells.
+
+     The distance between the bottom of the PCB and the top of the busbar is 0.094 in, while the distance from thermistor to terminal is 0.32 in. Because the cells are arranged within the module by the manufacturer, the distance from the busbar to the actual cell terminals (instead of the module terminals) is unknown.
 
     %table of cell temperature monitoring
 
@@ -1183,8 +1195,9 @@ Person primarily responsible for this section:
 
     \textit{Describe the number of AIRs used and their locations. Also complete the following table.}
 
-    The AIRs used are EV Kilovac 200 SPST relays from Tyco Electronics. The relays require the use of an economizer, which switches their current after 150 ms so they do not draw as much current. The economizer circuitry is shown in figure \ref{econschem} for reference. The positive pole AIR and negative pole AIR are located in the accumulator, separated from the cells by two sheets of 1/32" FR4/G10, sandwiching a 0.035" thick 403 stainless steel panel.
+    The AIRs used are EV Kilovac 200 SPST relays from Tyco Electronics. The relays require the use of an economizer, which switches their current after 150 ms so they do not draw as much current. The positive pole AIR and negative pole AIR are located in the accumulator, separated from the cells by two sheets of 1/32" FR4/G10, sandwiching a 0.035" thick 403 stainless steel panel.
 
+    The circuitry to support the AIRs- including precharge and discharge circuitry, AMS relays and interlocks can be seen in \ref{aircntrlschem}. Its PCB is seen in figure \ref{AIRcntrlPCB}
 
         %table of AIR data
         \begin{table}[H]
@@ -1194,7 +1207,7 @@ Person primarily responsible for this section:
             MFR \& Model & \begin{tabular}[c]{@{}l@{}}Tyco Electronics, \\ Kilovac EV200\end{tabular} \\ \hline
             Contact arrangement & 1 form x (SPST-NO-DM) \\ \hline
             Continuous DC current rating & 500A \\ \hline
-            Overload DC current rating & NEED \\ \hline
+            Overload DC current rating & 2000 A for 1 cycle, at 32 VDC \\ \hline
             Max operation voltage & 900VDC \\ \hline
             Nominal coil voltage & 9 -36 VDC \\ \hline
             Normal Load switching & See figure \ref{airsdata} \\ \hline
@@ -1203,7 +1216,6 @@ Person primarily responsible for this section:
             \label{airtable}
         \end{table}
 
-
         \begin{figure}[H]
             \centering
             \includegraphics[width = 0.5 \textwidth]{airs}
@@ -1211,11 +1223,24 @@ Person primarily responsible for this section:
             \label{airsdata}
         \end{figure}
 
+        % \begin{figure}[H]
+        %    \centering
+        %    \includegraphics[width = 0.7 \textwidth]{Econcircuit}
+        %    \caption{Circuitry used with the lower AIR to enable them to have a lower current draw}
+        %    \label{econschem}
+        % \end{figure}
+
+        \begin{sidewaysfigure}[p]
+            \includegraphics[width=\textheight]{aircntrlschem}
+            \caption{AIR control board schematic, not including the economizers}
+            \label{aircntrlschem}
+        \end{sidewaysfigure}
+
         \begin{figure}[H]
             \centering
-            \includegraphics[width = 0.7 \textwidth]{Econcircuit}
-            \caption{Circuitry used with the AIRs to enable them to have a lower current draw}
-            \label{econschem}
+            \includegraphics[width = 0.8 \textwidth]{aircntrlCAD}
+            \caption{PCB CAD of the AIR control board. The cyan line dictates the separation between GLV and TS voltages.}
+            \label{AIRcntrlPCB}
         \end{figure}
 
 \subsection{Accumulator Management System}
@@ -1229,9 +1254,9 @@ Person primarily responsible for this section:
             \hline
             AMS MFR and Model & Team-made \\ \hline
             Number of AMSs & 4 \\ \hline
-            Upper cell voltage trip & NDA \\ \hline
-            Lower cell voltage trip & NDA \\ \hline
-            Temperature trip & NDA \\ \hline
+            Upper cell voltage trip & 4.15 \\ \hline
+            Lower cell voltage trip & 2.5 \\ \hline
+            Temperature trip & 58 \degree C \\ \hline
             \end{tabular}
             \caption{AMS Data}
             \label{amstable}
@@ -1253,31 +1278,56 @@ Person primarily responsible for this section:
 
     The AMS monitors 6 groups of cells in series. Each module contains 4 cells, 2 series x 2 parallel, so each AMS monitors 3 modules, or 12 cells (6 series x 2 parallel). There are 4 AMS boards. Each AMS board is coupled to a cell breakout board, which includes 4 thermistors and bolts to the power terminals of three modules, as shown in Figure \ref{CADaccumtop} (blue circuit boards) and described in section \ref{celltopsection}. The purpose of the cell breakout boards is to help manage wiring inside the accumulator. The cell breakout boards will have compression limiting copper pads at the terminal bolts and will be spaced above the bus bars using copper washers. The cell top schematics and PCB CAD are shown in figures \ref{celltopschem} and \ref{celltopboard}.
 
+    The AMS shunts 3 A when the cell gets above 4.15 V and opens a relay in line with the shutdown circuit if any cell drops below 2.5 V or above 4.15V. The AMS opens a relay in line with the shutdown circuit if any cell gets above 58 \degree C. Please see figure \ref{shutdownschem} for a schematic of the shutdown circuit's relays.\\
+
+    Figure\ref{fig:voltageCellvsTemp} shows the voltage that will be read by the BMS at different temperature readings. The BMS has an ADC with 10 bit resolution meaning that voltage differences of less than 0.005V can be detected. As seen in Figure \ref{fig:voltageCellvsTempZOOM} the worst case scenario for over-temperature sensing is when the temperature is at 62 \degree C. For this reason we will choose to be safe and raise an error when the temperature is at 58 \degree C which has a worse case reading of 60 \degree C.
+
+        \begin{figure}[H]
+        \centering
+        \includegraphics[width =0.6 \textwidth]{VoltageVSTemp.png}
+        \caption{Voltage measured at BMS vs. temperature the cell is at.}
+        \label{fig:voltageCellvsTemp}
+        \end{figure}
+
+        \begin{figure}[H]
+        \centering
+        \includegraphics[width =0.6 \textwidth]{VoltageVSTempZOOM.png}
+        \caption{Voltage measured at BMS vs. temperature the cell is at. This just shows the voltage difference at different temperatures around 60 \degree C}
+        \label{fig:voltageCellvsTempZOOM}
+        \end{figure}
+
+    CAN communication from the board is isolated via a TI ISO1050DUBR (isolated CAN transceiver), with board cutouts to maintain proper clearance and creepage. Only CAN communication is used to have the information from each AMS relayed to the rest of the system, and the boards are otherwise independent of each other. On each cell-top board, there are 7 surface mount Bel C1Q 3 A fuses. (Lowest voltage reference, and top voltage of each of 6 cells.) The relays which allow the AMS to control the shutdown circuit provide isolation between the AMS and the GLV system, as well as the isolated CAN transceivers. Please see Figure \ref{amsschem} on the following page for the schematic of one of the battery management system boards, and the circuitry it has to measure the relative voltage, shunt, and input the data of voltage and temperature to a ATmega16M1 chip (which communicates to the CAN system). Note that the AMS relays are located on neither the cell top board or the AMS boards, but is included in the AIR control board, which controls the power to the AIRs and the precharge/discharge circuitry. The AIR control board is shown in figure \ref{AIRcntrlPCB}, for the pcb spacings. Its schematic is found in figure \ref{aircntrlschem}.\\
+
     The AMS shunts 3 A when the cell gets above the maximum cell voltage. The AMS opens a relay in line with the shutdown circuit if any cell drops below the minimum cell voltage. The AMS opens a relay in line with the shutdown circuit if any cell gets above 60 \degree C (not datasheet value). Please see figure \ref{shutdownschem} for a schematic of the shutdown circuit's relays.
-
-    CAN communication from the board is isolated via a TI ISO1050DUBR (isolated CAN transceiver), with board cutouts to maintain proper clearance and creepage. Only CAN communication is used to have the information from each AMS relayed to the rest of the system, and the boards are otherwise independent of each other. On each cell-top board, there are 7 surface mount Bel C1Q 3 A fuses. (Lowest voltage reference, and top voltage of each of 6 cells.) The relays which allow the AMS to control the shutdown circuit provide isolation between the AMS and the GLV system, as well as the isolated CAN transceivers. Please see Figure \ref{amsschem} on the following page for the schematic of one of the battery management system boards, and the circuitry it has to measure the relative voltage, shunt, and input the data of voltage and temperature to a ATmega16M1 chip (which communicates to the CAN system). Note that the AMS relays are located on neither the cell top board or the AMS boards, but is included in the AIR control board, which controls the power to the AIRs and the precharge/discharge circuitry. The AIR control board is shown in figure \ref{AIRcntrlspacing}, for the pcb spacings. %Its schematic is found in figure \ref{aircntrlschem}
-
-    %SHould I include AIR cntrl??
 
         \begin{figure}[H]
             \centering
-            \includegraphics[width = 0.4 \textwidth]{celltopschem}
+            \includegraphics[width = 0.4 \textwidth]{cell_top_schematic}
             \caption{Schematic of the cell-top board}
             \label{celltopschem}
         \end{figure}
 
+        There are two versions of the PCB for the cell top board, as the cells are mirrored. The PCBs have the same content, but are mirrored.
+
         \begin{figure}[H]
             \centering
-            \includegraphics[width = 0.8 \textwidth]{Cell-Top_Boards.png}
-            \caption{PCB CAD of the cell-top board}
+            \includegraphics[width = 0.5 \textwidth]{CellTopLH}
+            \caption{The left-side version of the cell top board that connects battery information to the AMS.}
             \label{celltopboard}
         \end{figure}
 
-                \begin{sidewaysfigure}[p]
-                    \includegraphics[width=\textheight]{bmsschem}
-                    \caption{Accumulator Management System schematic}
-                    \label{amsschem}
-                \end{sidewaysfigure}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width = 0.5 \textwidth]{CellTopRH}
+            \caption{The right-side version of the cell top board that connects battery information to the AMS.}
+            \label{celltopboard}
+        \end{figure}
+
+        \begin{sidewaysfigure}[p]
+            \includegraphics[width=\textheight]{bmsschem}
+            \caption{Accumulator Management System schematic}
+            \label{amsschem}
+        \end{sidewaysfigure}
 
                 % \begin{sidewaysfigure}[p]
                 %     \includegraphics[width=\textheight]{aircntrlschem}
@@ -1304,12 +1354,51 @@ Person primarily responsible for this section:
             \caption{Top view of accumulator wiring: TS wiring is routed through 3 SMDs in order to segment the accumulator. The pack is fused before the Ts+ AIR then connected to the HVD. The high voltage line is split within the accumulator for the two independent motor controllers. The AMS is located in the center of the pack and monitors cell health during driving and charging. The AIR control Board links the shutdown circuit to the AIRs and is externally connected with AMPSEAL connectors.}
             \label{ACCUMULATOR_WIRING_SIDE}
         \end{figure}
+     
+    \begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|}
+    \hline
+    Wire type & Welding Cable 2 AWG \\ \hline
+    Current rating & 181 A \\ \hline
+    Maximum operating voltage & 600 V \\ \hline
+    Temperature rating & -49...105 \degree C \\ \hline
+    \end{tabular}
+    \caption{Wire data of the company: Electric motor sport, 0.052 in$^{2}$}
+    \label{motorwire}
+    \end{table}
 
-    %10C version - 660 or 650 A is max expected current
+    % 10C version - 660 or 650 A is max expected current. 
+    The maximum expected current when at 10C is 660A. The nominal current is under NDA. We do not expect this max current draw to be an issue due to our current limiting fuses which will blow before the fuses fry and the fact that the TS wires will only be taking half the load.
+
+    The high current (motor, motor controller) wires used for the tractive system will be as described in table \ref{motorwire}. 
+    The low current (IMD, Lights DC-DC, GLV DC-DC and ready to drive sound) TS connections will be made with the wire described in table \ref{tslowcurrentwire}.
+    \begin{table}[H]
+    \centering  
+    \begin{tabular}{|l|l|}
+    \hline
+    Wire type & CnC Tech, 22 AWG \\ \hline
+    Current rating & 7A \\ \hline
+    Cross sectional area & 0.326 mm\textasciicircum 2 \\ \hline
+    Maximum voltage & 600V \\ \hline
+    Temperature rating & 120 \degree C \\ \hline
+    \begin{tabular}[c]{@{}l@{}}Wire connects the\\ following components:\end{tabular} & \begin{tabular}[c]{@{}l@{}}TS V to GLV DC-DC converter, \\ TS V to IMD HV input, \\ TS V to ready to drive sound buzzer\end{tabular} \\ \hline
+    \end{tabular}
+    \caption{Wire data of the company: CnC Tech, 0.326 mm$^{2}$}
+    \label{tslowcurrentwire}
+    \end{table}
+    
 
 \subsection{Accumulator Indicator}
 
     \textit{If accumulator container is removable, describe the indicator, including indicating voltage range}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width = 0.8 \textwidth]{aischem}
+            \caption{Schematic of the accumulator indicator}
+            \label{aischem}
+        \end{figure}
 
         \begin{figure}[H]
             \centering
@@ -1318,19 +1407,33 @@ Person primarily responsible for this section:
             \label{aindicatorPCB}
         \end{figure}
 
-    The accumulator will be removable and removed each time for the charging process. The accumulator indicator is a small light within the accumulator that can be seen from the outside, and \textcolor{red}{it is powered by a DC-DC converter that is powered by the tractive system}.
+    The accumulator will be removable and removed each time for the charging process. The accumulator indicator is a small light within the accumulator that can be seen from the outside. The light will turn on at 30VDC because the top zener diode has a breakdown of 28V. From 30-100V, the light will be shining. The light, which is located on the AIR control board, will be placed near the window of the accumulator for visibility.
 
 \subsection{Charging}
 
 \textit{Describe how the accumulator will be charged. How will the charger be connected? How is the accumulator to be supervised during charging?}
 
-The accumulator will be charged using a Delta Q Technologies QioQ 1000 Series charger (UL listed). This charger has a custom charging process for the accumulator. The charging process is a constant current at 17.0A until the battery voltage reaches 4.15Vpc, and then constant voltage at 4.15Vpc until the current tapers to 2.0A. When charging, the accumulator will be located on a hand cart, with a charging interlock, AMS, emergency stop button, and IMD. These components will make up a small version of the shutdown system in order to protect the accumulator. The charger will connect to the charging connector on the accumulator, and will go through the TS side of the AIRs, connecting to the TS. Therefore, the AMS's, IMD and E-stop will all be able to open the AIRs in the case of an emergency. Also, a person with knowledge of the charging process will stay with the accumulator at all times.
+The accumulator will be charged using a Delta Q Technologies QioQ 1000 Series charger (UL listed). This charger has a custom charging process for the accumulator. The charging process is a constant current at 17.0A until the battery voltage reaches 4.15Vpc, and then constant voltage at 4.15Vpc until the current tapers to 2.0A. When charging, the accumulator will be located on a hand cart, with a charging interlock, emergency stop button, IMD, and connections to the AMS, located in the accumulator. These components will make up a small version of the shutdown system in order to protect the accumulator. The charger will connect to the charging connector on the accumulator, and will go through the TS side of the AIRs, connecting to the TS. Therefore, the AMS's, IMD and E-stop will all be able to open the AIRs in the case of an emergency. Also, a person with knowledge of the charging process will stay with the accumulator at all times and the TSEL will be lit (in amber) and blinking.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width = 0.7 \textwidth]{chargepic}
-    \caption{Visual of the inteded charger from the Delta Q Technologies QioQ 1000 Series}
+    \caption{Visual of the charger from the Delta Q Technologies QioQ 1000 Series}
     \label{chargepic}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.7 \textwidth]{chargingschem}
+    \caption{Schematic of the charging shutdown system, not including the AMS and its relays (located on the AIR control board). The connections to the Air control board are made through the 14-pin connector}
+    \label{chargerschem}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.7 \textwidth]{chargerPCB}
+    \caption{CAD of the charging shutdown PCB. All connections on the PCB will be low voltage.}
+    \label{chargerPCB}
 \end{figure}
 
 \begin{table}[H]
@@ -1361,20 +1464,24 @@ If the housing is made of conductive material, include information on how the po
 Include additional photographs if required to comply with rule EV3.2.
 Show how the cells are mounted, use CAD-Renderings, and include calculations showing compliance with FH Rules EV3.4.}
 
-The accumulator is comprised of flanged 403 stainless steel sheetmetal panels, meeting the material and fastener requirements set by Formula SAE Electric rule EV 3.4.6. This rule specifies that the minimum sheet thickness for the floor is 0.049" steel and 0.035" steel for vertical and internal walls. The panels are fastened together using a minimum of three 1/4" SAE Grade 5 at any joint, except at the intersection of internal walls. These intersections, highlighted in gold in Figure \ref{acc_frame}, will be spot welded in at least three places. We will also be conducting a pull-test of test parts to ensure our spot welding settings are correct for full penetration. The Nissan modules are isolated by an additional layer of G10/FR4 Garolite, a fiberglass-cloth with a flame-retardant resin. G10/FR4 meets MIL-I-24768/27 and UL94-V0 for flame retardance (Mcmaster-Carr P/N 8667K55). These barriers do not create electrical insulation, which is performed internal to each module. We have insulation ratings between the Nissan module case and the cell terminals, but this information is under NDA. G10/FR4 panels are highlighted in Figure \ref{acc_iso} in yellow. Please note that not all G10/FR4 panels are not present in our CAD model.
+The accumulator is comprised of flanged 403 stainless steel sheet metal panels, meeting the material and fastener requirements set by Formula SAE Electric rule EV 3.4.6. This rule specifies that the minimum sheet thickness for the floor is 0.049” steel and 0.035” steel for vertical and internal walls. The panels are fastened together using a minimum of three 1/4” SAE Grade 5 at any joint, except at the intersection of internal walls. These intersections will be spot welded with weld area equivalent to a linear weld along the same length of joint. We will also be conducting a pull-test of test parts to ensure our spot welding settings are correct for full penetration. We have received a rules clarification \# 4795 stating that spot welding is regulation-compliant. The Nissan modules are additionally isolated by an additional layer of G10/FR4 Garolite, a fiberglass-cloth with a flame-retardant resin. G10/FR4 meets MIL-I-24768/27 and UL94-V0 for flame retardance (Mcmaster-Carr P/N 8667K55). These barriers do not create electrical insulation, which is performed internal to each module. We have insulation ratings between the Nissan module case and the cell terminals, but this information is under NDA.
+
+In this design the Nissan/AESC battery modules are laid flat relative to the car, and broken up into segments containing less than 6MJ of total stored energy. The accumulator has two covers, both lined with FR4 insulating material. The cover revealing the battery modules also serves as a structural vertical wall, and great care was taken in the design to ensure compliance with EV 3.4.6.
+
+The accumulator is mounted to the chassis using 10 SAE Grade 5 5/16” bolts through welded, gusseted tabs.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.7 \textwidth]{accumulator_frame}
+    \includegraphics[width = 0.7 \textwidth]{accumulator_insulation_frame_isoview}
     \caption{Accumulator Frame Exploded View}
     \label{acc_frame}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.7 \textwidth]{accumulator_isoview}
-    \caption{Accumulator, Isometric}
-    \label{acc_iso}
+    \includegraphics[width = 0.7 \textwidth]{sheetmetal_isoview}
+    \caption{Sheet metal construction of the accumulator, isometric}
+    \label{acc_sheet_iso}
 \end{figure}
 
 \section{Safety Controls and Indicators}
