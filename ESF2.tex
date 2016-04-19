@@ -974,11 +974,7 @@ Person primarily responsible for this section:
     \label{throttletable}
     \end{table}
 
-    The 2 throttle encoder outputs (2 electrically-separated potentiometers contained within MHR5621) will be sensed through a CAN node input pin. The CAN node will then log the information (no amplification in any way) and send it to the motor controller CAN node. That CAN node will output the same analog signal through an optoisolator to separate it from the GLV system and ground it to the TS system.
-
-   \textnormal{There will be two electrically-separated potentiometers being sensed by an ATmega 16M1 microprocessor running CAN communication protocols. There will be pull-down resistors on both inputs in order to detect wire-failure for the potentiometer's input. Software will detect whether the potentiometer inputs are within 10\% of each other, as well as checking that the potentiometer readings are within the limits of the system.}\\
-
-    \textnormal{Once the throttle has been read and sanitized by the ATmega, it will be sent along the CAN line to the motor controller ATmega. This node can send isolated analog signals to both motor-controllers for torque control. This node will also take into account the steering-wheel sensor and may decrease the torque signal to one of the motors in order to allow for a virtual differential. It will never increase the torque signal.}\\
+    The 2 throttle encoder outputs (2 electrically-separated potentiometers contained within MHR5621) will be sensed through an ATMEGA 16M1 input pin, communicating through CAN to the rest of the vehicle. The CAN node will then and send it to the motor controller CAN node (with no amplification in any way). That CAN node will output the same analog signal through an optocoupler to separate it from the GLV system and ground it to the TS system. There will be pull-down resistors on both inputs in order to detect wire-failure for the potentiometer's input. Software will detect whether the potentiometer inputs are within 10\% of each other, as well as checking that the potentiometer readings are within the limits of the system. Please see figure \ref{bulkheadschem} for the potentiometer inputs and figure \ref{mccschem} for details on the isolation between the motor controller controller (MCC) PCB Atmega16M1 and the motor controller.
 
     \textnormal{This design meets all rules requirements because the system is galvanically isolated from the motor controller inputs and our system is able to detect all the plausible failure modes of the potentiometer.}
 
@@ -987,6 +983,13 @@ Person primarily responsible for this section:
         \includegraphics[width = 0.4 \textwidth]{Bulkheadschem}
         \caption{Schematic of the bulkhead, which has potentiometer inputs for throttle}
         \label{bulkheadschem}
+    \end{figure}
+
+    \begin{figure}[H]
+          \centering
+          \includegraphics[width = 0.7 \textwidth]{MCCschem}
+          \caption{Motor controller schematic}
+          \label{mccschem}
     \end{figure}
 
     \subsection{Accelerator / Throttle Position Encoder Error Check}
@@ -1361,7 +1364,7 @@ Person primarily responsible for this section:
             \caption{Top view of accumulator wiring: TS wiring is routed through 3 SMDs in order to segment the accumulator. The pack is fused before the Ts+ AIR then connected to the HVD. The high voltage line is split within the accumulator for the two independent motor controllers. The AMS is located in the center of the pack and monitors cell health during driving and charging. The AIR control Board links the shutdown circuit to the AIRs and is externally connected with AMPSEAL connectors.}
             \label{ACCUMULATOR_WIRING_TOP}
         \end{figure}
-     
+
     \begin{table}[H]
     \centering
     \begin{tabular}{|l|l|}
@@ -1375,13 +1378,13 @@ Person primarily responsible for this section:
     \label{motorwire}
     \end{table}
 
-    % 10C version - 660 or 650 A is max expected current. 
+    % 10C version - 660 or 650 A is max expected current.
     The maximum expected current when at 10C is 660A. The nominal current is under NDA. We do not expect this max current draw to be an issue due to our current limiting fuses which will blow before the fuses fry and the fact that the TS wires will only be taking half the load.
 
-    The high current (motor, motor controller) wires used for the tractive system will be as described in table \ref{motorwire}. 
+    The high current (motor, motor controller) wires used for the tractive system will be as described in table \ref{motorwire}.
     The low current (IMD, Lights DC-DC, GLV DC-DC and ready to drive sound) TS connections will be made with the wire described in table \ref{tslowcurrentwire}.
     \begin{table}[H]
-    \centering  
+    \centering
     \begin{tabular}{|l|l|}
     \hline
     Wire type & CnC Tech, 22 AWG \\ \hline
@@ -1394,7 +1397,7 @@ Person primarily responsible for this section:
     \caption{Wire data of the company: CnC Tech, 0.326 mm$^{2}$}
     \label{tslowcurrentwire}
     \end{table}
-    
+
 
 \subsection{Accumulator Indicator}
 
