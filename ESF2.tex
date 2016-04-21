@@ -359,12 +359,14 @@ Person primarily responsible for this section:
         Littelfuse & F3169CT-ND & 1A & 125V & 300A@125VDC & \begin{tabular}[c]{@{}l@{}}TS- low current \\ components, lights' DC-DC \\ converter, \\ GLV DC-DC converter\end{tabular} \\\hline
         Littelfuse & MINI2BP & 2A & 32 V & 1000A @ 32 VD & \begin{tabular}[c]{@{}l@{}}12V power, Shutdown circuit. \end{tabular} \\ \hline
         Littelfuse & MINI5BP & 5A & 32 V & 1000A @ 32 VD & \begin{tabular}[c]{@{}l@{}} GLV system \end{tabular} \\ \hline
-        Bel Fuse & 0ZCK0050FF2E & 1A & 6V & PTC Resettable & 5V CAN circuit \\ \hline
+        Bel Fuse & 0ZCK0050FF2E & 0.5A & 6V & PTC Resettable & 5V CAN circuit \\ \hline
         \end{tabular}
         \end{adjustbox}
         \caption{Fuse Table}
         \label{fusetable}
     \end{table}
+
+    There is a 1A fuse on both the TS+ and TS- lines (20 AWG), protecting the GLV system by being in front of the DC-DC converter and protecting the TS sensing lines for the IMD, TSEL, accumulator indicator and TSMPs. For its connection in the tractive system, please see \ref{tractiveblock} and for its connection in the glv system, please see figure \ref{glvfusing}.
 
 \subsection{Component Fusing}
 
@@ -383,7 +385,7 @@ Motor Controllers & LPJ175sp & 190 A (for 2AWG) & 175A & \begin{tabular}[c]{@{}l
 AMS inputs (x28) & CIQ 3 & 4A (for traces) & 3A & \begin{tabular}[c]{@{}l@{}}Each input fused\\ separately\end{tabular} \\ \hline
 GLV System & MIN5BP & 7A (for 20AWG) & 5A &  \\ \hline
 GLV 12V and Shutdown circuit & MIN2BP & 7A (for 20AWG, traces) & 2A &  \\ \hline
-5V CAN circuit & 0ZCK0050FF2E & 1A & 1A &  \\ \hline
+5V CAN circuit & 0ZCK0050FF2E & 0.5A & 0.5A &  \\ \hline
 \begin{tabular}[c]{@{}l@{}}Lights DC-DC converter, \\ TSMPs and IMD\end{tabular} & F3169CT-ND & 1.25A (for dc-dc converter) & 1A & \begin{tabular}[c]{@{}l@{}}Protects all TS \\ low current\\ components\end{tabular} \\ \hline
 \begin{tabular}[c]{@{}l@{}}Keyswitch input to Motor \\ Controller\end{tabular} & A15QS7-2 & \begin{tabular}[c]{@{}l@{}}7A (for motor\\ controller LV input)\end{tabular} & 7A &  \\ \hline
 \end{tabular}
@@ -1417,7 +1419,7 @@ Person primarily responsible for this section:
             \label{aindicatorPCB}
         \end{figure}
 
-    The accumulator will be removable and removed each time for the charging process. The accumulator indicator is a small light within the accumulator that can be seen from the outside. The light will turn on at 30VDC because the top zener diode has a breakdown of 28V. From 30-100V, the light will be shining. The light, which is located on the AIR control board, will be placed near the window of the accumulator for visibility.
+    The accumulator will be removable and removed each time for the charging process. The accumulator indicator is a small light within the accumulator that can be seen from the outside. The light will turn on at 30VDC because the top zener diode has a breakdown of 28V. From 30-100V, the light will be shining. The light, which is located on the AIR control board, will be placed near the window of the accumulator for visibility. It is fused behind the same 1A fuse protecting the TS low current lines as the TSMPs, GLV DC-DC converter and TSEL/TSVPs.
 
 \subsection{Charging}
 
@@ -1570,7 +1572,7 @@ Interlocks (if used) & Normally Open \\ \hline
 
 \textit{Describe wiring and additional circuitry controlling AIRs. Write a functional description of operation}
 
-The power to the AIRs is all in series until the economizers for each AIR and the AIRs are in parallel. All wiring is 20 AWG and the GLV system is has four fuses in general. There is a 5A fuse on the output of the DC/DC converter and a 5A fuse on the output of the GLV battery. After the e-stops, the GLV 12V splits to be in parallel with the shutdown system, and both the GLV 12V and shutdown system are fused to 2A. For each board that accepts 5V as input for the CAN system, there is a 1A PTC resettable fuse on the 5V line (all nodes are in parallel). The shutdown system communicates with the CAN system to ensure simple debugging and software control where permitted.
+The power to the AIRs is all in series until the economizers for each AIR and the AIRs are in parallel. All wiring is 20 AWG and the GLV system is has four fuses in general. There is a 5A fuse on the output of the DC/DC converter and a 5A fuse on the output of the GLV battery. After the e-stops, the GLV 12V splits to be in parallel with the shutdown system, and both the GLV 12V and shutdown system are fused to 2A. For each board that accepts 5V as input for the CAN system, there is a 0.5A PTC resettable fuse on the 5V line (all nodes are in parallel). The shutdown system communicates with the CAN system to ensure simple debugging and software control where permitted.
 
 %table of Shutdown circuit Current Draw
 \begin{table}[H]
@@ -1641,7 +1643,7 @@ The physical location of the AMS is pictured and discussed in Figure \ref{ACCUMU
     \label{imdschem}
 \end{figure}
 
-The IMD will have a high output as long as a there is no ground fault detected. The high output will not power the relay until the reset button is pressed in the very beginning start up procedure. Pressing the IMD reset button will "latch" it into its state (by using the first switch). The relay's coil pulls all 4 of the double pole switches to their active states, therefore closing the shutdown circuit and pulling the ATMega16M1 input as low. The input to the microprocessor has a pull-up resistor in case of a disconnection in the wiring. The ATMega16M1 in the side panel housing (where the IMD is) will notify the ATMega16M1 in the dashboard (where the IMD light is) to turn the pin that the IMD light is on high. The fourth pole is left open.
+The IMD will have a high output as long as a there is no ground fault detected. The high output will not power the relay until the reset button is pressed in the very beginning start up procedure. Pressing the IMD reset button will "latch" it into its state (by using the first switch). The relay's coil pulls all 4 of the double pole switches to their active states, therefore closing the shutdown circuit and pulling the ATMega16M1 input as low. The input to the microprocessor has a pull-up resistor in case of a disconnection in the wiring. The ATMega16M1 in the side panel housing (where the IMD is) will notify the ATMega16M1 in the dashboard (where the IMD light is) to turn the pin that the IMD light is on high. The fourth pole is left open. The high voltage power lines that the IMD references are behind the same 1A fuse as used for the TSMPs, TSVP/TSELs, and GLV DC-DC converter.
 
 \begin{table}[H]
 \centering
