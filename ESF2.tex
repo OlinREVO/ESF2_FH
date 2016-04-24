@@ -368,6 +368,8 @@ Person primarily responsible for this section:
         \label{fusetable}
     \end{table}
 
+    There is a 1A fuse on both the TS+ and TS- lines (20 AWG), protecting the GLV system by being in front of the DC-DC converter and protecting the TS sensing lines for the IMD, TSEL, accumulator indicator and TSMPs. For its connection in the tractive system, please see \ref{tractiveblock} and for its connection in the glv system, please see figure \ref{glvfusing}.
+
 \subsection{Component Fusing}
 
 \textit{List major components (e.g., motor controller, dc-dc converter) and data sheet max fuse rating.  Ensure that the rating of the fuse used is less than the maximum value for the component.}
@@ -385,8 +387,8 @@ Motor Controllers & LPJ175sp & 190 A (for 2AWG) & 175A & \begin{tabular}[c]{@{}l
 AMS inputs (x28) & CIQ 3 & 4A (for traces) & 3A & \begin{tabular}[c]{@{}l@{}}Each input fused\\ separately\end{tabular} \\ \hline
 GLV System & MIN5BP & 7A (for 20AWG) & 5A &  \\ \hline
 GLV 12V and Shutdown circuit & MIN2BP & 7A (for 20AWG, traces) & 2A &  \\ \hline
-5V CAN circuit & 0ZCK0050FF2E & 1A & 1A &  \\ \hline
-\begin{tabular}[c]{@{}l@{}}Lights DC-DC converter, \\ TSMPs and IMD\end{tabular} & F3169CT-ND & 7A (for 20 AWG) & 1A & \begin{tabular}[c]{@{}l@{}}Protects all TS \\ low current\\ components\end{tabular} \\ \hline
+5V CAN circuit & 0ZCK0050FF2E & 0.5A & 0.5A &  \\ \hline
+\begin{tabular}[c]{@{}l@{}}Lights DC-DC converter, \\ TSMPs and IMD\end{tabular} & F3169CT-ND & 7A (for 22 AWG) & 0.5A & \begin{tabular}[c]{@{}l@{}}Protects all TS \\ low current\\ components\end{tabular} \\ \hline
 \begin{tabular}[c]{@{}l@{}}Keyswitch input to Motor \\ Controller\end{tabular} & A15QS7-2 & \begin{tabular}[c]{@{}l@{}}7A (for motor\\ controller LV input)\end{tabular} & 7A &  \\ \hline
 Battery Input (charging) & BK/SC-20 & For battery cells, charging & NDA \\ \hline
 \end{tabular}
@@ -625,7 +627,7 @@ Delphi & Unknown & 35 mm\textasciicircum 2 & Y & \begin{tabular}[c]{@{}l@{}}Accu
 \label{shieldedwiretable}
 \end{table}
 
-The Delphi shielded cable is being provided by General Motors, and we are still trying to get the part number at this time.
+The Delphi shielded cable is being provided by General Motors, and we are still trying to get the part number at this time. It is rated for 125 \degree C and 600V.
 
 \subsection{Firewall(s)}
 
@@ -1421,13 +1423,13 @@ Person primarily responsible for this section:
             \label{aindicatorPCB}
         \end{figure}
 
-    The accumulator will be removable and removed each time for the charging process. The accumulator indicator is a small light within the accumulator that can be seen from the outside. The light will turn on at 30VDC because the top zener diode has a breakdown of 28V. From 30-100V, the light will be shining. The light, which is located on the AIR control board, will be placed near the window of the accumulator for visibility.
+    The accumulator will be removable and removed each time for the charging process. The accumulator indicator is a small light within the accumulator that can be seen from the outside. The light will turn on at 30VDC because the top zener diode has a breakdown of 28V. From 30-100V, the light will be shining. The light, which is located on the AIR control board, will be placed near the window of the accumulator for visibility. It is fused behind the same 1A fuse protecting the TS low current lines as the TSMPs, GLV DC-DC converter and TSEL/TSVPs.
 
 \subsection{Charging}
 
 \textit{Describe how the accumulator will be charged. How will the charger be connected? How is the accumulator to be supervised during charging?}
 
-The accumulator will be charged using a Delta Q Technologies QioQ 1000 Series charger (UL listed). This charger has a custom charging process for the accumulator. The charging process is a constant current at 17.0A until the battery voltage reaches 4.15Vpc, and then constant voltage at 4.15Vpc until the current tapers to 2.0A. When charging, the accumulator will be located on a hand cart, with a charging interlock, AMS, emergency stop button, and IMD. These components will make up a small version of the shutdown system in order to protect the accumulator, and the connections for this circuitry can be found on the charging PCB and the AIR control board. The charger will connect to the charging connector (Deutsch 6-pin) to the accumulator, and will go through the TS side of the AIRs, connecting to the TS, while the interlock is located in the connector's two smaller pins. Therefore, the AMS's, IMD and E-stop will all be able to open the AIRs in the case of an emergency. The shutdown components and PCB will be mounted to the charging cart. Also, a person with knowledge of the charging process will stay with the accumulator at all times.
+The accumulator will be charged using a Delta Q Technologies QioQ 1000 Series charger (UL listed). This charger has a custom charging process for the accumulator. The charging process is a constant current at 17.0A until the battery voltage reaches 4.15Vpc, and then constant voltage at 4.15Vpc until the current tapers to 2.0A. When charging, the accumulator will be located on a hand cart, with a charging interlock, AMS, emergency stop button, and IMD. These components will make up a small version of the shutdown system in order to protect the accumulator, and the connections for this circuitry can be found on the charging PCB and the AIR control board. The charger will connect to the charging connector (Deutsch 6-pin, P/N: HD10-6-12P, HD16-6-12S) to the accumulator, and will go through the TS side of the AIRs, connecting to the TS, while the interlock is located in the connector's two smaller pins. Therefore, the AMS's, IMD and E-stop will all be able to open the AIRs in the case of an emergency. The shutdown components and PCB will be mounted to the charging cart. Also, a person with knowledge of the charging process will stay with the accumulator at all times.
 
 \begin{figure}[H]
     \centering
@@ -1574,7 +1576,7 @@ Interlocks (if used) & Normally Open \\ \hline
 
 \textit{Describe wiring and additional circuitry controlling AIRs. Write a functional description of operation}
 
-The power to the AIRs is all in series until the economizers for each AIR and the AIRs are in parallel. All wiring is 20 AWG and the GLV system is has four fuses in general. There is a 5A fuse on the output of the DC/DC converter and a 5A fuse on the output of the GLV battery. After the e-stops, the GLV 12V splits to be in parallel with the shutdown system, and both the GLV 12V and shutdown system are fused to 2A. For each board that accepts 5V as input for the CAN system, there is a 1A PTC resettable fuse on the 5V line (all nodes are in parallel). The shutdown system communicates with the CAN system to ensure simple debugging and software control where permitted.
+The power to the AIRs is all in series until the economizers for each AIR and the AIRs are in parallel. All wiring is 20 AWG and the GLV system is has four fuses in general. There is a 5A fuse on the output of the DC/DC converter and a 5A fuse on the output of the GLV battery. After the e-stops, the GLV 12V splits to be in parallel with the shutdown system, and both the GLV 12V and shutdown system are fused to 2A. For each board that accepts 5V as input for the CAN system, there is a 0.5A PTC resettable fuse on the 5V line (all nodes are in parallel). The shutdown system communicates with the CAN system to ensure simple debugging and software control where permitted.
 
 %table of Shutdown circuit Current Draw
 \begin{table}[H]
@@ -1645,7 +1647,7 @@ The physical location of the AMS is pictured and discussed in Figure \ref{ACCUMU
     \label{imdschem}
 \end{figure}
 
-The IMD will have a high output as long as a there is no ground fault detected. The high output will not power the relay until the reset button is pressed in the very beginning start up procedure. Pressing the IMD reset button will "latch" it into its state (by using the first switch). The relay's coil pulls all 4 of the double pole switches to their active states, therefore closing the shutdown circuit and pulling the ATMega16M1 input as low. The input to the microprocessor has a pull-up resistor in case of a disconnection in the wiring. The ATMega16M1 in the side panel housing (where the IMD is) will notify the ATMega16M1 in the dashboard (where the IMD light is) to turn the pin that the IMD light is on high. The fourth pole is left open.
+The IMD will have a high output as long as a there is no ground fault detected. The high output will not power the relay until the reset button is pressed in the very beginning start up procedure. Pressing the IMD reset button will "latch" it into its state (by using the first switch). The relay's coil pulls all 4 of the double pole switches to their active states, therefore closing the shutdown circuit and pulling the ATMega16M1 input as low. The input to the microprocessor has a pull-up resistor in case of a disconnection in the wiring. The ATMega16M1 in the side panel housing (where the IMD is) will notify the ATMega16M1 in the dashboard (where the IMD light is) to turn the pin that the IMD light is on high. The fourth pole is left open. The high voltage power lines that the IMD references are behind the same 1A fuse as used for the TSMPs, TSVP/TSELs, and GLV DC-DC converter.
 
 \begin{table}[H]
 \centering
