@@ -1,5 +1,7 @@
 ESF to do
 4/23/2016
 
-- 22 AWG wire
 - check accumulator pictures
+- Charging- we start shunting at ~4.1V
+- how to prove high and low voltage meets safety
+	-high: 403V, 48 modules. 8.39V per module max
