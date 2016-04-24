@@ -253,7 +253,7 @@
 
         \textit{Provide a brief, concise description of the vehicles main electrical systems including tractive system, accumulator, hybrid type (series or parallel) and method of mechanical coupling to wheels. Describe any innovative or unusual aspects of the design.}\\
 
-        We have designed an all-electric car powered by 2 Zero Motorcycles Z-Force brushless DC motors coupled to Sevcon Gen 4 Size 4 motor controllers. The motors independently drive the rear wheels through two single speed chain reductions. Independent drive allows us to implement a virtual differential drive mode and eventually torque vectoring. The accumulator comprises 12 Nissan Leaf modules in series, which in total provides 96.4V and 65Ah of capacity. The car communicates across a CAN-Bus system, simplifying wiring substantially.\\
+        We have designed an all-electric car powered by 2 Zero Motorcycles Z-Force brushless DC motors coupled to Sevcon Gen 4 Size 4 motor controllers. The motors independently drive the rear wheels through two single speed chain reductions. Independent drive allows us to implement a virtual differential drive mode and eventually torque vectoring, which is a project for the future and will not be implemented on the vehicle this year. The accumulator comprises 12 Nissan Leaf modules in series, which in total provides 96.4V and 65Ah of capacity. The car communicates across a CAN-Bus system, simplifying wiring substantially.\\
 
         \textit{Include the following figures:}
 
@@ -300,7 +300,7 @@ Please note that the figure numbers in our document do not correspond to the spe
 
                 \begin{sidewaysfigure}[p]
             \includegraphics[width=\textheight]{tractiveblock}
-            \caption{Tractive system schematic. For wiring of the AMS, please see figure \ref{amsschem}}
+            \caption{Tractive system schematic. For wiring of the AMS, please see figure \ref{amsschem}. Please note that the precharge has additional circuitry (for feedback timing), which is clarified in figure \ref{prechargeschem} for simplicity }
             \label{tractiveschem}
         \end{sidewaysfigure}
 \newpage
@@ -450,6 +450,7 @@ The chassis is used as GLV ground. This ground is established at the side panel 
 
 We are not using CFRP or conductive materials in our vehicle.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%SECTION 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Isolation and Insulation}
 Person primarily responsible for this section:
     \begin{table}[H]
@@ -461,7 +462,7 @@ Person primarily responsible for this section:
         \end{tabular}
     \end{table}
 
-\subsection{Separation of Tractive System and Grounded Low Voltage System}
+    \subsection{Separation of Tractive System and Grounded Low Voltage System}
 
 \textit{Describe how the TS and GLV systems are physically separated (EV4.1). Add CAD drawings or photographs of how TS and GLV are segregated in key areas of the electrical system.}
 
@@ -631,6 +632,7 @@ The Delphi shielded cable is being provided by General Motors, and we are still 
 \textit{Describe the concept, layer structure and the materials used for the firewalls. Describe how all firewall requirements in FH Rules T4.5.1 are satisfied. Show how the low resistance connection to chassis ground is achieved.}
 
 \textbf{Description/Materials}
+
             The firewall is constructed of two layers. The layer facing the tractive system is 1.5 mm aluminum sheet metal, with a chamfered edge. The second layer facing the cockpit is 1/8 in. Flame-Retardant Multipurpose Garolite (G-10/FR4). The assembly is fastened together using sheet metal rivets. The chassis has welded sheet metal tabs that fasten to the firewall with bolts and positively retained nuts. Because the firewall is fastened to the chassis using conductive fasteners, it is connected to GLVS ground.\\
 
             All high voltage and high temperature systems are contained in the rear of the vehicle, so only one firewall will be used. There are GLV systems in the dashboard and pedal box. A small grommeted hole will be made in the firewall for GLV wiring only.
@@ -657,7 +659,7 @@ The Delphi shielded cable is being provided by General Motors, and we are still 
                 \label{firewallposition}
             \end{figure}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%SECTION 4%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Electric Tractive System}
 Person primarily responsible for this section:
     \begin{table}[H]
@@ -673,16 +675,17 @@ Person primarily responsible for this section:
 
     \textit{Describe the motor(s) used and reason for this particular choice. Add additional tables if multiple motor types are used}
 
-    The motors used are Zero Motorcycles Z-Force 75-5 BLDC motors, which are manufactured and used by Zero Motorcycles in their production units. We have an established sponsorship with Zero Motorcycles, which is the primary reason for our motor selection. The motors are paired to two Sevcon Gen 4 Size 4 motor controllers, which are also used in Zero's production units.
+    The motors used are Zero Motorcycles Z-Force 75-5 brushless DC motors, which are manufactured and used by Zero Motorcycles in their production units. We have an established sponsorship with Zero Motorcycles, which is the primary reason for our motor selection. The motors are paired to two Sevcon Gen 4 Size 4 motor controllers, which are also used in Zero's production units.
+
 
     \begin{table}[H]
         \centering
         \begin{tabular}{|l|l|}
             \hline
-            Manufacturer and Model & \begin{tabular}[c]{@{}l@{}}Zero Motorcycles,\\  Model \# 30-0534\end{tabular} \\ \hline
+            Manufacturer and Model & \begin{tabular}[c]{@{}l@{}}Zero Motorcycles 75-5 Series,\\  Model \# 30-0534\end{tabular} \\ \hline
             Motor type & DC Brushless \\ \hline
             Number of motors of this type used & 2 \\ \hline
-            Nominal motor voltage (Vdc) & 104  Vdc \\ \hline
+            Nominal motor voltage (Vdc) & 102  Vdc \\ \hline
             Nominal/Peak motor current (A) & Nom: 250 / Peak: 420 \\ \hline
             Nominal/Peak motor power & Nom: 24.9  / Peak: 41.8\\ \hline
             Motor wiring - conductor size and type &  $\geq$ 2 $AWG$\\ \hline
@@ -695,7 +698,7 @@ Person primarily responsible for this section:
 
     \textit{Provide calculations for currents and voltages. State how this relates to the choice of cables and connectors used.}
 
-    The choice of cables and connectors were made in reverse from the motor's maximum current draw. With the maximum current draw for 10 seconds being 660A (at 100V) for both motors combined, we specified the smallest fuse rated for that amount of current draw: 175A continuous. For a 175A fuse, the smallest wire gauge specified from Appendix E of the rules is 2 AWG (rated up to 190A). All wire gauges and connectors specified for the motors and/or accumulator are equal to or greater than 2 AWG.
+    The choice of cables and connectors were made in reverse from the motor's maximum current draw. With the maximum current draw for 10 seconds being 660A (at 100V) for both motors combined, we specified the smallest fuse rated for that amount of current draw: 175A continuous. For a 175A fuse, the smallest wire gauge specified from Appendix E of the rules is 2 AWG (rated up to 190A). All wire gauges and connectors specified for the high current path of the motors and/or accumulator are equal to or greater than 2 AWG.
 
     \subsection{Motor Controller}
 
@@ -710,7 +713,7 @@ Person primarily responsible for this section:
     \setlength\tabcolsep{2pt}
     \begin{tabular}{|l|l|}
         \hline
-        Manufacturer and Model & Sevcon Size 4 Gen 4 \\ \hline [-3pt]
+        Manufacturer and Model & Sevcon Size 4 Gen 4 \\ \hline
         Number of controllers of this type used & 2 \\ \hline
         Maximum Input voltage (Vdc) & 116 VDC \\ \hline
         Nominal Input current (A) & 350 A \\ \hline
@@ -718,7 +721,7 @@ Person primarily responsible for this section:
         Output Voltage (Vdc) & Same as input voltage \\ \hline
         \begin{tabular}[c]{@{}l@{}}Isolation rating between GLV \\ (power supply or control inputs) and\\  TS connections\end{tabular} & None \\ \hline
         %\begin{tabular}[c]{@{}l@{}}Is the accelerator galvanically \\ isolated from the Tractive system per EV2.3\end{tabular} & No \\ \hline
-        \begin{tabular}[c]{@{}l@{}}Is the accelerator galvanically \\ isolated from the Tractive system per EV2.3\end{tabular} & Yes \\ \hline
+        \begin{tabular}[c]{@{}l@{}}Is the accelerator galvanically \\ isolated from the Tractive system per EV2.3\end{tabular} & No \\ \hline
     \end{tabular}
     \caption{Motor Controller Data}
     \label{mctable}
@@ -726,8 +729,6 @@ Person primarily responsible for this section:
 
     \textit{If the answer to the last question is NO, how to you intend to comply with rule EV2.3 (an external isolator is acceptable)}
 
-
-    %%%%% Our throttle is galvanically isolated from the TS. No need for clarification.
 
     %\textcolor{red}{We will have isolation on our accelerator (throttle pedal potentiometers) by isolated CAN transceivers. Although we currently do not control the motor controller through CAN messages, we have a node next to the motor controller that listens to the throttle's data and outputs the same (isolated) analog signal. The only use of the CAN system with the throttle information is logging the data for the team's use. The throttle information is not altered in any way. }
 
@@ -739,7 +740,7 @@ Person primarily responsible for this section:
 
     \textit{The TSMP must comply with FH Rule EV4.4. Describe the TSMP housing and location. Describe TSMP electrical connection point.}
 
-    The TSMP housing is a kevlar-reinforced nylon 3-D printed enclosure that is located in the rear right side of the car, behind the main hoop. This housing also contains most of the shutdown components. Electrically, it is connected to the TS+ and TS- power lines (past the AIR's, in a separate connector and wiring bundle), in parallel to the motors. The housing includes all low-current TS voltage components. Please see Figure \ref{tractiveschem} for the schematic in the larger context, as Figure \ref{tsmpschem} is a schematic focused on the TSMPs, with and without the multimeter.
+    The TSMPs are located on the side panel housing, which is a kevlar-reinforced nylon, waterproof 3-D printed enclosure that is located in the rear right side of the car, behind the main hoop. This housing also contains most of the shutdown components. Electrically, it is connected to the TS+ and TS- power lines (past the AIR's, in a separate connector and wiring bundle), in parallel to the motors. The housing includes all low-current TS voltage components. Please see Figure \ref{tractiveschem} for the schematic in the larger context, as Figure \ref{tsmpschem} is a schematic focused on the TSMPs, with and without the multimeter.
 
     \begin{figure}
         \centering
@@ -766,33 +767,35 @@ Person primarily responsible for this section:
 
             Another worst case scenario that could occur at the measuring points is a short between the TS and GLV systems over the banana jacks, again by operator error. In this scenario, the IMD will open the shutdown circuit.
     \\
-    The following figures show the housing for the TSMP's and shutdown components:
+    The following figure shows the housing panel that the TSMPs exist on.
 
     \begin{figure}[H]
         \centering
         \includegraphics[width = 0.6 \textwidth]{CONTROLPANEL_1}
-        \caption{TSMP Housing Vehicle Location}
-        \label{tsmplocation}
+        \caption{Side Panel Housing Interface}
+        \label{sidepanelfront}
     \end{figure}
 
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width = 0.6 \textwidth]{CONTROLPANEL_2}
-        \caption{Waterproof Enclosure for most of the shutdown circuit and the TSMPs}
-        \label{tsmpbox}
-    \end{figure}
+    The TSMP banana jacks are 72930-2 and 72930-0 Pomona Electronics 4 mm banana jacks (red and black, respectively). The TSMP resistors are Vishay Dale, CMF655K0000FKEB (manufacturer's part number), rated for 500V and part of the CMF Industrial series.
 
     \begin{table}[H]
     \centering
     \begin{tabular}{|l|l|}
     \hline
     TSMP Output Protection Resistor Value & 5 k\ohm \\ \hline
-    Resistor Voltage Rating & 122V \\ \hline
-    Resistor Power Rating & 3W \\ \hline
+    Resistor Voltage Rating & 500V \\ \hline
+    Resistor Power Rating & 1.5 W, 1W at 70 \degree C \\ \hline
     \end{tabular}
-    \caption{TSMP Reistor Data}
+    \caption{TSMP Resistor Data}
     \label{tsmptable}
     \end{table}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width = 0.6 \textwidth]{tsmpcloseup}
+        \caption{Close up of TSMP pcb footprints (highlighted in green) on the side panel PCB. Note the line of isolation between the GLV and TS. }
+        \label{tsmpPCB}
+    \end{figure}
 
     \subsection{Pre-Charge System}
 
@@ -813,10 +816,11 @@ Person primarily responsible for this section:
         \label{prechargeschem}
     \end{figure}
 
+
     %Describe connectors and cables used
     Ticket \#1209 stated compliance of the internal precharge system of the Sevcon motor controller instead of a separate precharge system consisting of a relay and resistor.
 
-    Once the shutdown circuit is closed, it will immediately power the coils of the normally closed discharge relay, the normally open precharge relay, and the normally open TS- AIR. This opens the discharge relay, and closes the precharge relay and TS- AIR. Instead of connecting Batt+ to TS+ through a current limiting resistor, the precharge relay connects B+ to the key switch terminal on each of the Sevcon motor controllers. When powered by their key switch terminals, the motor controllers charge their internal capacitors up to around 50V for 0.5 seconds, then up to 90V (or another specified voltage) for 0.1 seconds before signaling though the CAN system that the precharge is complete. This CAN message causes a node in the battery to allow the shutdown circuit to close the TS+ AIR.
+    Once the shutdown circuit is closed, it will immediately power the coils of the normally closed discharge relay, the normally open precharge relay (found on the top in figure \ref{prechargeschem}, connecting BATT+ to the precharge tag), and the normally open TS- AIR. This opens the discharge relay, and closes the precharge relay and TS- AIR. Instead of connecting Batt+ to TS+ through a current limiting resistor, the precharge relay connects B+ to the key switch terminal on each of the Sevcon motor controllers. When powered by their key switch terminals, the motor controllers charge their internal capacitors up to around 50V for 0.5 seconds, then up to 90V (or another specified voltage) for 0.1 seconds before signaling though the CAN system that the precharge is complete. This CAN message causes a node in the battery to allow the shutdown circuit to close the TS+ AIR.
 
     In figure \ref{prechargemeasurements}, the voltage of a test setup of the pre-charge system internal to the motor controller was measured. Because there is no resistor other than the motor controller, the current and power could not be calculated and/or graphed. As discussed above, the function describing the pre-charge is stepwise.
 
@@ -838,7 +842,7 @@ Person primarily responsible for this section:
     Resistor type & N/A \\ \hline
     Resistance & N/A \ohm \\ \hline
     Continuous power rating & N/A W \\ \hline
-    Overload power rating & N/A W for\_ sec \\ \hline
+    Overload power rating & N/A W  \\ \hline
     Voltage rating & N/A V \\ \hline
     \end{tabular}
     \caption{Data for the pre-charge resistor}
@@ -851,10 +855,10 @@ Person primarily responsible for this section:
     \centering
     \begin{tabular}{|l|l|}
     \hline
-    Relay MFR \& Type: & Omron Electronics \\ \hline
+    Relay MFR \& Type: & TE Connectivity LEV100 Series \\ \hline
     Contact Arrangement & SPST-NO \\ \hline
-    Continuous DC contact current & 10A \\ \hline
-    Contact voltage rating & 125VDC \\ \hline
+    Continuous DC contact current & 100A \\ \hline
+    Contact voltage rating & 900VDC \\ \hline
     \end{tabular}
     \caption{Data of the pre-charge relay}
     \label{prechargerelaytable}
@@ -968,20 +972,29 @@ Person primarily responsible for this section:
     Encoder principle & \begin{tabular}[c]{@{}l@{}} Dual-Rotary \\ Potentiometer\end{tabular} \\ \hline
     Output & Analog \\ \hline
     \begin{tabular}[c]{@{}l@{}}Is motor controller \\ accelerator signal isolated \\ from TSV?\end{tabular} & No \\ \hline
-    \begin{tabular}[c]{@{}l@{}}If no, how will you satisfy rule \\ EV2.3?\end{tabular} & Isolated tranceiver on CAN \\ \hline
+    \begin{tabular}[c]{@{}l@{}}If no, how will you satisfy rule \\ EV2.3?\end{tabular} & Optocoupler\\ \hline
     \end{tabular}
     \caption{Throttle Position Encoder Data}
     \label{throttletable}
     \end{table}
 
-    The 2 throttle encoder outputs (2 electrically-separated potentiometers contained within MHR5621) will be sensed through a CAN node input pin. The CAN node will then log the information (no amplification in any way) and send it to the motor controller CAN node. That CAN node will output the same analog signal through an optoisolator to separate it from the GLV system and ground it to the TS system.
-
-    \textnormal{There will be two electrically-separated potentiometers being sensed by a CAN node. There will be pull-down resistors on both inputs in order to detect wire-failure for the potentiometer's input. Software will detect whether the potentiometer inputs are within 10\% of each other, as well as checking that the potentiometer readings are within the limits of the system.}\\
-
-    \textnormal{Once the throttle has been read and sanitized by the CAN node, it will be sent along the CAN line to the motor controller CAN node. This node can send isolated analog signals to both motor-controllers for torque control. This node will also take into account the steering-wheel sensor and may decrease the torque signal to one of the motors in order to allow for a virtual differential. It will never increase the torque signal.}\\
+    The 2 throttle encoder outputs (2 electrically-separated potentiometers contained within MHR5621) will be sensed through an ATMEGA 16M1 input pin, communicating through CAN to the rest of the vehicle. The CAN node will then and send it to the motor controller CAN node (with no amplification in any way). That CAN node will output the same analog signal through an optocoupler to separate it from the GLV system and ground it to the TS system. There will be pull-down resistors on both inputs in order to detect wire-failure for the potentiometer's input. Software will detect whether the potentiometer inputs are within 10\% of each other, as well as checking that the potentiometer readings are within the limits of the system. Please see figure \ref{bulkheadschem} for the potentiometer inputs and figure \ref{mccschem} for details on the isolation between the motor controller controller (MCC) PCB Atmega16M1 and the motor controller.
 
     \textnormal{This design meets all rules requirements because the system is galvanically isolated from the motor controller inputs and our system is able to detect all the plausible failure modes of the potentiometer.}
 
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width = 0.4 \textwidth]{Bulkheadschem}
+        \caption{Schematic of the bulkhead, which has potentiometer inputs for throttle}
+        \label{bulkheadschem}
+    \end{figure}
+
+    \begin{figure}[H]
+          \centering
+          \includegraphics[width = 0.7 \textwidth]{MCCschem}
+          \caption{Motor controller schematic}
+          \label{mccschem}
+    \end{figure}
 
     \subsection{Accelerator / Throttle Position Encoder Error Check}
 
@@ -989,16 +1002,16 @@ Person primarily responsible for this section:
 
 
     \textnormal{
-    There are two main errors that need to be considered. Potentiometer input failure, as in a wire being disconnected or an invalid signal, and CAN system failure, as in invalid message objects are sent.
+    There are two main errors that need to be considered. Potentiometer input failure, as in a wire being disconnected or an invalid signal, and CAN communication system failure, as in invalid message objects are sent.
     }\\
 
     \textnormal{
     In the case of a short or open-circuit for potentiometer input failure, there will be a pull-down resistor which will pull the value read at the input pin to 0V (and in case of a short it will be pulled to 5V). Any reading not in the range of 1V-4V will be considered an error and will be dealt with in software. No throttle command will be sent in this case.
     }\\
 
-    \textnormal{
-    In the case of CAN message failure, the CAN node which is connected to the motor-controllers will not send any throttle command if no valid throttle message is read every 0.1 seconds.
-    }
+    \textnormal{In the case of CAN message failure, the CAN node which is connected to the motor-controllers will not send any throttle command if no valid throttle message is read every 0.1 seconds.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%SECTION 5%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Accumulator System}
 
@@ -1017,7 +1030,13 @@ Person primarily responsible for this section:
 
         \textit{Provide a narrative design of the accumulator system and complete the following table.}
 
-        All cell information listed was recorded from actual measurements. Manufacturer data is under NDA and restricted until we receive permission to release this information to the Formula Hybrid team.
+        All cell information listed was recorded from actual measurements. Most manufacturer data is under NDA and restricted until we receive permission to release this information to the Formula Hybrid team. We are allowed to share module capacity (at 2C), nominal voltage, size, weight and energy density. The rest of the numbers given in the following sections will either come from measurements or limits that the team imposes on the batteries, and we have the knowledge that they are safe for our cells.
+        %Allowed to share:
+            % -Capacity
+            % -Nominal Voltage
+            % -Size
+            % -Weight
+            % -Energy Density
 
             \begin{table}[H]
                 \centering
@@ -1028,24 +1047,26 @@ Person primarily responsible for this section:
                 Total number of cells & 48 \\ \hline
                 Cell arrangement & \begin{tabular}[c]{@{}l@{}}2s2p in one module,\\ 12 modules in series\end{tabular} \\ \hline
                 Are packs commercial or team constructed & Team \\ \hline
-                Total Capacity (per FH Rules Appendix A) & Less than 5.4 kWh, NDA \\ \hline
-                Maximum Segment Capacity & Less than 6 MJ, NDA \\ \hline
+                Total Capacity (per FH Rules Appendix A) & 5.2 kWh \\ \hline
+                Maximum Segment Capacity & 5.265 MJ \\ \hline
                 Number of Accumulator Segments & 4 \\ \hline
                 \end{tabular}
                 \caption{Main accumulator parameters}
                 \label{mainaccumtable}
             \end{table}
 
+            The maximum voltage that the accumulator will be charged to is 99.6V.
+
         \textit{Describe how pack capacity is calculated. Provide calculation at 2C (0.5 hour) rate? How is capacity derived from manufacturer’s data? If so, include discharge data or graph here. Include Peukert calculation if used (See FH Rules Appendix A). Show your segment energy calculations.}
 
-        The segment energy is calculated as: Vnom x Cell AH (2C rate) x Number of Cells x 3.6 kJ (The 80\% factor is not applied for this calculation). Each segment is 1/4 of the total accumulator (3 modules). Module/Cell current at 2C discharge is under NDA, but is included in the cell manufacturer's datasheet.
+        The segment energy is calculated as: Nominal voltage (per module) x Cell AH (per module) x Number of modules x 3.6 kJ (The 80\% factor is not applied for this calculation). Each segment is 1/4 of the total accumulator (3 modules, with 12 modules being the total). % Module/Cell current at 2C discharge is under NDA, but is included in the cell manufacturer's datasheet.
 
-            % \begin{align}
-            %     \text{Seg Energy} &= V_{nom} * \text{Cell Ah (2C rate)} * \text{Number of Cells} *  %     3.6 \text{kJ}\\
-            %     \text{Seg Energy} &= 7.5 * 65 * 3* 3.6 \\
-            %     \text{Seg Energy} &= 5265 \text{kJ}\\
-            %     \text{Seg Energy} &= 5.265 \text{MJ}
-            % \end{align}
+            \begin{align}
+                \text{Seg Energy} &= V_{nom} * \text{Cell Ah (2C rate)} * \text{Number of Cells} *  3.6 \text{kJ}\\
+            `   \text{Seg Energy} &= 7.5 * 65 * 3* 3.6 \\
+                \text{Seg Energy} &= 5265 \text{kJ}\\
+                \text{Seg Energy} &= 5.265 \text{MJ}
+             \end{align}
 
     \subsection{Cell Description}
 
@@ -1062,13 +1083,13 @@ Person primarily responsible for this section:
                 Cell Manufacturer and Model & \begin{tabular}[c]{@{}l@{}}Automotive Energy Supply Corporation\\ Model E5\end{tabular} \\ \hline
                 Cell type & Pouch type, Yes \\ \hline
                 Are these pouch cells & Yes \\ \hline
-                Cell nominal capacity at 2C (0.5 hour) rate & NDA \\ \hline
+                Cell nominal capacity at 2C (0.5 hour) rate & 65.0 Ah \\ \hline
                 Datasheet nominal capacity & NDA\\ \hline
-                Maximum Voltage (during charging) & NDA \\ \hline
-                Nominal Voltage (data sheet value) & 3.75 V (not datasheet value) \\ \hline
-                Minimum Voltage (AMS setting) & NDA \\ \hline
-                Maximum Cell Temperature (charging - AMS setting) & NDA  \\ \hline
-                Maximum Cell Temperature (discharging - AMS setting) & NDA \\ \hline
+                Maximum Voltage (during charging) & 4.15V \\ \hline
+                Nominal Voltage (data sheet value) & 3.75 V \\ \hline
+                Minimum Voltage (AMS setting) & 2.5V \\ \hline
+                Maximum Cell Temperature (charging - AMS setting) & 50 \degree C  \\ \hline
+                Maximum Cell Temperature (discharging - AMS setting) & 60 \degree C \\ \hline
                 Cell Chemistry & \begin{tabular}[c]{@{}l@{}}Lithium Ion - Laminate type\\ Cathode/Anode Material: LiMn2O4 with LiNiO2/Graphite\end{tabular} \\ \hline
                 \end{tabular}
                 \end{adjustbox}
@@ -1078,14 +1099,12 @@ Person primarily responsible for this section:
 
         \textit{Show your calculations for 2C nominal AH capacity if the data sheet uses a different discharge rate. Refer to FH rules Appendix A}
 
-        Calculations at 2C nominal Ah capacity were used to confirm compliance with FH rules, but cannot be shared at this time.
-
     \subsection{Cell Configuration}
 
             \begin{figure}[H]
                 \centering
                 \includegraphics{moduleschem}
-                \caption{Schematic of one module, which includes 4 cells in a 2s-2p configuration, with shutdown separators in the middle of the parallel strings of cells}
+                \caption{Schematic of one module, which includes 4 cells in a 2s-2p configuration, with shutdown separators in each cell}
                 \label{moduleschem}
             \end{figure}
 
@@ -1096,7 +1115,7 @@ Person primarily responsible for this section:
         \textit{Does the accumulator combine individual cells in parallel without cell fuses? \makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0.1em}$\checkmark$} \hspace{0.2cm} Yes
         \makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0.1em}} \hspace{0.2cm} No}
 
-        The modules (which are all in series), each have a string of cells in parallel, as seen in Figure \ref{moduleschem}. However, in the middle of the string of cells there is a shutdown separator. The shutdown separator between the parallel cells acts as a fuse in over-current conditions. The terminal marked in white in Figure \ref{canopener} references the point between the two parallel cell strings. These modules are commercially sold in Nissan Leaf vehicles without issue, so we are referencing their safety to prove ours.
+        The modules (which are all in series), each have a string of 2 cells in parallel, as seen in Figure \ref{moduleschem}. In the middle of each cell there is a shutdown separator, which acts as a fuse in over-current conditions. The terminal marked in white in Figure \ref{canopener} references the point between the two parallel cell strings. These modules are commercially sold in Nissan Leaf vehicles without issue, so we are referencing their safety to prove ours.
         %Need to include their certification in ESF.
 
     \subsection{Segment Maintenance Disconnect}
@@ -1111,10 +1130,10 @@ Person primarily responsible for this section:
                 Is HVD used as SMD? & No \\ \hline
                 Number of SMD devices & 3 \\ \hline
                 SMD MFR and Model & \begin{tabular}[c]{@{}l@{}}SMD - Lear Corporation\\ Fuse inside: Bussman EV30-350\end{tabular} \\ \hline
-                SMD Rated Voltage (if applicable) & 500V \\ \hline
-                SMD Rated Current (if applicable) & 350A \\ \hline
-                Segment Energy (6 MJ max) & 4.86 MJ \\ \hline
-                \begin{tabular}[c]{@{}l@{}}Segment Energy Discharge Rate\\ (Ref FH Rules Appendix A)\end{tabular} & \textcolor{red}{2C} \\ \hline
+                SMD Rated Voltage (if applicable) & N/A \\ \hline
+                SMD Rated Current (if applicable) & N/A \\ \hline
+                Segment Energy (6 MJ max) & 5.265 MJ \\ \hline
+                \begin{tabular}[c]{@{}l@{}}Segment Energy Discharge Rate\\ (Ref FH Rules Appendix A)\end{tabular} & 2C\\ \hline
                 \end{tabular}
                 \caption{SMD Data}
                 \label{smdtable}
@@ -1122,8 +1141,9 @@ Person primarily responsible for this section:
 
 \subsection{Lithium Ion Pouch Cells}
 
-    \textit{The vehicle accumulator uses individual pouch cells. } \par                      \makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0.1em}} \hspace{0.2cm} Yes
-    \makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0.1em}$\checkmark$} \hspace{0.2cm} No
+    \textit{The vehicle accumulator uses individual pouch cells. } \par
+    \makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0.1em}} \hspace{0.2cm} Yes
+    \makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0.1em}$\checkmark$} \hspace{0.1cm} No
 
     \textit{\textcolor{red}{Note that designing an accumulator system utilizing pouch cells is a substantial engineering undertaking which may be avoided by using prismatic or cylindrical cells.} If your team has designed your accumulator system using individual Lithium-Ion pouch cells, include drawings, photographs and calculations demonstrating compliance with all sections of rule EV3.9. If your system has been issued a variance to EV3.9 by the Formula Hybrid rules committee, include the required documentation from the cell manufacturer.}
 
@@ -1132,10 +1152,9 @@ Person primarily responsible for this section:
         \begin{figure}[H]
             \centering
             \includegraphics[width = 0.7 \textwidth]{OpenModule}
-            \caption{Inside view of a module. }
+            \caption{Inside view of a module }
             \label{canopener}
         \end{figure}
-
 
     %If your team has designed your accumulator system using individual Lithium-Ion pouch cells, include drawings, photographs and calculations demonstrating compliance with all sections of rule EV3.9.  If your system has been issued a variance to EV3.9 by the Formula Hybrid rules committee, include the required documentation from the cell manufacturer.
 
@@ -1152,8 +1171,23 @@ Person primarily responsible for this section:
             \label{celltemp}
         \end{figure}
 
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width = 0.6 \textwidth]{bus-bar_twosegments}
+            \caption{The location of the busbars, as seen on 2/4 segments. }
+            \label{celltemplocation}
+        \end{figure}
 
-     The temperature of the cells is monitored using 10K thermistors attached to the negative terminals. The middle pole of each module is considered the ground of two cells. Each module's midpoint is measured and one out of three module grounds is measured per accumulator segment. The thermistors are used to form four voltage dividers. When the temperature of the cells increases, the resistance decreases, resulting in less voltage drop across the thermistor. Four analog to digital converters attached to each of the voltage dividers is then used by the Atmega 16M1 used in the CAN system to determine whether the temperature is too high or low. If the temperature is out of range, the shutdown system activates. There is a pull up resistor that pushes the output voltage to 5V if the ADC is a past a certain threshold and 0V otherwise. Because we are monitoring the negative terminals of half of the cells in each module, we are monitoring 50\% of the total cells.
+     The temperature of the cells is monitored using 10K thermistors attached to the negative terminals. The middle pole of each module is considered the ground of two cells. Each module's midpoint is measured and one out of three module grounds is measured per accumulator segment. The thermistors are used to form four voltage dividers. When the temperature of the cells increases, the resistance decreases, resulting in less voltage drop across the thermistor. Four analog to digital converters attached to each of the voltage dividers is then used by the ATmega16M1 used in the CAN system to determine whether the temperature is too high or low. If the temperature is out of range (high or low), the shutdown system activates. There is a pull up resistor that pushes the output voltage to 5V if the ADC is a past a certain threshold and 0V otherwise. Because we are monitoring the negative terminals of half of the cells in each module, we are monitoring 50\% of the total cells.
+
+     The distance between the bottom of the PCB and the top of the busbar is 3.2 mm (0.126 in.), while the distance from thermistor to terminal is 0.32 in. Because the cells are arranged within the module by the manufacturer, the distance from the busbar to the actual cell terminals (instead of the module terminals) is unknown.
+
+     \begin{figure}[H]
+         \centering
+         \includegraphics[width = 0.6 \textwidth]{busbar_aluminum}
+         \caption{Side view of the busbar-thermistor stackup, with aluminum nuts between the thermistors (the ring terminals shown) and the copper busbars.}
+         \label{busbarthermistorstackup}
+     \end{figure}
 
     %table of cell temperature monitoring
 
@@ -1175,8 +1209,9 @@ Person primarily responsible for this section:
 
     \textit{Describe the number of AIRs used and their locations. Also complete the following table.}
 
-    The AIRs used are EV Kilovac 200 SPST relays from Tyco Electronics. The relays require the use of an economizer, which switches their current after 150 ms so they do not draw as much current. The economizer circuitry is shown in figure \ref{econschem} for reference. The positive pole AIR and negative pole AIR are located in the accumulator, separated from the cells by two sheets of 1/32" FR4/G10, sandwiching a 0.035" thick 403 stainless steel panel.
+    The AIRs used are EV Kilovac 200 SPST relays from Tyco Electronics. The relays require the use of an economizer, which switches their current after 150 ms so they do not draw as much current. The positive pole AIR and negative pole AIR are located in the accumulator, separated from the cells by two sheets of 1/32" FR4/G10, sandwiching a 0.035" thick 403 stainless steel panel.
 
+    The circuitry to support the AIRs- including precharge and discharge circuitry, AMS relays and interlocks can be seen in \ref{aircntrlschem}. Its PCB is seen in figure \ref{AIRcntrlPCB}
 
         %table of AIR data
         \begin{table}[H]
@@ -1186,7 +1221,7 @@ Person primarily responsible for this section:
             MFR \& Model & \begin{tabular}[c]{@{}l@{}}Tyco Electronics, \\ Kilovac EV200\end{tabular} \\ \hline
             Contact arrangement & 1 form x (SPST-NO-DM) \\ \hline
             Continuous DC current rating & 500A \\ \hline
-            Overload DC current rating & NEED \\ \hline
+            Overload DC current rating & 2000 A for 1 cycle, at 32 VDC \\ \hline
             Max operation voltage & 900VDC \\ \hline
             Nominal coil voltage & 9 -36 VDC \\ \hline
             Normal Load switching & See figure \ref{airsdata} \\ \hline
@@ -1195,7 +1230,6 @@ Person primarily responsible for this section:
             \label{airtable}
         \end{table}
 
-
         \begin{figure}[H]
             \centering
             \includegraphics[width = 0.5 \textwidth]{airs}
@@ -1203,11 +1237,24 @@ Person primarily responsible for this section:
             \label{airsdata}
         \end{figure}
 
+        % \begin{figure}[H]
+        %    \centering
+        %    \includegraphics[width = 0.7 \textwidth]{Econcircuit}
+        %    \caption{Circuitry used with the lower AIR to enable them to have a lower current draw}
+        %    \label{econschem}
+        % \end{figure}
+
+        \begin{sidewaysfigure}[p]
+            \includegraphics[width=\textheight]{aircntrlschem}
+            \caption{AIR control board schematic, not including the economizers}
+            \label{aircntrlschem}
+        \end{sidewaysfigure}
+
         \begin{figure}[H]
             \centering
-            \includegraphics[width = 0.7 \textwidth]{Econcircuit}
-            \caption{Circuitry used with the AIRs to enable them to have a lower current draw}
-            \label{econschem}
+            \includegraphics[width = 0.8 \textwidth]{aircntrlCAD}
+            \caption{PCB CAD of the AIR control board. The cyan line dictates the separation between GLV and TS voltages.}
+            \label{AIRcntrlPCB}
         \end{figure}
 
 \subsection{Accumulator Management System}
@@ -1221,9 +1268,9 @@ Person primarily responsible for this section:
             \hline
             AMS MFR and Model & Team-made \\ \hline
             Number of AMSs & 4 \\ \hline
-            Upper cell voltage trip & NDA \\ \hline
-            Lower cell voltage trip & NDA \\ \hline
-            Temperature trip & NDA \\ \hline
+            Upper cell voltage trip & 4.15 \\ \hline
+            Lower cell voltage trip & 2.5 \\ \hline
+            Temperature trip & 58 \degree C \\ \hline
             \end{tabular}
             \caption{AMS Data}
             \label{amstable}
@@ -1245,31 +1292,56 @@ Person primarily responsible for this section:
 
     The AMS monitors 6 groups of cells in series. Each module contains 4 cells, 2 series x 2 parallel, so each AMS monitors 3 modules, or 12 cells (6 series x 2 parallel). There are 4 AMS boards. Each AMS board is coupled to a cell breakout board, which includes 4 thermistors and bolts to the power terminals of three modules, as shown in Figure \ref{CADaccumtop} (blue circuit boards) and described in section \ref{celltopsection}. The purpose of the cell breakout boards is to help manage wiring inside the accumulator. The cell breakout boards will have compression limiting copper pads at the terminal bolts and will be spaced above the bus bars using copper washers. The cell top schematics and PCB CAD are shown in figures \ref{celltopschem} and \ref{celltopboard}.
 
+    The AMS shunts 3 A when the cell gets above 4.15 V and opens a relay in line with the shutdown circuit if any cell drops below 2.5 V or above 4.15V. The AMS opens a relay in line with the shutdown circuit if any cell gets above 58 \degree C. Please see figure \ref{shutdownschem} for a schematic of the shutdown circuit's relays.\\
+
+    Figure\ref{fig:voltageCellvsTemp} shows the voltage that will be read by the BMS at different temperature readings. The BMS has an ADC with 10 bit resolution meaning that voltage differences of less than 0.005V can be detected. As seen in Figure \ref{fig:voltageCellvsTempZOOM} the worst case scenario for over-temperature sensing is when the temperature is at 62 \degree C. For this reason we will choose to be safe and raise an error when the temperature is at 58 \degree C which has a worse case reading of 60 \degree C.
+
+        \begin{figure}[H]
+        \centering
+        \includegraphics[width =0.6 \textwidth]{VoltageVSTemp.png}
+        \caption{Voltage measured at BMS vs. temperature the cell is at.}
+        \label{fig:voltageCellvsTemp}
+        \end{figure}
+
+        \begin{figure}[H]
+        \centering
+        \includegraphics[width =0.6 \textwidth]{VoltageVSTempZOOM.png}
+        \caption{Voltage measured at BMS vs. temperature the cell is at. This just shows the voltage difference at different temperatures around 60 \degree C}
+        \label{fig:voltageCellvsTempZOOM}
+        \end{figure}
+
+    CAN communication from the board is isolated via a TI ISO1050DUBR (isolated CAN transceiver), with board cutouts to maintain proper clearance and creepage. Only CAN communication is used to have the information from each AMS relayed to the rest of the system, and the boards are otherwise independent of each other. On each cell-top board, there are 7 surface mount Bel C1Q 3 A fuses. (Lowest voltage reference, and top voltage of each of 6 cells.) The relays which allow the AMS to control the shutdown circuit provide isolation between the AMS and the GLV system, as well as the isolated CAN transceivers. Please see Figure \ref{amsschem} on the following page for the schematic of one of the battery management system boards, and the circuitry it has to measure the relative voltage, shunt, and input the data of voltage and temperature to a ATmega16M1 chip (which communicates to the CAN system). Note that the AMS relays are located on neither the cell top board or the AMS boards, but is included in the AIR control board, which controls the power to the AIRs and the precharge/discharge circuitry. The AIR control board is shown in figure \ref{AIRcntrlPCB}, for the pcb spacings. Its schematic is found in figure \ref{aircntrlschem}.\\
+
     The AMS shunts 3 A when the cell gets above the maximum cell voltage. The AMS opens a relay in line with the shutdown circuit if any cell drops below the minimum cell voltage. The AMS opens a relay in line with the shutdown circuit if any cell gets above 60 \degree C (not datasheet value). Please see figure \ref{shutdownschem} for a schematic of the shutdown circuit's relays.
-
-    CAN communication from the board is isolated via a TI ISO1050DUBR (isolated CAN transceiver), with board cutouts to maintain proper clearance and creepage. Only CAN communication is used to have the information from each AMS relayed to the rest of the system, and the boards are otherwise independent of each other. On each cell-top board, there are 7 surface mount Bel C1Q 3 A fuses. (Lowest voltage reference, and top voltage of each of 6 cells.) The relays which allow the AMS to control the shutdown circuit provide isolation between the AMS and the GLV system, as well as the isolated CAN transceivers. Please see Figure \ref{amsschem} on the following page for the schematic of one of the battery management system boards, and the circuitry it has to measure the relative voltage, shunt, and input the data of voltage and temperature to a ATmega16M1 chip (which communicates to the CAN system). Note that the AMS relays are located on neither the cell top board or the AMS boards, but is included in the AIR control board, which controls the power to the AIRs and the precharge/discharge circuitry. The AIR control board is shown in figure \ref{AIRcntrlspacing}, for the pcb spacings. %Its schematic is found in figure \ref{aircntrlschem}
-
-    %SHould I include AIR cntrl??
 
         \begin{figure}[H]
             \centering
-            \includegraphics[width = 0.4 \textwidth]{celltopschem}
+            \includegraphics[width = 0.4 \textwidth]{cell_top_schematic}
             \caption{Schematic of the cell-top board}
             \label{celltopschem}
         \end{figure}
 
+        There are two versions of the PCB for the cell top board, as the cells are mirrored. The PCBs have the same content, but are mirrored.
+
         \begin{figure}[H]
             \centering
-            \includegraphics[width = 0.8 \textwidth]{Cell-Top_Boards.png}
-            \caption{PCB CAD of the cell-top board}
+            \includegraphics[width = 0.5 \textwidth]{CellTopLH}
+            \caption{The left-side version of the cell top board that connects battery information to the AMS.}
             \label{celltopboard}
         \end{figure}
 
-                \begin{sidewaysfigure}[p]
-                    \includegraphics[width=\textheight]{bmsschem}
-                    \caption{Accumulator Management System schematic}
-                    \label{amsschem}
-                \end{sidewaysfigure}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width = 0.5 \textwidth]{CellTopRH}
+            \caption{The right-side version of the cell top board that connects battery information to the AMS.}
+            \label{celltopboard}
+        \end{figure}
+
+        \begin{sidewaysfigure}[p]
+            \includegraphics[width=\textheight]{bmsschem}
+            \caption{Accumulator Management System schematic}
+            \label{amsschem}
+        \end{sidewaysfigure}
 
                 % \begin{sidewaysfigure}[p]
                 %     \includegraphics[width=\textheight]{aircntrlschem}
@@ -1294,14 +1366,53 @@ Person primarily responsible for this section:
             \centering
             \includegraphics[width = 0.9 \textwidth]{ACCUMULATOR_WIRING_TOP}
             \caption{Top view of accumulator wiring: TS wiring is routed through 3 SMDs in order to segment the accumulator. The pack is fused before the Ts+ AIR then connected to the HVD. The high voltage line is split within the accumulator for the two independent motor controllers. The AMS is located in the center of the pack and monitors cell health during driving and charging. The AIR control Board links the shutdown circuit to the AIRs and is externally connected with AMPSEAL connectors.}
-            \label{ACCUMULATOR_WIRING_SIDE}
+            \label{ACCUMULATOR_WIRING_TOP}
         \end{figure}
 
-    %10C version - 660 or 650 A is max expected current
+    \begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|}
+    \hline
+    Wire type & Welding Cable 2 AWG \\ \hline
+    Current rating & 181 A \\ \hline
+    Maximum operating voltage & 600 V \\ \hline
+    Temperature rating & -49...105 \degree C \\ \hline
+    \end{tabular}
+    \caption{Wire data of the company: Electric motor sport, 0.052 in$^{2}$}
+    \label{motorwire}
+    \end{table}
+
+    % 10C version - 660 or 650 A is max expected current.
+    The maximum expected current when at 10C is 660A. The nominal current is under NDA. We do not expect this max current draw to be an issue due to our current limiting fuses which will blow before the fuses fry and the fact that the TS wires will only be taking half the load.
+
+    The high current (motor, motor controller) wires used for the tractive system will be as described in table \ref{motorwire}.
+    The low current (IMD, Lights DC-DC, GLV DC-DC and ready to drive sound) TS connections will be made with the wire described in table \ref{tslowcurrentwire}.
+    \begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|}
+    \hline
+    Wire type & CnC Tech, 22 AWG \\ \hline
+    Current rating & 7A \\ \hline
+    Cross sectional area & 0.326 mm\textasciicircum 2 \\ \hline
+    Maximum voltage & 600V \\ \hline
+    Temperature rating & 120 \degree C \\ \hline
+    \begin{tabular}[c]{@{}l@{}}Wire connects the\\ following components:\end{tabular} & \begin{tabular}[c]{@{}l@{}}TS V to GLV DC-DC converter, \\ TS V to IMD HV input, \\ TS V to ready to drive sound buzzer\end{tabular} \\ \hline
+    \end{tabular}
+    \caption{Wire data of the company: CnC Tech, 0.326 mm$^{2}$}
+    \label{tslowcurrentwire}
+    \end{table}
+
 
 \subsection{Accumulator Indicator}
 
     \textit{If accumulator container is removable, describe the indicator, including indicating voltage range}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width = 0.8 \textwidth]{aischem}
+            \caption{Schematic of the accumulator indicator}
+            \label{aischem}
+        \end{figure}
 
         \begin{figure}[H]
             \centering
@@ -1310,19 +1421,33 @@ Person primarily responsible for this section:
             \label{aindicatorPCB}
         \end{figure}
 
-    The accumulator will be removable and removed each time for the charging process. The accumulator indicator is a small light within the accumulator that can be seen from the outside, and \textcolor{red}{it is powered by a DC-DC converter that is powered by the tractive system}.
+    The accumulator will be removable and removed each time for the charging process. The accumulator indicator is a small light within the accumulator that can be seen from the outside. The light will turn on at 30VDC because the top zener diode has a breakdown of 28V. From 30-100V, the light will be shining. The light, which is located on the AIR control board, will be placed near the window of the accumulator for visibility.
 
 \subsection{Charging}
 
 \textit{Describe how the accumulator will be charged. How will the charger be connected? How is the accumulator to be supervised during charging?}
 
-The accumulator will be charged using a Delta Q Technologies QioQ 1000 Series charger (UL listed). This charger has a custom charging process for the accumulator. The charging process is a constant current at 17.0A until the battery voltage reaches 4.15Vpc, and then constant voltage at 4.15Vpc until the current tapers to 2.0A. When charging, the accumulator will be located on a hand cart, with a charging interlock, AMS, emergency stop button, and IMD. These components will make up a small version of the shutdown system in order to protect the accumulator. The charger will connect to the charging connector on the accumulator, and will go through the TS side of the AIRs, connecting to the TS. Therefore, the AMS's, IMD and E-stop will all be able to open the AIRs in the case of an emergency. Also, a person with knowledge of the charging process will stay with the accumulator at all times.
+The accumulator will be charged using a Delta Q Technologies QioQ 1000 Series charger (UL listed). This charger has a custom charging process for the accumulator. The charging process is a constant current at 17.0A until the battery voltage reaches 4.15Vpc, and then constant voltage at 4.15Vpc until the current tapers to 2.0A. When charging, the accumulator will be located on a hand cart, with a charging interlock, AMS, emergency stop button, and IMD. These components will make up a small version of the shutdown system in order to protect the accumulator, and the connections for this circuitry can be found on the charging PCB and the AIR control board. The charger will connect to the charging connector (Deutsch 6-pin) to the accumulator, and will go through the TS side of the AIRs, connecting to the TS, while the interlock is located in the connector's two smaller pins. Therefore, the AMS's, IMD and E-stop will all be able to open the AIRs in the case of an emergency. The shutdown components and PCB will be mounted to the charging cart. Also, a person with knowledge of the charging process will stay with the accumulator at all times.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.7 \textwidth]{chargepic}
-    \caption{Visual of the inteded charger from the Delta Q Technologies QioQ 1000 Series}
+    \includegraphics[width = 0.5 \textwidth]{chargepic}
+    \caption{Visual of the intended charger from the Delta Q Technologies QioQ 1000 Series}
     \label{chargepic}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.7 \textwidth]{chargingschem}
+    \caption{Schematic of the charging shutdown system, not including the AMS and its relays (located on the AIR control board). The connections to the Air control board are made through the 14-pin connector}
+    \label{chargerschem}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.7 \textwidth]{chargerPCB}
+    \caption{CAD of the charging shutdown PCB. All connections on the PCB will be low voltage.}
+    \label{chargerPCB}
 \end{figure}
 
 \begin{table}[H]
@@ -1346,6 +1471,13 @@ Input current & 13A@125VAC or 10A@250VAC \\ \hline
 \label{chargertable}
 \end{table}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.7 \textwidth]{Cart}
+    \caption{Cart with a deadman's lock for carrying the accumulator}
+    \label{cart}
+\end{figure}
+
 \subsection{Accumulator Container/Housing}
 
 \textit{Describe the design of the accumulator container. Include the housing material specifications and construction methods. Include data sheets for insulating materials.  Include information documenting compliance with UL94-V0, FAR25 or equivalent.
@@ -1353,24 +1485,35 @@ If the housing is made of conductive material, include information on how the po
 Include additional photographs if required to comply with rule EV3.2.
 Show how the cells are mounted, use CAD-Renderings, and include calculations showing compliance with FH Rules EV3.4.}
 
-The accumulator is comprised of flanged 403 stainless steel sheetmetal panels, meeting the material and fastener requirements set by Formula SAE Electric rule EV 3.4.6. This rule specifies that the minimum sheet thickness for the floor is 0.049" steel and 0.035" steel for vertical and internal walls. The panels are fastened together using a minimum of three 1/4" SAE Grade 5 at any joint, except at the intersection of internal walls. These intersections, highlighted in gold in Figure \ref{acc_frame}, will be spot welded in at least three places. We will also be conducting a pull-test of test parts to ensure our spot welding settings are correct for full penetration. The Nissan modules are isolated by an additional layer of G10/FR4 Garolite, a fiberglass-cloth with a flame-retardant resin. G10/FR4 meets MIL-I-24768/27 and UL94-V0 for flame retardance (Mcmaster-Carr P/N 8667K55). These barriers do not create electrical insulation, which is performed internal to each module. We have insulation ratings between the Nissan module case and the cell terminals, but this information is under NDA. G10/FR4 panels are highlighted in Figure \ref{acc_iso} in yellow. Please note that not all G10/FR4 panels are not present in our CAD model.
+The accumulator is comprised of flanged 403 stainless steel sheet metal panels, meeting the material and fastener requirements set by Formula SAE Electric rule EV 3.4.6. This rule specifies that the minimum sheet thickness for the floor is 0.049” steel and 0.035” steel for vertical and internal walls. The panels are fastened together using a minimum of three 1/4” SAE Grade 5 at any joint, except at the intersection of internal walls. These intersections will be spot welded with weld area equivalent to a linear weld along the same length of joint. We will also be conducting a pull-test of test parts to ensure our spot welding settings are correct for full penetration. We have received a rules clarification \# 4795 stating that spot welding is regulation-compliant. The Nissan modules are additionally isolated by an additional layer of G10/FR4 Garolite, a fiberglass-cloth with a flame-retardant resin. G10/FR4 meets MIL-I-24768/27 and UL94-V0 for flame retardance (Mcmaster-Carr P/N 8667K55). These barriers do not create electrical insulation, which is performed internal to each module. We have insulation ratings between the Nissan module case and the cell terminals, but this information is under NDA.
+
+In this design the Nissan/AESC battery modules are laid flat relative to the car, and broken up into segments containing less than 6MJ of total stored energy. The accumulator has two covers, both lined with FR4 insulating material. The cover revealing the battery modules also serves as a structural vertical wall, and great care was taken in the design to ensure compliance with EV 3.4.6.
+
+The accumulator is mounted to the chassis using 10 SAE Grade 5 5/16” bolts through welded, gusseted tabs.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.7 \textwidth]{accumulator_frame}
+    \includegraphics[width = 0.7 \textwidth]{accumulator_insulation_frame_isoview}
     \caption{Accumulator Frame Exploded View}
     \label{acc_frame}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.7 \textwidth]{accumulator_isoview}
-    \caption{Accumulator, Isometric}
-    \label{acc_iso}
+    \includegraphics[width = 0.7 \textwidth]{sheetmetal_isoview}
+    \caption{Sheet metal construction of the accumulator, isometric}
+    \label{acc_sheet_iso}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.7 \textwidth]{finalaccumulator_render3}
+    \caption{Overall view of the accumulator container, with the lid on.}
+    \label{accumulator_iso}
 \end{figure}
 
 \section{Safety Controls and Indicators}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%SECTION 6%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Person primarily responsible for this section:
     \begin{table}[H]
         \centering
@@ -1394,13 +1537,12 @@ Please see figure \ref{shutdownschem} for the shutdown schematic, on the next pa
             \label{shutdownschem}
         \end{sidewaysfigure}
 
-
 \textit{Describe the method of operation of your shutdown circuit, including the master switches, shut down buttons, brake over-travel switch, etc. Also complete the following table}
 
 The shutdown circuit is a circuit, carrying the power of the AIR all in series. The shutdown circuit utilizes a broad range of sensors for vehicle and driver safety.
 The brake over travel switch is a single pole switch that is located behind the brake, and in the event it over-travels, it will open the shutdown circuit.\\
 
-The master switches are single pole switches that must be manually closed in order to close the shutdown system. The keys for the master switches are kept in the active Electrical Safety Officer's possession at all times. When disconnected from the vehicle, the keys are also padlocked to each other, thus disabling closing both switches simultaneously due to the physical separation of the switches and ensuring safety even if the ESO loses possesion of the keys. This ensures that a driver can only operate the vehicle, under the supervision of the ESO.\\
+The master switches are single pole switches that must be manually closed in order to close the shutdown system. The keys for the master switches are kept in the active Electrical Safety Officer's possession at all times. When disconnected from the vehicle, the keys are also connected to each other, thus disabling closing both switches simultaneously due to the physical separation of the switches and ensuring safety even if the ESO loses possession of the keys. This ensures that a driver can only operate the vehicle under the supervision of the ESO.\\
 
 The shutdown buttons are emergency stop buttons that are normally closed and single pole. In the event of the emergency, the three buttons (located in the cockpit, right back and left back of the vehicle) can be pushed and then open the shutdown circuit.\\
 
@@ -1420,12 +1562,11 @@ A switch for GLV power is given to the driver for the ability to see the error m
 \hline
 Part & \begin{tabular}[c]{@{}l@{}}Function \\ (Momentary, Normally Open or Normally Closed)\end{tabular} \\ \hline
 \begin{tabular}[c]{@{}l@{}}Main Switch (for control and \\ tractive-system; CSMS, TSMS)\end{tabular} & Normally Open (x2) \\ \hline
-Brake over-travel switch (BOTS) & Normally Closed \\ \hline
+Brake over-travel switch (BOTS) & Push-Pull \\ \hline
 Shutdown Buttons (BRB) & Normally Closed (x3) \\ \hline
 Insulation Monitoring Device (IMD) & Normally Open \\ \hline
 Battery Management System (AMS) & Normally Open (x4) \\ \hline
 Interlocks (if used) & Normally Open \\ \hline
-GLV switch for the driver & Normally Closed \\ \hline
 \end{tabular}
 \caption{Switches and devices in the shutdown circuit}
 \label{shutdowndevicestable}
@@ -1433,7 +1574,7 @@ GLV switch for the driver & Normally Closed \\ \hline
 
 \textit{Describe wiring and additional circuitry controlling AIRs. Write a functional description of operation}
 
-The power to the AIRs is all in series until the economizers for each AIR and the AIRs are in parallel. All wiring is 22 AWG and the GLV system is fused to 4A. The shutdown system communicates with the CAN system to ensure simple debugging and software control where permitted.
+The power to the AIRs is all in series until the economizers for each AIR and the AIRs are in parallel. All wiring is 20 AWG and the GLV system is has four fuses in general. There is a 5A fuse on the output of the DC/DC converter and a 5A fuse on the output of the GLV battery. After the e-stops, the GLV 12V splits to be in parallel with the shutdown system, and both the GLV 12V and shutdown system are fused to 2A. For each board that accepts 5V as input for the CAN system, there is a 1A PTC resettable fuse on the 5V line (all nodes are in parallel). The shutdown system communicates with the CAN system to ensure simple debugging and software control where permitted.
 
 %table of Shutdown circuit Current Draw
 \begin{table}[H]
@@ -1442,7 +1583,7 @@ The power to the AIRs is all in series until the economizers for each AIR and th
 \hline
 Total Number of AIRS & 2 \\ \hline
 Coil holding current per AIR & \begin{tabular}[c]{@{}l@{}}3.8A until\\ 150 ms passed, \\ then 0.4 A\end{tabular} \\ \hline
-\begin{tabular}[c]{@{}l@{}}Current drawn by other components\\ wired in parallel with the AIRs\end{tabular} & 0.5 A \\ \hline
+\begin{tabular}[c]{@{}l@{}}Current drawn by other components\\ wired in parallel with the AIRs\end{tabular} & 1.5-2A \\ \hline
 \end{tabular}
 \caption{Shutdown circuit current draw}
 \label{shutdowncurrenttable}
@@ -1465,8 +1606,8 @@ Coil holding current per AIR & \begin{tabular}[c]{@{}l@{}}3.8A until\\ 150 ms pa
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.6 \textwidth]{CockpitShutdownButton}
-    \caption{Cockpit Shutdown Butto: Large E-Stop button for driver controlled shutdown}
+    \includegraphics[width = 0.6 \textwidth]{cockpitestoplocation}
+    \caption{Cockpit Shutdown Button: E-Stop button for driver controlled shutdown}
     \label{CockpitShutdownButton}
 \end{figure}
 
@@ -1479,16 +1620,16 @@ Coil holding current per AIR & \begin{tabular}[c]{@{}l@{}}3.8A until\\ 150 ms pa
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.6 \textwidth]{TSMPcontainer1}
-    \caption{TSMP Container Front View: The TSMP Container houses the IMD, TSMS, and GLVMS of the shutdown circuit.}
-    \label{TSMPcontainer1}
+    \includegraphics[width = 0.6 \textwidth]{CONTROLPANEL_1}
+    \caption{Side Panel Front View}
+    \label{sidepanelhousing}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.75 \textwidth]{TSMPcontainer2}
-    \caption{TSMP Container Top View: The TSMP Container contains TS and GLV systems. Therefore spacing of at least 1 cm is maintained between the two systems at all times. This design is not yet finalized.}
-    \label{TSMPcontainer1}
+    \includegraphics[width = 0.75 \textwidth]{CONTROLPANEL_2}
+    \caption{Side Panel Inside View}
+    \label{sidepanelinside}
 \end{figure}
 
 The physical location of the AMS is pictured and discussed in Figure \ref{ACCUMULATOR_WIRING_SIDE}.
@@ -1499,19 +1640,19 @@ The physical location of the AMS is pictured and discussed in Figure \ref{ACCUMU
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.6 \textwidth]{IMDonly}
+    \includegraphics[width = 0.7 \textwidth]{Only_IMD}
     \caption{Schematic of the IMD}
     \label{imdschem}
 \end{figure}
 
-The IMD will have a high output as long as a there is no ground fault detected. The high output will not power the relay until the reset button is pressed. Pressing the IMD will "latch" it into its state (by using the first switch) until the output goes low from a ground fault. The relay's coil pulls all 4 of the double pole switches to their active states. Therefore, with a latched coil, the switch in the shutdown circuit is closed, the IMD light in the cockpit is not receiving power, and the CAN node input is high.
+The IMD will have a high output as long as a there is no ground fault detected. The high output will not power the relay until the reset button is pressed in the very beginning start up procedure. Pressing the IMD reset button will "latch" it into its state (by using the first switch). The relay's coil pulls all 4 of the double pole switches to their active states, therefore closing the shutdown circuit and pulling the ATMega16M1 input as low. The input to the microprocessor has a pull-up resistor in case of a disconnection in the wiring. The ATMega16M1 in the side panel housing (where the IMD is) will notify the ATMega16M1 in the dashboard (where the IMD light is) to turn the pin that the IMD light is on high. The fourth pole is left open.
 
 \begin{table}[H]
 \centering
 \begin{tabular}{|l|l|}
 \hline
 MFR/Model & Bender ISOMETER IR155-3204 \\ \hline
-Set Response Value & 50 k\ohm \\ \hline
+Set Response Value & 100 k\ohm \\ \hline
 \end{tabular}
 \caption{Parameters of the IMD}
 \label{IMDtable}
@@ -1523,16 +1664,16 @@ Referred from section \ref{latching} (Reset/Latching for IMD and AMS)
 
 \textit{Describe the functioning and circuitry of the latching/reset system for a tripped IMD or AMS. Describe wiring, provide schematics.}
 
-If the AMS detects a fault. It opens the shutdown circuit, and latches into that state. When the AMS reset switch, located in the side panel housing, is pressed, the nearby CAN node passes a ”Reset” CAN message to the AMS boards. If the accumulator is within safe electrical and temperature operating limits the AMS closes the shutdown circuit. Figure \ref{amsreset} demonstrates the relevant circuitry of the AMS reset switch and side panel CAN node, which also will be wired to shutdown components.
+If the AMS detects a fault. It opens the shutdown circuit, and latches into that state. When the AMS reset switch, located in the side panel housing, is pressed, the nearby CAN node passes a message through CAN to the AMS boards. If the accumulator is within safe electrical and temperature operating limits the AMS closes the shutdown circuit.%  Figure \ref{amsreset} demonstrates the relevant circuitry of the AMS reset switch and side panel CAN node, which also will be wired to shutdown components.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width = 0.7 \textwidth]{amsreset}
-    \caption{Schematic for the AMS reset button and latching}
-    \label{amsreset}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width = 0.7 \textwidth]{amsreset}
+%     \caption{Schematic for the AMS reset button and latching}
+%     \label{amsreset}
+% \end{figure}
 
-To reset the IMD an operator other than the driver must push the IMD reset button located on the outside of the car on a panel next to the TSMPs, master switches and E-stops. \textcolor{red}{If the output of the IMD is high because there is no ground fault, the reset button will activate the coil and close the shutdown circuit.}
+To reset the IMD an operator other than the driver must push the IMD reset button located on the outside of the car on the side panel, next to the TSMPs, master switches and E-stops. If the output of the IMD is high because there is no ground fault, the reset button will activate the coil and close the shutdown circuit.
 
 Please see figure \ref{imdschem} for the latching of the IMD circuit. The push button labelled "RESET" is the form of latching for the IMD- pressing the reset button will energize the relay's coil and allow it to self-energize for the remainder of the time that its output is high (true). The IMD reset button must be pressed in order for the shutdown circuit to be closed (assuming the IMD does not find a ground fault).
 
@@ -1540,7 +1681,7 @@ Please see figure \ref{imdschem} for the latching of the IMD circuit. The push b
 
 \textit{(If used) describe the functioning and circuitry of the Shutdown System Interlocks. Describe wiring, provide schematics.}
 
-The shutdown system does employ interlocks on the main battery connectors, and the HVD. The charger's interlock will replace the two main connectors' (to the motor controllers) interlock when the accumulator is charging. All of the interlocks will be fit in their respective high voltage connectors, and be in series with the shutdown circuit, besides the charger interlock being in parallel with the two main connections (referenced as CONN in figure \ref{interlocks}).
+The shutdown system does employ interlocks on the main battery connectors and the HVD. The charger's interlock will replace the two main connectors' (to the motor controllers) interlock when the accumulator is charging. All of the interlocks will be fit in their respective high voltage connectors, and be in series with the shutdown circuit, besides the charger interlock being in parallel with the two main connections (referenced as CONN in figure \ref{interlocks}).
 
 \begin{figure}[H]
     \centering
@@ -1555,12 +1696,12 @@ The shutdown system does employ interlocks on the main battery connectors, and t
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.7 \textwidth]{tsel_fh}
+    \includegraphics[width = 0.7 \textwidth]{tselschem}
     \caption{Schematic of the TSEL}
     \label{tselschem}
 \end{figure}
 
-The TSEL will be located directly under the main roll hoop. It is powered with GLV voltage taken from right before the AIR coils. When 12V is present there, it will close a photomosfet and allow power to pass on the TSAL side.
+The TSEL will be located directly under the main roll hoop. It is powered with GLV voltage taken from right before the AIR coils. When 12V is present there, it will close a photomosfet and allow power to pass on the TSEL side.
 
 \subsection{Tractive System Voltage Present light (TSVP)}
 
@@ -1570,7 +1711,7 @@ The TSVPs will be red lights mounted on opposite sides of the roll bar. They are
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.5 \textwidth]{tsvp_fh}
+    \includegraphics[width = 0.5 \textwidth]{tsvps}
     \caption{Schematic of the TSVPs}
     \label{tsvpschem}
 \end{figure}
@@ -1579,7 +1720,7 @@ The TSVPs will be red lights mounted on opposite sides of the roll bar. They are
 
 \textit{Describe your design for the RTDS system. See EV4.11}
 
-The Ready to Drive sound includes a buzzer \href{http://www.mouser.com/ProductDetail/Mallory-Sonalert/SC648ANR/?qs=sGAEpiMZZMsK322k1rNFfUHVVB8ZIcIhitNEhItROC4\%3d}{Mallory Sonalert SC648ANR} (link), a CAN node, and a relay. The buzzer automatically makes a noise when given power, with the loudness proportional to the voltage. The last step in the start-up up sequence will notify the CAN system it is time for the ready to drive sound. Then the corresponding node on the buzzer will close a relay between TS+, after a 2.6 k\ohm resistor (5 Watts), and the buzzer for two seconds, at 95 dB at 2ft. The resistor limits the voltage over the buzzer to 48V and the current to 20 mA.
+The Ready to Drive sound includes a buzzer \href{http://www.mouser.com/ProductDetail/Mallory-Sonalert/SC648ANR/?qs=sGAEpiMZZMsK322k1rNFfUHVVB8ZIcIhitNEhItROC4%3d}{Mallory Sonalert SC648ANR} (link), a CAN node, and a relay. The buzzer automatically makes a noise when given power, with the loudness proportional to the voltage. The last step in the start-up up sequence will notify the CAN system it is time for the ready to drive sound. Then the corresponding node on the buzzer will close a relay between TS+, after a 2.6 k\ohm resistor (5 Watts), and the buzzer for two seconds, at 95 dB at 2ft. The resistor limits the voltage over the buzzer to 48V (it's maximum) and the current to 20 mA.
 
 \begin{figure}[H]
     \centering
@@ -1604,14 +1745,21 @@ Person primarily responsible for this section:
 
 \textit{Provide a brief description of the GLV system and complete the following table}\\
 
-\textnormal{The GLV system consists of nine separate CAN nodes and all peripheral sensors. There will be a 12V line, 5V line, CAN High and CAN Low going along the car in order to power different components and to allow communications.}
+\textnormal{The GLV system consists of nine separate CAN nodes and all peripheral sensors. There will be a 12V line, 5V line, CAN High and CAN Low going along the car in order to power different components and to allow communications. Figure \ref{glvfusing} shows how fusing of the glv line is handled in reference to the main switch, e-stops, dc-dc converter and battery.}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.7 \textwidth]{glvfusing}
+    \caption{Schematic showing the branching, fusing and control of the GLV line}
+    \label{glvfusing}
+\end{figure}
 
 \begin{table}[H]
 \centering
 \begin{tabular}{|l|l|}
 \hline
-GLV System Voltage & 12V \\ \hline
-GLV Main Fuse Rating & 4A \\ \hline
+GLV System Voltage & 13.5V \\ \hline
+GLV Main Fuse Rating & 5A \\ \hline
 Is a Li-Ion GLV battery used? & No \\ \hline
 If Yes, is a firewall provided per T4.5.1? & N/A \\ \hline
 Is a DC-DC converter used from TSV? & Yes \\ \hline
@@ -1621,6 +1769,13 @@ Does the design comply with EV1.2.7? & Yes \\ \hline
 \caption{GLV System Data}
 \label{glvtable}
 \end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{glvfusing}
+    \caption{Order of fuses for GLV system}
+    \label{glvfusing}
+\end{figure}
 
 \section{Appendices}
 
