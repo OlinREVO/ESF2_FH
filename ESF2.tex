@@ -319,7 +319,7 @@ Please note that the figure numbers in our document do not correspond to the spe
         \hline
         Item & Data \\ \hline
         Nominal Tractive System Voltage (TSV) & 90 VDC \\ \hline
-        Max. TSV (typically this is during charging) & 99.6 VDC \\ \hline
+        Max. TSV (typically this is during charging) & 98.4 VDC \\ \hline
         Control System voltage (GLV) & 13.5 VDC \\ \hline
         Total Accumulator capacity (Wh) & 4680 Wh \\ \hline
         Accumulator Type & Li-ion \\ \hline
@@ -368,7 +368,7 @@ Person primarily responsible for this section:
         \label{fusetable}
     \end{table}
 
-    There is a 1A fuse on both the TS+ and TS- lines (20 AWG), protecting the GLV system by being in front of the DC-DC converter and protecting the TS sensing lines for the IMD, TSEL, accumulator indicator and TSMPs. For its connection in the tractive system, please see \ref{tractiveblock} and for its connection in the glv system, please see figure \ref{glvfusing}.
+    There is a 1A fuse on both the TS+ and TS- lines (20 AWG), protecting the GLV system by being in front of the DC-DC converter and protecting the TS sensing lines for the IMD, TSEL, accumulator indicator and TSMPs. For its connection in the tractive system, please see figure \ref{tractiveblock} and for its connection in the glv system, please see figure \ref{glvfusing}.
 
 \subsection{Component Fusing}
 
@@ -383,12 +383,13 @@ Person primarily responsible for this section:
 \begin{tabular}{|l|l|l|l|l|}
 \hline
 Component & Fuse Part Number & Max Fuse Rating & \begin{tabular}[c]{@{}l@{}}Installed \\ Fuse Rating\end{tabular} & Notes \\ \hline
-Motor Controllers & LPJ175sp & 190 A (for 2AWG) & 175A & \begin{tabular}[c]{@{}l@{}}Fused before motor\\ controllers in parallel\end{tabular} \\ \hline
+Motor Controllers & LPJ175SP & 190 A (for 2AWG) & 175A & \begin{tabular}[c]{@{}l@{}}Fused before motor\\ controllers in parallel\end{tabular} \\ \hline
 AMS inputs (x28) & CIQ 3 & 4A (for traces) & 3A & \begin{tabular}[c]{@{}l@{}}Each input fused\\ separately\end{tabular} \\ \hline
-GLV System & MIN5BP & 7A (for 20AWG) & 5A &  \\ \hline
-GLV 12V and Shutdown circuit & MIN2BP & 7A (for 20AWG, traces) & 2A &  \\ \hline
+GLV System & MIN5BP & 7A (for 22AWG) & 5A &  \\ \hline
+GLV 12V & MIN2BP & 7A (for 22AWG, traces) & 2A &  \\ \hline
+Shutdown circuit & MIN2BP & 7A (for 22AWG, traces) & 2A &  \\ \hline
 5V CAN circuit & 0ZCK0050FF2E & 0.5A & 0.5A &  \\ \hline
-\begin{tabular}[c]{@{}l@{}}Lights DC-DC converter, \\ TSMPs and IMD\end{tabular} & F3169CT-ND & 7A (for 22 AWG) & 0.5A & \begin{tabular}[c]{@{}l@{}}Protects all TS \\ low current\\ components\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}l@{}}Lights DC-DC converter, \\ TSMPs, GLV DC-DC converter,\\ and IMD\end{tabular} & F3169CT-ND & 7A (for 22 AWG) & 0.5A & \begin{tabular}[c]{@{}l@{}}Protects all TS \\ low current\\ components\end{tabular} \\ \hline
 \begin{tabular}[c]{@{}l@{}}Keyswitch input to Motor \\ Controller\end{tabular} & A15QS7-2 & \begin{tabular}[c]{@{}l@{}}7A (for motor\\ controller LV input)\end{tabular} & 7A &  \\ \hline
 Battery Input (charging) & BK/SC-20 & For battery cells, charging & NDA \\ \hline
 \end{tabular}
@@ -403,7 +404,7 @@ Battery Input (charging) & BK/SC-20 & For battery cells, charging & NDA \\ \hlin
 Cable capacity is the value from FH Rules Appendix E (Wire Current Capacity). A revised version of Appendix E that includes metric wire sizes is available at the FH web site. Show available fault current and how calculated. Available fault current can be calculated from FaultCurrent = Vsource / (Rsource + Rwiring)}
 
 %System Wire Table
-\begin{table}
+\begin{table}[H]
 \centering
 \begin{adjustbox}{angle=90,width=1in}
 \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|}
@@ -445,7 +446,7 @@ The fault current for the GLV system is restricted by the DC-DC converter supply
 
 \textit{Describe how you keep the resistances between accessible components below the required levels as defined in FH Rules EV4.3. If wire is used for ground bonding, state the AWG or mm2 of the wire}
 
-The chassis is used as GLV ground. This ground is established at the side panel mount holding many of the shutdown components and the TSMP's. All mechanical systems in the vehicle, such as the accumulator, drivers seat, and pedal box, achieve low resistance to ground because they are either welded directly to the chassis, or fastened using uncoated, conductive metal fasteners. Electrical systems that are satellite to the main panel mount that need to establish a connection to ground for sense purposes are grounded to the chassis using ring terminals. Ring terminals can be included in the bolt stack up of mechanical systems to ensure a secure connection to ground that is positively retained with a lock nut. All wires used for ground bonding will be 20 AWG, which is the same wire gauge as the GLV system. During charging, there will be a green 16 AWG wire connecting the GLV system to earth ground.
+The chassis is used as GLV ground. This ground is established at the side panel mount holding many of the shutdown components and the TSMP's. All mechanical systems in the vehicle, such as the accumulator, drivers seat, and pedal box, achieve low resistance to ground because they are either welded directly to the chassis, or fastened using uncoated, conductive metal fasteners. Electrical systems that are satellite to the main panel mount that need to establish a connection to ground for sense purposes are grounded to the chassis using ring terminals. Ring terminals can be included in the bolt stack up of mechanical systems to ensure a secure connection to ground that is positively retained with a lock nut. All wires used for ground bonding will be 16 AWG. During charging, there will be a green 16 AWG wire connecting the GLV system to earth ground.
 
 \subsection{Conductive Panel Grounding}
 
@@ -487,10 +488,10 @@ Person primarily responsible for this section:
 \begin{tabular}{|l|l|l|l|l|}
 \hline
 Device/PCB & TS Voltage Present & \begin{tabular}[c]{@{}l@{}}Minimum \\ Spacing mm\end{tabular} & \begin{tabular}[c]{@{}l@{}}Thru Air or\\ Over surface\end{tabular} & Notes \\ \hline
-\begin{tabular}[c]{@{}l@{}}AIR Control Board \\ (Precharge, Discharge,\\ Lights, AMS relays, etc)\end{tabular} & 100 V & 6.4 & Over Surface &  \\ \hline
-\begin{tabular}[c]{@{}l@{}}Accumulator Management\\  System (x4)\end{tabular} & 100V & 6.4 & Over surface & \begin{tabular}[c]{@{}l@{}}1 AMS per segment, \\ each segment nominally\\ 22.5V\end{tabular} \\ \hline
-\begin{tabular}[c]{@{}l@{}}Side Panel CAN node \\ (Ready to drive sound, TSMP)\end{tabular} & 22.5V & 6.4mm  & Over Surface &  \\ \hline
-Motor Controller Isolation & 100 V & 6.4 & Over surface &  \\ \hline
+\begin{tabular}[c]{@{}l@{}}AIR Control Board \\ (Precharge, Discharge,\\ Lights, AMS relays, etc)\end{tabular} & 100 V & 6.4mm & Over Surface &  \\ \hline
+\begin{tabular}[c]{@{}l@{}}Accumulator Management\\  System (x4)\end{tabular} & 22.5V & 6.4mm & Over surface & \begin{tabular}[c]{@{}l@{}}1 AMS per segment, \\ each segment nominally\\ 22.5V\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}l@{}}Side Panel CAN node \\ (Ready to drive sound, TSMP)\end{tabular} & 100V & 6.4mm  & Over Surface &  \\ \hline
+Motor Controller Isolation & 100 V & 6.4mm & Over surface &  \\ \hline
 \end{tabular}
 \end{adjustbox}
 \caption{PCB Spacings}
@@ -537,7 +538,7 @@ Motor Controller Isolation & 100 V & 6.4 & Over surface &  \\ \hline
 \begin{tabular}{|l|l|l|l|}
 \hline
 Component & Isolation method & \begin{tabular}[c]{@{}l@{}}Link to Document\\ Describing Isolation\end{tabular} & Notes \\ \hline
-Precharge relay & Galvanic (relay) & \href{http://www.mouser.com/ds/2/307/G5LE\_0813-267607.pdf}{Click here} &  \\ \hline
+Precharge relay & Galvanic (relay) & \href{http://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=6-1773450-9_LEV100&DocType=DS&DocLang=English}{Click here} &  \\ \hline
 Discharge relay & Galvanic (relay) & \href{http://cotorelay.com/wp-content/uploads/2014/09/5500\_series\_reed\_relay\_datasheet.pdf}{Click Here} &  \\ \hline
 GLV DC-DC converter & Not listed & \href{http://www.evdrives.com/product\_p/vr-sevcon-7213.htm}{Click Here} &  \\ \hline
 Lights DC-DC converter & \begin{tabular}[c]{@{}l@{}}Not listed: Isolation\\ test at 5000V\end{tabular} & \href{http://www.mouser.com/ds/2/281/mdc\_ruw15-217876.pdf}{Click Here} &  \\ \hline
@@ -545,7 +546,7 @@ Ready to drive relay & Galvanic (relay) & \href{http://pdf1.alldatasheet.com/dat
 AMS relay x4 & Galvanic (relay) & \href{http://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv\&DocNm=OJ\_OJE\_series\_relay\_data\_sheet\_E\&DocType=DS\&DocLang=English}{Click Here} &  \\ \hline
 Photorelay mosfet & Galvanic (Photorelay) & \href{http://toshiba.semicon-storage.com/info/docget.jsp?did=17083\&amp;prodName=TLP592A}{Click Here} &  \\ \hline
 Isolated CAN Tranceiver & Galvanic & \href{http://www.ti.com/lit/ds/symlink/iso1050.pdf}{Click Here} &  \\ \hline
-BSPD Relay & None listed & \href{http://www.mouser.com/ProductDetail/TE-Connectivity/OJ-SH-105HM000/?qs=%2fha2pyFaduihBgI7ARjI70jHf%2f4%2fFPQxhir8DUrpU%252bkAVAYrW5DJOg%3d%3d}{Click Here} &  \\ \hline
+BSPD Relay & Galvanic (relay) & \href{http://www.mouser.com/ProductDetail/TE-Connectivity/OJ-SH-105HM000/?qs=%2fha2pyFaduihBgI7ARjI70jHf%2f4%2fFPQxhir8DUrpU%252bkAVAYrW5DJOg%3d%3d}{Click Here} &  \\ \hline
 \end{tabular}
 \end{adjustbox}
 \caption{Purchased Components - Isolation Data}
@@ -655,8 +656,8 @@ The Delphi shielded cable is being provided by General Motors, and we are still 
 
             \begin{figure}[H]
                 \centering
-                \includegraphics[width = 0.65 \textwidth]{FullCar2_13_16}
-                \caption{CAD render of the firewall's position in the car}
+                \includegraphics[width = 0.3 \textwidth]{Firewallincar}
+                \caption{Photograph of the installed firewall's position in the car}
                 \label{firewallposition}
             \end{figure}
 
@@ -667,7 +668,7 @@ Person primarily responsible for this section:
         \centering
         \label{responsible4}
         \begin{tabular}{lr}
-        Name: & Lisa Hachmann \\ \hline
+        Name: & Lisa J. Hachmann \\ \hline
         e-mail: & Lisa.Hachmann@students.olin.edu \\ \hline
         \end{tabular}
     \end{table}
@@ -741,7 +742,7 @@ Person primarily responsible for this section:
 
     \textit{The TSMP must comply with FH Rule EV4.4. Describe the TSMP housing and location. Describe TSMP electrical connection point.}
 
-    The TSMPs are located on the motor controller housing, which is a polycarbonate, PLA and nylon enclosure that is located in the rear right side of the car, behind the main hoop. This housing also contains most of the shutdown components. Electrically, it is connected to the TS+ and TS- power lines (past the AIR's, in a separate connector and wiring bundle), in parallel to the motors. The housing includes all TS voltage components besides those in the accumulator and HVD. Please see Figure \ref{tractiveschem} for the schematic in the larger context, as Figure \ref{tsmpschem} is a schematic focused on the TSMPs, with and without the multimeter The TSMPs are mounted on the side panel PCB.
+    The TSMPs are located on the motor controller housing, which is a polycarbonate, PLA and nylon enclosure that is located in the rear right side of the car, behind the main hoop. This housing also contains most of the shutdown components. Electrically, it is connected to the TS+ and TS- power lines (past the AIR's, in a separate connector and wiring bundle), in parallel to the motors but fused to 1A on both the TS+ and TS- lines. This fusing was cleared in Ticket \#1193, as we have a fuse protecting the wiring before the TSMPs. The housing includes all TS voltage components besides those in the accumulator and HVD. Please see Figure \ref{tractiveschem} for the schematic in the larger context, as Figure \ref{tsmpschem} is a schematic focused on the TSMPs, with and without the multimeter The TSMPs are mounted on the side panel PCB.
 
     \begin{figure}[H]
         \centering
