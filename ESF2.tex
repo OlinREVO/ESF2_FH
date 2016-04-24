@@ -359,12 +359,14 @@ Person primarily responsible for this section:
         Littelfuse & F3169CT-ND & 1A & 125V & 300A@125VDC & \begin{tabular}[c]{@{}l@{}}TS- low current \\ components, lights' DC-DC \\ converter, \\ GLV DC-DC converter\end{tabular} \\\hline
         Littelfuse & MINI2BP & 2A & 32 V & 1000A @ 32 VD & \begin{tabular}[c]{@{}l@{}}12V power, Shutdown circuit. \end{tabular} \\ \hline
         Littelfuse & MINI5BP & 5A & 32 V & 1000A @ 32 VD & \begin{tabular}[c]{@{}l@{}} GLV system \end{tabular} \\ \hline
-        Bel Fuse & 0ZCK0050FF2E & 1A & 6V & PTC Resettable & 5V CAN circuit \\ \hline
+        Bel Fuse & 0ZCK0050FF2E & 0.5A & 6V & PTC Resettable & 5V CAN circuit \\ \hline
         \end{tabular}
         \end{adjustbox}
         \caption{Fuse Table}
         \label{fusetable}
     \end{table}
+
+    There is a 1A fuse on both the TS+ and TS- lines (20 AWG), protecting the GLV system by being in front of the DC-DC converter and protecting the TS sensing lines for the IMD, TSEL, accumulator indicator and TSMPs. For its connection in the tractive system, please see \ref{tractiveblock} and for its connection in the glv system, please see figure \ref{glvfusing}.
 
 \subsection{Component Fusing}
 
@@ -383,7 +385,7 @@ Motor Controllers & LPJ175sp & 190 A (for 2AWG) & 175A & \begin{tabular}[c]{@{}l
 AMS inputs (x28) & CIQ 3 & 4A (for traces) & 3A & \begin{tabular}[c]{@{}l@{}}Each input fused\\ separately\end{tabular} \\ \hline
 GLV System & MIN5BP & 7A (for 20AWG) & 5A &  \\ \hline
 GLV 12V and Shutdown circuit & MIN2BP & 7A (for 20AWG, traces) & 2A &  \\ \hline
-5V CAN circuit & 0ZCK0050FF2E & 1A & 1A &  \\ \hline
+5V CAN circuit & 0ZCK0050FF2E & 0.5A & 0.5A &  \\ \hline
 \begin{tabular}[c]{@{}l@{}}Lights DC-DC converter, \\ TSMPs and IMD\end{tabular} & F3169CT-ND & 1.25A (for dc-dc converter) & 1A & \begin{tabular}[c]{@{}l@{}}Protects all TS \\ low current\\ components\end{tabular} \\ \hline
 \begin{tabular}[c]{@{}l@{}}Keyswitch input to Motor \\ Controller\end{tabular} & A15QS7-2 & \begin{tabular}[c]{@{}l@{}}7A (for motor\\ controller LV input)\end{tabular} & 7A &  \\ \hline
 \end{tabular}
@@ -400,7 +402,7 @@ Cable capacity is the value from FH Rules Appendix E (Wire Current Capacity). A 
 %System Wire Table
 \begin{table}[H]
 \centering
-\begin{adjustbox}{max width=\textwidth}
+\begin{adjustbox}{angle=90,width=1in}
 \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|}
 \hline
 Mfg & \begin{tabular}[c]{@{}l@{}}Part\\ No\end{tabular} & \begin{tabular}[c]{@{}l@{}}Size \\ AWG\end{tabular} & \begin{tabular}[c]{@{}l@{}}Insulation\\ Type\end{tabular} & \begin{tabular}[c]{@{}l@{}}Voltage\\ Rating\end{tabular} & \begin{tabular}[c]{@{}l@{}}Temp. \\ Rating\end{tabular} & \begin{tabular}[c]{@{}l@{}}Cable\\ Capacity \\ (per FH)\end{tabular} & \begin{tabular}[c]{@{}l@{}}Fuse\\ Part \#\end{tabular} & \begin{tabular}[c]{@{}l@{}}Fuse \\ Cont. A\end{tabular} & \begin{tabular}[c]{@{}l@{}}Fuse Interrupting\\ Rating A\end{tabular} & \begin{tabular}[c]{@{}l@{}}Available\\ Fault Current\end{tabular} & \begin{tabular}[c]{@{}l@{}}Where used \& \\ how fault current\\ is calculated\end{tabular} \\ \hline
@@ -553,30 +555,28 @@ BSPD Relay & None listed & \href{http://www.mouser.com/ProductDetail/TE-Connecti
 
 \begin{table}[ht]
 \centering
-% \caption{My caption}
-% \label{my-label}
-\begin{adjustbox}{max width=\textwidth}
-\begin{tabular}{|l|r|l|l|l|l|}
+% \begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{|l|l|l|l|l|l|}
 \hline
-Container Name & Segregation by Spacing (Y or N) & \begin{tabular}[c]{@{}l@{}}How\\   is spacing maintained?\end{tabular} & \begin{tabular}[c]{@{}l@{}}Actual\\   Measured Spacing mm\end{tabular} & Alt,– Barrier Material P/N & Notes \\ \hline
-Accumulator Container & Y & Kevlar reinforced nylon cable clips and cable ties &  &  Mcmaster 8667K55 (Garolite) & Garolite is also used as the barrier between segments, TS fuse and, AIRs. Accumulator is in assembly so measured distance is unavailable. \\ \hline
-TSMP Housing & Y & Kevlar reinforced nylon cable clips and cable ties &  &  & \begin{tabular}[c]{@{}l@{}}This part is also in assembly \\ eso the measured spacing is not\\ finalized yet. \end{tabular}    \\ \hline
+Container Name & \begin{tabular}[c]{@{}l@{}}Segregation \\ by Spacing\\ (Y or N)\end{tabular} & \begin{tabular}[c]{@{}l@{}}How is spacing\\ maintained?\end{tabular} & \begin{tabular}[c]{@{}l@{}}Actual Measured \\ Spacing (mm)\end{tabular} & \begin{tabular}[c]{@{}l@{}}Alt Barrier \\ Material P/N\end{tabular} & Notes \\ \hline
+Accumulator Container & Y & \begin{tabular}[c]{@{}l@{}}Kevlar reinforced \\ nylon cable clips \\ and cable ties\end{tabular} & \begin{tabular}[c]{@{}l@{}}Accumulator is \\ in assembly so \\ measured distance\\ is unavailable.\end{tabular} & \begin{tabular}[c]{@{}l@{}}Mcmaster 8667K55\\ (Garolite)\end{tabular} & \begin{tabular}[c]{@{}l@{}}Garolite is\\ also used\\ as the barrier\\ between \\ segments, TS\\ fuse and AIRs\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}l@{}}Motor controller\\ housing\end{tabular} & Y & \begin{tabular}[c]{@{}l@{}}Kevlar reinforced\\ nylon cable clips \\ and cable ties\end{tabular} & \begin{tabular}[c]{@{}l@{}}Housing is in\\ assembly so\\ measured distance\\ is unavailable\end{tabular} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Nomex wire tubing \\ (pt. no. coming)\end{tabular}} & \multicolumn{1}{c|}{} \\ \hline
 \end{tabular}
-\end{adjustbox}
+\caption{List of Containers with TS and GLV wiring}
+\label{isolationtable}
+% \end{adjustbox}
 \end{table}
 
 \textit{List all insulating barrier materials used to meet the requirements of EV1.3 or EV4.1.5}
 \begin{table}[ht]
 \centering
-% \caption{My caption}
-% \label{my-label}
-\begin{adjustbox}{max width=\textwidth}
 \begin{tabular}{|l|l|l|l|l|}
 \hline
-Insulating Material / Part Number & UL Recognized ? & Rated Temperature ºC & Thickness mm & Notes \\ \hline
+Insulating Material / Part Number & UL Recognized ? & Rated Temperature \degree C & Thickness mm & Notes \\ \hline
 N/A & N/A & N/A & N/A & N/A \\ \hline
 \end{tabular}
-\end{adjustbox}
+\caption{Insulating Materials}
+\label{insulatingmaterials}
 \end{table}
 
 \subsection{Conduit}
@@ -621,7 +621,7 @@ Delphi & Unknown & 35 mm\textasciicircum 2 & Y & \begin{tabular}[c]{@{}l@{}}Accu
 \label{shieldedwiretable}
 \end{table}
 
-The Delphi shielded cable is being provided by General Motors, and we are still trying to get the part number at this time.
+The Delphi shielded cable is being provided by General Motors, and we are still trying to get the part number at this time. It is rated for 125 \degree C and 600V.
 
 \subsection{Firewall(s)}
 
@@ -738,7 +738,7 @@ Person primarily responsible for this section:
 
     The TSMPs are located on the side panel housing, which is a kevlar-reinforced nylon, waterproof 3-D printed enclosure that is located in the rear right side of the car, behind the main hoop. This housing also contains most of the shutdown components. Electrically, it is connected to the TS+ and TS- power lines (past the AIR's, in a separate connector and wiring bundle), in parallel to the motors. The housing includes all low-current TS voltage components. Please see Figure \ref{tractiveschem} for the schematic in the larger context, as Figure \ref{tsmpschem} is a schematic focused on the TSMPs, with and without the multimeter.
 
-    \begin{figure}
+    \begin{figure}[H]
         \centering
         \includegraphics{TSMP}
         \caption{TSMP Schematic, with and without multimeter probes.}
@@ -789,7 +789,7 @@ Person primarily responsible for this section:
     \begin{figure}[H]
         \centering
         \includegraphics[width = 0.6 \textwidth]{tsmpcloseup}
-        \caption{Close up of TSMP pcb footprints (highlighted in green) on the side panel PCB. Note the line of isolation between the GLV and TS. }
+        \caption{Close up of TSMP pcb footprints (highlighted in green) on the side panel PCB. Note the bright cyan line of isolation between the GLV and TS. }
         \label{tsmpPCB}
     \end{figure}
 
@@ -1282,11 +1282,11 @@ Person primarily responsible for this section:
         \begin{figure}[H]
             \centering
             \includegraphics[width = 0.8 \textwidth]{accumulator_frontview}
-            \caption{Accumulator, Rear View}
+            \caption{Accumulator, Front View}
             \label{CADaccumtop}
         \end{figure}
 
-    The AMS monitors 6 groups of cells in series. Each module contains 4 cells, 2 series x 2 parallel, so each AMS monitors 3 modules, or 12 cells (6 series x 2 parallel). There are 4 AMS boards. Each AMS board is coupled to a cell breakout board, which includes 4 thermistors and bolts to the power terminals of three modules, as shown in Figure \ref{CADaccumtop} (blue circuit boards) and described in section \ref{celltopsection}. The purpose of the cell breakout boards is to help manage wiring inside the accumulator. The cell breakout boards will have compression limiting copper pads at the terminal bolts and will be spaced above the bus bars using copper washers. The cell top schematics and PCB CAD are shown in figures \ref{celltopschem} and \ref{celltopboard}.
+    The AMS monitors 6 groups of cells in series. Each module contains 4 cells, 2 series x 2 parallel, so each AMS monitors 3 modules, or 12 cells (6 series x 2 parallel). There are 4 AMS boards. Each AMS board is coupled to a cell breakout board, which includes 4 thermistors and bolts to the power terminals of three modules, as shown in Figure \ref{CADaccumtop} (blue circuit boards) and described in section \ref{celltopsection}. The purpose of the cell breakout boards is to help manage wiring inside the accumulator. The cell breakout boards will have compression limiting copper pads at the terminal bolts and will be spaced above the bus bars using copper washers. The cell top schematics and PCB CAD are shown in figures \ref{celltopschem}, \ref{celltopboardLH}, \ref{celltopboardRH}.
 
     The AMS shunts 3 A when the cell gets above 4.15 V and opens a relay in line with the shutdown circuit if any cell drops below 2.5 V or above 4.15V. The AMS opens a relay in line with the shutdown circuit if any cell gets above 58 \degree C. Please see figure \ref{shutdownschem} for a schematic of the shutdown circuit's relays.\\
 
@@ -1323,14 +1323,14 @@ Person primarily responsible for this section:
             \centering
             \includegraphics[width = 0.5 \textwidth]{CellTopLH}
             \caption{The left-side version of the cell top board that connects battery information to the AMS.}
-            \label{celltopboard}
+            \label{celltopboardLH}
         \end{figure}
 
         \begin{figure}[H]
             \centering
             \includegraphics[width = 0.5 \textwidth]{CellTopRH}
             \caption{The right-side version of the cell top board that connects battery information to the AMS.}
-            \label{celltopboard}
+            \label{celltopboardRH}
         \end{figure}
 
         \begin{sidewaysfigure}[p]
@@ -1417,13 +1417,13 @@ Person primarily responsible for this section:
             \label{aindicatorPCB}
         \end{figure}
 
-    The accumulator will be removable and removed each time for the charging process. The accumulator indicator is a small light within the accumulator that can be seen from the outside. The light will turn on at 30VDC because the top zener diode has a breakdown of 28V. From 30-100V, the light will be shining. The light, which is located on the AIR control board, will be placed near the window of the accumulator for visibility.
+    The accumulator will be removable and removed each time for the charging process. The accumulator indicator is a small light within the accumulator that can be seen from the outside. The light will turn on at 30VDC because the top zener diode has a breakdown of 28V. From 30-100V, the light will be shining. The light, which is located on the AIR control board, will be placed near the window of the accumulator for visibility. It is fused behind the same 1A fuse protecting the TS low current lines as the TSMPs, GLV DC-DC converter and TSEL/TSVPs.
 
 \subsection{Charging}
 
 \textit{Describe how the accumulator will be charged. How will the charger be connected? How is the accumulator to be supervised during charging?}
 
-The accumulator will be charged using a Delta Q Technologies QioQ 1000 Series charger (UL listed). This charger has a custom charging process for the accumulator. The charging process is a constant current at 17.0A until the battery voltage reaches 4.15Vpc, and then constant voltage at 4.15Vpc until the current tapers to 2.0A. When charging, the accumulator will be located on a hand cart, with a charging interlock, AMS, emergency stop button, and IMD. These components will make up a small version of the shutdown system in order to protect the accumulator, and the connections for this circuitry can be found on the charging PCB and the AIR control board. The charger will connect to the charging connector (Deutsch 6-pin) to the accumulator, and will go through the TS side of the AIRs, connecting to the TS, while the interlock is located in the connector's two smaller pins. Therefore, the AMS's, IMD and E-stop will all be able to open the AIRs in the case of an emergency. The shutdown components and PCB will be mounted to the charging cart. Also, a person with knowledge of the charging process will stay with the accumulator at all times.
+The accumulator will be charged using a Delta Q Technologies QioQ 1000 Series charger (UL listed). This charger has a custom charging process for the accumulator. The charging process is a constant current at 17.0A until the battery voltage reaches 4.15Vpc, and then constant voltage at 4.15Vpc until the current tapers to 2.0A. When charging, the accumulator will be located on a hand cart, with a charging interlock, AMS, emergency stop button, and IMD. These components will make up a small version of the shutdown system in order to protect the accumulator, and the connections for this circuitry can be found on the charging PCB and the AIR control board. The charger will connect to the charging connector (Deutsch 6-pin, P/N: HD10-6-12P, HD16-6-12S) to the accumulator, and will go through the TS side of the AIRs, connecting to the TS, while the interlock is located in the connector's two smaller pins. Therefore, the AMS's, IMD and E-stop will all be able to open the AIRs in the case of an emergency. The shutdown components and PCB will be mounted to the charging cart. Also, a person with knowledge of the charging process will stay with the accumulator at all times.
 
 \begin{figure}[H]
     \centering
@@ -1570,7 +1570,7 @@ Interlocks (if used) & Normally Open \\ \hline
 
 \textit{Describe wiring and additional circuitry controlling AIRs. Write a functional description of operation}
 
-The power to the AIRs is all in series until the economizers for each AIR and the AIRs are in parallel. All wiring is 20 AWG and the GLV system is has four fuses in general. There is a 5A fuse on the output of the DC/DC converter and a 5A fuse on the output of the GLV battery. After the e-stops, the GLV 12V splits to be in parallel with the shutdown system, and both the GLV 12V and shutdown system are fused to 2A. For each board that accepts 5V as input for the CAN system, there is a 1A PTC resettable fuse on the 5V line (all nodes are in parallel). The shutdown system communicates with the CAN system to ensure simple debugging and software control where permitted.
+The power to the AIRs is all in series until the economizers for each AIR and the AIRs are in parallel. All wiring is 20 AWG and the GLV system is has four fuses in general. There is a 5A fuse on the output of the DC/DC converter and a 5A fuse on the output of the GLV battery. After the e-stops, the GLV 12V splits to be in parallel with the shutdown system, and both the GLV 12V and shutdown system are fused to 2A. For each board that accepts 5V as input for the CAN system, there is a 0.5A PTC resettable fuse on the 5V line (all nodes are in parallel). The shutdown system communicates with the CAN system to ensure simple debugging and software control where permitted.
 
 %table of Shutdown circuit Current Draw
 \begin{table}[H]
@@ -1641,7 +1641,7 @@ The physical location of the AMS is pictured and discussed in Figure \ref{ACCUMU
     \label{imdschem}
 \end{figure}
 
-The IMD will have a high output as long as a there is no ground fault detected. The high output will not power the relay until the reset button is pressed in the very beginning start up procedure. Pressing the IMD reset button will "latch" it into its state (by using the first switch). The relay's coil pulls all 4 of the double pole switches to their active states, therefore closing the shutdown circuit and pulling the ATMega16M1 input as low. The input to the microprocessor has a pull-up resistor in case of a disconnection in the wiring. The ATMega16M1 in the side panel housing (where the IMD is) will notify the ATMega16M1 in the dashboard (where the IMD light is) to turn the pin that the IMD light is on high. The fourth pole is left open.
+The IMD will have a high output as long as a there is no ground fault detected. The high output will not power the relay until the reset button is pressed in the very beginning start up procedure. Pressing the IMD reset button will "latch" it into its state (by using the first switch). The relay's coil pulls all 4 of the double pole switches to their active states, therefore closing the shutdown circuit and pulling the ATMega16M1 input as low. The input to the microprocessor has a pull-up resistor in case of a disconnection in the wiring. The ATMega16M1 in the side panel housing (where the IMD is) will notify the ATMega16M1 in the dashboard (where the IMD light is) to turn the pin that the IMD light is on high. The fourth pole is left open. The high voltage power lines that the IMD references are behind the same 1A fuse as used for the TSMPs, TSVP/TSELs, and GLV DC-DC converter.
 
 \begin{table}[H]
 \centering
@@ -1766,12 +1766,12 @@ Does the design comply with EV1.2.7? & Yes \\ \hline
 \label{glvtable}
 \end{table}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics{glvfusing}
-    \caption{Order of fuses for GLV system}
-    \label{glvfusing}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics{glvfusing}
+%     \caption{Order of fuses for GLV system}
+%      \label{glvfusing}
+% \end{figure}
 
 \section{Appendices}
 
