@@ -402,14 +402,15 @@ Cable capacity is the value from FH Rules Appendix E (Wire Current Capacity). A 
 %System Wire Table
 \begin{table}[H]
 \centering
-\begin{adjustbox}{max width=\textwidth}
+\begin{adjustbox}{angle=90,width=1in}
 \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|}
 \hline
 Mfg & \begin{tabular}[c]{@{}l@{}}Part\\ No\end{tabular} & \begin{tabular}[c]{@{}l@{}}Size \\ AWG\end{tabular} & \begin{tabular}[c]{@{}l@{}}Insulation\\ Type\end{tabular} & \begin{tabular}[c]{@{}l@{}}Voltage\\ Rating\end{tabular} & \begin{tabular}[c]{@{}l@{}}Temp. \\ Rating\end{tabular} & \begin{tabular}[c]{@{}l@{}}Cable\\ Capacity \\ (per FH)\end{tabular} & \begin{tabular}[c]{@{}l@{}}Fuse\\ Part \#\end{tabular} & \begin{tabular}[c]{@{}l@{}}Fuse \\ Cont. A\end{tabular} & \begin{tabular}[c]{@{}l@{}}Fuse Interrupting\\ Rating A\end{tabular} & \begin{tabular}[c]{@{}l@{}}Available\\ Fault Current\end{tabular} & \begin{tabular}[c]{@{}l@{}}Where used \& \\ how fault current\\ is calculated\end{tabular} \\ \hline
 Prestolite & \begin{tabular}[c]{@{}l@{}}Not listed\\ UL style 3870\end{tabular} & 2 AWG (33.3 mm\textasciicircum 2) & \begin{tabular}[c]{@{}l@{}}EPDM \\ single layer\end{tabular} & 8 kVAC & 125 C & 190 A & LPJ-175SP & 175 & 20,000 & 41152 A & \begin{tabular}[c]{@{}l@{}}Motor Controllers\\ to Motors x 3, see description\end{tabular} \\ \hline
 Delphi & Not listed & 35 mm\textasciicircum 2 & Dual insulated & 600 V & 150 C & $\>190$ A & \begin{tabular}[c]{@{}l@{}}Series\\ with above fuse\end{tabular} & \begin{tabular}[c]{@{}l@{}}See \\ above\end{tabular} & See above & 41152 A & \begin{tabular}[c]{@{}l@{}}Accumulator to\\ HVD, Accumulator\\ to Motor controllers x2\end{tabular} \\ \hline
 Wiechang & Unknown & See below & XLPE & 600V & 150 C & Motor leads & Series with above fuse & See above & See above  & 41152 A & See description \\ \hline
-CnC Tech & 3132-20-1-0500-001-1-TS & 20 AWG & Silicone Rubber & 300V & 150 C & 7 A & MIN2BP & 5A & 25 $A^{2}s$ & 25A & See description \\ \hline
+CnC Tech & CN117R-50-ND & 20 AWG & Silicone Rubber & 300V & 150 C & 10 A & MIN2BP & 5A & 25 $A^{2}s$ & 25A & See description \\ \hline
+Valcon & 206504 fti & 22 AWG & SR-PVC & 300V & 80 C & 7A & See above& See above &  See above & See description & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Dashboard wiring,\\ between PCBs (GLV) \\ and CAN lines\end{tabular}} \\ \hline
 \end{tabular}
 \end{adjustbox}
 \caption{System wire table}
@@ -555,30 +556,28 @@ BSPD Relay & None listed & \href{http://www.mouser.com/ProductDetail/TE-Connecti
 
 \begin{table}[ht]
 \centering
-% \caption{My caption}
-% \label{my-label}
-\begin{adjustbox}{max width=\textwidth}
-\begin{tabular}{|l|r|l|l|l|l|}
+% \begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{|l|l|l|l|l|l|}
 \hline
-Container Name & Segregation by Spacing (Y or N) & \begin{tabular}[c]{@{}l@{}}How\\   is spacing maintained?\end{tabular} & \begin{tabular}[c]{@{}l@{}}Actual\\   Measured Spacing mm\end{tabular} & Alt,– Barrier Material P/N & Notes \\ \hline
-Accumulator Container & Y & Kevlar reinforced nylon cable clips and cable ties &  &  Mcmaster 8667K55 (Garolite) & Garolite is also used as the barrier between segments, TS fuse and, AIRs. Accumulator is in assembly so measured distance is unavailable. \\ \hline
-TSMP Housing & Y & Kevlar reinforced nylon cable clips and cable ties &  &  & \begin{tabular}[c]{@{}l@{}}This part is also in assembly \\ eso the measured spacing is not\\ finalized yet. \end{tabular}    \\ \hline
+Container Name & \begin{tabular}[c]{@{}l@{}}Segregation \\ by Spacing\\ (Y or N)\end{tabular} & \begin{tabular}[c]{@{}l@{}}How is spacing\\ maintained?\end{tabular} & \begin{tabular}[c]{@{}l@{}}Actual Measured \\ Spacing (mm)\end{tabular} & \begin{tabular}[c]{@{}l@{}}Alt Barrier \\ Material P/N\end{tabular} & Notes \\ \hline
+Accumulator Container & Y & \begin{tabular}[c]{@{}l@{}}Kevlar reinforced \\ nylon cable clips \\ and cable ties\end{tabular} & \begin{tabular}[c]{@{}l@{}}Accumulator is \\ in assembly so \\ measured distance\\ is unavailable.\end{tabular} & \begin{tabular}[c]{@{}l@{}}Mcmaster 8667K55\\ (Garolite)\end{tabular} & \begin{tabular}[c]{@{}l@{}}Garolite is\\ also used\\ as the barrier\\ between \\ segments, TS\\ fuse and AIRs\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}l@{}}Motor controller\\ housing\end{tabular} & Y & \begin{tabular}[c]{@{}l@{}}Kevlar reinforced\\ nylon cable clips \\ and cable ties\end{tabular} & \begin{tabular}[c]{@{}l@{}}Housing is in\\ assembly so\\ measured distance\\ is unavailable\end{tabular} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Nomex wire tubing \\ McMaster 8798K32 \end{tabular}} & \multicolumn{1}{c|}{} \\ \hline
 \end{tabular}
-\end{adjustbox}
+\caption{List of Containers with TS and GLV wiring}
+\label{isolationtable}
+% \end{adjustbox}
 \end{table}
 
 \textit{List all insulating barrier materials used to meet the requirements of EV1.3 or EV4.1.5}
 \begin{table}[ht]
 \centering
-% \caption{My caption}
-% \label{my-label}
-\begin{adjustbox}{max width=\textwidth}
 \begin{tabular}{|l|l|l|l|l|}
 \hline
-Insulating Material / Part Number & UL Recognized ? & Rated Temperature ºC & Thickness mm & Notes \\ \hline
+Insulating Material / Part Number & UL Recognized ? & Rated Temperature \degree C & Thickness mm & Notes \\ \hline
 N/A & N/A & N/A & N/A & N/A \\ \hline
 \end{tabular}
-\end{adjustbox}
+\caption{Insulating Materials}
+\label{insulatingmaterials}
 \end{table}
 
 \subsection{Conduit}
@@ -738,9 +737,9 @@ Person primarily responsible for this section:
 
     \textit{The TSMP must comply with FH Rule EV4.4. Describe the TSMP housing and location. Describe TSMP electrical connection point.}
 
-    The TSMPs are located on the side panel housing, which is a kevlar-reinforced nylon, waterproof 3-D printed enclosure that is located in the rear right side of the car, behind the main hoop. This housing also contains most of the shutdown components. Electrically, it is connected to the TS+ and TS- power lines (past the AIR's, in a separate connector and wiring bundle), in parallel to the motors. The housing includes all low-current TS voltage components. Please see Figure \ref{tractiveschem} for the schematic in the larger context, as Figure \ref{tsmpschem} is a schematic focused on the TSMPs, with and without the multimeter.
+    The TSMPs are located on the motor controller housing, which is a polycarbonate, PLA and nylon enclosure that is located in the rear right side of the car, behind the main hoop. This housing also contains most of the shutdown components. Electrically, it is connected to the TS+ and TS- power lines (past the AIR's, in a separate connector and wiring bundle), in parallel to the motors. The housing includes all TS voltage components besides those in the accumulator and HVD. Please see Figure \ref{tractiveschem} for the schematic in the larger context, as Figure \ref{tsmpschem} is a schematic focused on the TSMPs, with and without the multimeter The TSMPs are mounted on the side panel PCB.
 
-    \begin{figure}
+    \begin{figure}[H]
         \centering
         \includegraphics{TSMP}
         \caption{TSMP Schematic, with and without multimeter probes.}
@@ -765,14 +764,7 @@ Person primarily responsible for this section:
 
             Another worst case scenario that could occur at the measuring points is a short between the TS and GLV systems over the banana jacks, again by operator error. In this scenario, the IMD will open the shutdown circuit.
     \\
-    The following figure shows the housing panel that the TSMPs exist on.
-
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width = 0.6 \textwidth]{CONTROLPANEL_1}
-        \caption{Side Panel Housing Interface}
-        \label{sidepanelfront}
-    \end{figure}
+    Figure \ref{MChousingdiagram} shows the housing that the TSMPs are on. There are covers on top of the banana jacks, and the TSMPs are directly on side panel PCB.
 
     The TSMP banana jacks are 72930-2 and 72930-0 Pomona Electronics 4 mm banana jacks (red and black, respectively). The TSMP resistors are Vishay Dale, CMF655K0000FKEB (manufacturer's part number), rated for 500V and part of the CMF Industrial series.
 
@@ -791,7 +783,7 @@ Person primarily responsible for this section:
     \begin{figure}[H]
         \centering
         \includegraphics[width = 0.6 \textwidth]{tsmpcloseup}
-        \caption{Close up of TSMP pcb footprints (highlighted in green) on the side panel PCB. Note the line of isolation between the GLV and TS. }
+        \caption{Close up of TSMP pcb footprints (highlighted in green) on the side panel PCB. Note the bright cyan line of isolation between the GLV and TS. }
         \label{tsmpPCB}
     \end{figure}
 
@@ -1284,11 +1276,11 @@ Person primarily responsible for this section:
         \begin{figure}[H]
             \centering
             \includegraphics[width = 0.8 \textwidth]{accumulator_frontview}
-            \caption{Accumulator, Rear View}
+            \caption{Accumulator, Front View}
             \label{CADaccumtop}
         \end{figure}
 
-    The AMS monitors 6 groups of cells in series. Each module contains 4 cells, 2 series x 2 parallel, so each AMS monitors 3 modules, or 12 cells (6 series x 2 parallel). There are 4 AMS boards. Each AMS board is coupled to a cell breakout board, which includes 4 thermistors and bolts to the power terminals of three modules, as shown in Figure \ref{CADaccumtop} (blue circuit boards) and described in section \ref{celltopsection}. The purpose of the cell breakout boards is to help manage wiring inside the accumulator. The cell breakout boards will have compression limiting copper pads at the terminal bolts and will be spaced above the bus bars using copper washers. The cell top schematics and PCB CAD are shown in figures \ref{celltopschem} and \ref{celltopboard}.
+    The AMS monitors 6 groups of cells in series. Each module contains 4 cells, 2 series x 2 parallel, so each AMS monitors 3 modules, or 12 cells (6 series x 2 parallel). There are 4 AMS boards. Each AMS board is coupled to a cell breakout board, which includes 4 thermistors and bolts to the power terminals of three modules, as shown in Figure \ref{CADaccumtop} (blue circuit boards) and described in section \ref{celltopsection}. The purpose of the cell breakout boards is to help manage wiring inside the accumulator. The cell breakout boards will have compression limiting copper pads at the terminal bolts and will be spaced above the bus bars using copper washers. The cell top schematics and PCB CAD are shown in figures \ref{celltopschem}, \ref{celltopboardLH}, \ref{celltopboardRH}.
 
     The AMS shunts 3 A when the cell gets above 4.15 V and opens a relay in line with the shutdown circuit if any cell drops below 2.5 V or above 4.15V. The AMS opens a relay in line with the shutdown circuit if any cell gets above 58 \degree C. Please see figure \ref{shutdownschem} for a schematic of the shutdown circuit's relays.\\
 
@@ -1325,14 +1317,14 @@ Person primarily responsible for this section:
             \centering
             \includegraphics[width = 0.5 \textwidth]{CellTopLH}
             \caption{The left-side version of the cell top board that connects battery information to the AMS.}
-            \label{celltopboard}
+            \label{celltopboardLH}
         \end{figure}
 
         \begin{figure}[H]
             \centering
             \includegraphics[width = 0.5 \textwidth]{CellTopRH}
             \caption{The right-side version of the cell top board that connects battery information to the AMS.}
-            \label{celltopboard}
+            \label{celltopboardRH}
         \end{figure}
 
         \begin{sidewaysfigure}[p]
@@ -1618,16 +1610,16 @@ Coil holding current per AIR & \begin{tabular}[c]{@{}l@{}}3.8A until\\ 150 ms pa
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.6 \textwidth]{CONTROLPANEL_1}
-    \caption{Side Panel Front View}
-    \label{sidepanelhousing}
+    \includegraphics[width = 0.6 \textwidth]{MCHousingdiagram}
+    \caption{Motor Controller Housing Outside View Diagram- this contains the side panel PCB, MCC PCB and motor controllers inside (both Tractive and GLV components).}
+    \label{mchousingdiagram}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.75 \textwidth]{CONTROLPANEL_2}
-    \caption{Side Panel Inside View}
-    \label{sidepanelinside}
+    \includegraphics[width = 0.75 \textwidth]{MChousinginside}
+    \caption{Motor Controller Housing Inside View Diagram}
+    \label{mchousinginside}
 \end{figure}
 
 The physical location of the AMS is pictured and discussed in Figure \ref{ACCUMULATOR_WIRING_SIDE}.
@@ -1768,12 +1760,12 @@ Does the design comply with EV1.2.7? & Yes \\ \hline
 \label{glvtable}
 \end{table}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics{glvfusing}
-    \caption{Order of fuses for GLV system}
-    \label{glvfusing}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics{glvfusing}
+%     \caption{Order of fuses for GLV system}
+%      \label{glvfusing}
+% \end{figure}
 
 \section{Appendices}
 
