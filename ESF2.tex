@@ -736,7 +736,7 @@ Person primarily responsible for this section:
 
     \textit{The TSMP must comply with FH Rule EV4.4. Describe the TSMP housing and location. Describe TSMP electrical connection point.}
 
-    The TSMPs are located on the side panel housing, which is a kevlar-reinforced nylon, waterproof 3-D printed enclosure that is located in the rear right side of the car, behind the main hoop. This housing also contains most of the shutdown components. Electrically, it is connected to the TS+ and TS- power lines (past the AIR's, in a separate connector and wiring bundle), in parallel to the motors. The housing includes all low-current TS voltage components. Please see Figure \ref{tractiveschem} for the schematic in the larger context, as Figure \ref{tsmpschem} is a schematic focused on the TSMPs, with and without the multimeter.
+    The TSMPs are located on the motor controller housing, which is a polycarbonate, PLA and nylon enclosure that is located in the rear right side of the car, behind the main hoop. This housing also contains most of the shutdown components. Electrically, it is connected to the TS+ and TS- power lines (past the AIR's, in a separate connector and wiring bundle), in parallel to the motors. The housing includes all TS voltage components besides those in the accumulator and HVD. Please see Figure \ref{tractiveschem} for the schematic in the larger context, as Figure \ref{tsmpschem} is a schematic focused on the TSMPs, with and without the multimeter The TSMPs are mounted on the side panel PCB.
 
     \begin{figure}[H]
         \centering
@@ -763,14 +763,7 @@ Person primarily responsible for this section:
 
             Another worst case scenario that could occur at the measuring points is a short between the TS and GLV systems over the banana jacks, again by operator error. In this scenario, the IMD will open the shutdown circuit.
     \\
-    The following figure shows the housing panel that the TSMPs exist on.
-
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width = 0.6 \textwidth]{CONTROLPANEL_1}
-        \caption{Side Panel Housing Interface}
-        \label{sidepanelfront}
-    \end{figure}
+    Figure \ref{MChousingdiagram} shows the housing that the TSMPs are on. There are covers on top of the banana jacks, and the TSMPs are directly on side panel PCB.
 
     The TSMP banana jacks are 72930-2 and 72930-0 Pomona Electronics 4 mm banana jacks (red and black, respectively). The TSMP resistors are Vishay Dale, CMF655K0000FKEB (manufacturer's part number), rated for 500V and part of the CMF Industrial series.
 
