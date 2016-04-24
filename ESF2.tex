@@ -1005,7 +1005,9 @@ Person primarily responsible for this section:
     In the case of a short or open-circuit for potentiometer input failure, there will be a pull-down resistor which will pull the value read at the input pin to 0V (and in case of a short it will be pulled to 5V). Any reading not in the range of 1V-4V will be considered an error and will be dealt with in software. No throttle command will be sent in this case.
     }\\
 
-    \textnormal{In the case of CAN message failure, the CAN node which is connected to the motor-controllers will not send any throttle command if no valid throttle message is read every 0.1 seconds.}
+    %\textnormal{In the case of CAN message failure, the CAN node which is connected to the motor-controllers will not send any throttle command if no valid throttle message is read every 0.1 seconds.}
+
+    \textnormal{The CAN system is highly resilient and is programmed with error handling as the highest priority. The CAN protocol itself specifies a cyclic redundancy check which ensures that the messages are not corrupted in transmission. Both the Throttle node and MCC node will check the throttle values to ensure that they are in a valid range. If the MCC node does not receive a throttle CAN message for a tenth of a second it will tell the motor controllers to have 0 throttle. }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%SECTION 5%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
