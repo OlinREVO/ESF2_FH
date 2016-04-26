@@ -8,4 +8,5 @@ ESF to do
 - Keyswitch fuse: 5A or 7A?
 - new pic of BMS
 - cad render of firewall or just nah
-
+- rerun the Time vs Power discharge graph
+- tslowcurrentwire table with wire data 
