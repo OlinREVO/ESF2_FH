@@ -5,3 +5,8 @@ ESF to do
 - Charging- we start shunting at ~4.1V
 - how to prove high and low voltage meets safety
 	-high: 403V, 48 modules. 8.39V per module max
+- Keyswitch fuse: 5A or 7A?
+- new pic of BMS
+- cad render of firewall or just nah
+- rerun the Time vs Power discharge graph
+- tslowcurrentwire table with wire data 
