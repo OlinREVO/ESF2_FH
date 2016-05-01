@@ -106,17 +106,17 @@
             \centering
             \begin{tabular}{|l|l|}
             \hline
-            REVISION DATE & April 10, 2014 \\ \hline
-            REVISION (A, B, C, etc...) & A \\ \hline
+            REVISION DATE & May 1, 2014 \\ \hline
+            REVISION (A, B, C, etc...) & B \\ \hline
             \multicolumn{1}{|c|}{Section} & \multicolumn{1}{c|}{Revised (Yes/No)} \\ \hline
-            1- Overview & Yes \\ \hline
+            1- Overview & No \\ \hline
             2- Cables and Fusing &  Yes \\ \hline
-            3- Insulation and Isolation & Yes \\ \hline
-            4- Electric Tractive System & Yes \\ \hline
+            3- Insulation and Isolation & No \\ \hline
+            4- Electric Tractive System & No \\ \hline
             5- Accumulator System & Yes \\ \hline
-            6- GLV System & Yes \\ \hline
-            7- Safety Controls and Indicators & Yes \\ \hline
-            8- Appendices/Datasheets & Yes \\ \hline
+            6- GLV System & No \\ \hline
+            7- Safety Controls and Indicators & No \\ \hline
+            8- Appendices/Datasheets & No \\ \hline
             \end{tabular}
         \end{table}
 
@@ -416,6 +416,7 @@ Valcon & 206504 fti & 22 AWG & SR-PVC & 300V & 80 C & 7A & See above & See above
 NTE Electronics & WH22-07-25 & 22 AWG & PVC & 300V & 105C & 7A & See above & See above &  See above & See description & Accumulator low-current wiring and GLV wiring \\ \hline
 AWC Allied Wire & AWL style 1569 & 22 AWG & PVC & 600V & 105C & 7A & See above & See above &  See above & See description & Accumulator low-current wiring and GLV wiring\\ \hline
 CnC Tech & AWL style 11047 & 22 AWG & PVC & 600V & 105C & 7A& See above & See above &  See above & See description & Accumulator low-current wiring and GLV wiring\\ \hline
+Hosa Tech & Speaker Cable 12 AWG 2 OFC & 12 AWG & PVC & 125 V & 105C & 40A & 504-BK/SC-20 & 20A & 10kA $A^{2}s$ & 17 A & See description\\ \hline
 \end{tabular}
 \end{adjustbox}
 \caption{System wire table}
@@ -441,6 +442,8 @@ The fault current for the accumulator to motor controller wiring (Delphi), is ca
  \end{align}
 
 The fault current for the GLV system is restricted by the DC-DC converter supplying power to the GLV system. The DC-DC converter can only output 25A, and will restrict any fault current to 25A.
+
+The fault current for the charging system is restricted by the charger for the batteries. The charger can only output 17A, and will restrict any fault current to 17A.
 
 \subsection{Grounding System}
 
@@ -1440,7 +1443,7 @@ Person primarily responsible for this section:
     The maximum expected current when at 10C is 660A. The nominal current is under NDA. We do not expect this max current draw to be an issue due to our current limiting fuses, and that the motors are wired completely in parallel, thus taking half the load.
 
     The high current (motor, motor controller) wires used for the tractive system will be as described in table \ref{motorwire}.
-    The low current (IMD, Lights DC-DC, GLV DC-DC and ready to drive sound) TS connections will be made with the wire described in tables \ref{tslowcurrentwire1} - \ref{tslowcurrentwire4}.
+    The low current (IMD, Lights DC-DC, GLV DC-DC and ready to drive sound) TS connections will be made with the wire described in tables \ref{tslowcurrentwire1} - \ref{tslowcurrentwire5}.
     \begin{table}[H]
     \centering
     \begin{tabular}{|l|l|}
@@ -1499,6 +1502,21 @@ Person primarily responsible for this section:
     \end{tabular}
     \caption{Wire data of the company: AWC Allied Wire, 0.0005064 in$^{2}$}
     \label{tslowcurrentwire4}
+    \end{table}
+
+    \begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|}
+    \hline
+    Wire type & HosaTech Speaker Wire, 12 AWG, OFC \\ \hline
+    Current rating & 40A \\ \hline
+    Cross sectional area & 0.005125 in$^{2}$ \\ \hline
+    Maximum voltage & 125V \\ \hline
+    Temperature rating & 105\degree C \\ \hline
+    \begin{tabular}[c]{@{}l@{}}Wire connects the\\ components\end{tabular} & The HV Charging power to the accumulator\\ \hline
+    \end{tabular}
+    \caption{Wire data of the company: Hosa Tech, 0.005125 in$^{2}$}
+    \label{tslowcurrentwire5}
     \end{table}
 
 \subsection{Accumulator Indicator}
