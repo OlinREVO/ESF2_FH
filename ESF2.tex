@@ -1032,7 +1032,7 @@ Person primarily responsible for this section:
     \begin{figure}[H]
           \centering
           \includegraphics[width = 0.7 \textwidth]{MCCschem}
-          \caption{Motor controller schematic}
+          \caption{Motor controller controller schematic}
           \label{mccschem}
     \end{figure}
 
@@ -1659,7 +1659,7 @@ The shutdown circuit is a circuit, carrying the power of the AIR all in series. 
 
 The brake over travel switch is a single pole switch that is located behind the brake, and in the event it over-travels, it will open the shutdown circuit.\\
 
-The master switches are single pole switches that must be manually closed in order to close the shutdown system. The keys for the master switches are kept in the active Electrical Safety Officer's possession at all times. When disconnected from the vehicle, the keys are also connected to each other, thus disabling closing both switches simultaneously due to the physical separation of the switches and ensuring safety even if the ESO loses possession of the keys. This ensures that a driver can only operate the vehicle under the supervision of the ESO.\\
+The master switches are single pole switches that must be manually closed in order to close the shutdown system. The keys for the master switches are kept in the active Rules and Safety Officer's possession at all times. When disconnected from the vehicle, the keys are also connected to each other, thus disabling closing both switches simultaneously due to the physical separation of the switches and ensuring safety even if the RSO loses possession of the keys. This ensures that a driver can only operate the vehicle under the supervision of the RSO. The RSO will check that the vehicle is clear and safe to start at the voltage level being requested. \\
 
 The shutdown buttons are emergency stop buttons that are normally closed and single pole. In the event of the emergency, the three buttons (located in the cockpit, right back and left back of the vehicle) can be pushed and then open the shutdown circuit.\\
 
@@ -1688,6 +1688,12 @@ Interlocks (if used) & Normally Open \\ \hline
 \caption{Switches and devices in the shutdown circuit}
 \label{shutdowndevicestable}
 \end{table}
+
+\begin{sidewaysfigure}[p]
+           \includegraphics[width=\textheight, height=0.8 \textwidth]{sidepanelschem}
+           \caption{The side panel PCB contains most of the shutdown circuitry, and can be found in the motor controller housing. }
+           \label{tractiveblock}
+\end{sidewaysfigure}
 
 \textit{Describe wiring and additional circuitry controlling AIRs. Write a functional description of operation}
 
@@ -1762,7 +1768,7 @@ The physical location of the AMS is pictured and discussed in Figure \ref{ACCUMU
     \label{imdschem}
 \end{figure}
 
-The IMD will have a high output as long as a there is no ground fault detected. The high output will not power the relay until the reset button is pressed in the very beginning start up procedure. Pressing the IMD reset button will "latch" it into its state (by using the first switch). The relay's coil pulls all 4 of the double pole switches to their active states, therefore closing the shutdown circuit and pulling the ATMega16M1 input as low. The input to the microprocessor has a pull-up resistor in case of a disconnection in the wiring. The ATMega16M1 in the side panel housing (where the IMD is) will notify the ATMega16M1 in the dashboard (where the IMD light is) to turn the pin that the IMD light is on high. The fourth pole is left open. The high voltage power lines that the IMD references are behind the same 1A fuse as used for the TSMPs, TSVP/TSELs, and GLV DC-DC converter.
+The IMD will have a high output as long as a there is no ground fault detected. The high output will not power the relay until the reset button is pressed in the very beginning start up procedure. Pressing the IMD reset button will "latch" it into its state (by using the first switch). The relay's coil pulls all 4 of the double pole switches to their active states, therefore closing the shutdown circuit and pulling the ATMega16M1 input as low. The input to the microprocessor has a pull-up resistor in case of a disconnection in the wiring. The ATMega16M1 in the motor controller housing (where the IMD is) will notify the ATMega16M1 in the dashboard (where the IMD light is) to turn the pin that the IMD light is on high. The fourth pole is left open. The high voltage power lines that the IMD references are behind the same 1A fuse as used for the TSMPs, TSVP/TSELs, and GLV DC-DC converter.
 
 \begin{table}[H]
 \centering
@@ -1781,7 +1787,7 @@ Referred from section \ref{latching} (Reset/Latching for IMD and AMS)
 
 \textit{Describe the functioning and circuitry of the latching/reset system for a tripped IMD or AMS. Describe wiring, provide schematics.}
 
-If the AMS detects a fault. It opens the shutdown circuit, and latches into that state. When the AMS reset switch, located in the side panel housing, is pressed, the nearby CAN node passes a message through CAN to the AMS boards. If the accumulator is within safe electrical and temperature operating limits the AMS closes the shutdown circuit.%  Figure \ref{amsreset} demonstrates the relevant circuitry of the AMS reset switch and side panel CAN node, which also will be wired to shutdown components.
+If the AMS detects a fault. It opens the shutdown circuit, and latches into that state. When the AMS reset switch, located in the motor controller housing, is pressed, the nearby CAN node passes a message through CAN to the AMS boards. If the accumulator is within safe electrical and temperature operating limits the AMS closes the shutdown circuit.%  Figure \ref{amsreset} demonstrates the relevant circuitry of the AMS reset switch and side panel CAN node, which also will be wired to shutdown components.
 
 % \begin{figure}[H]
 %     \centering
